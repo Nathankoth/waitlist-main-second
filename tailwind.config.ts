@@ -25,12 +25,12 @@ export default {
 				ring: 'hsl(var(--ring))',
 				background: 'hsl(var(--background))',
 				foreground: 'hsl(var(--foreground))',
-				cosmic: {
-					dark: '#404040', /* Medium grey for light mode */
-					darker: '#303030', /* Darker grey for light mode */
-					light: '#f0f0f0', /* Light grey for light mode */
-					accent: '#606060', /* Medium-dark grey accent */
-					muted: '#909090', /* Medium grey */
+				fintech: {
+					cyan: 'hsl(195, 100%, 55%)', /* Primary fintech cyan */
+					teal: 'hsl(180, 100%, 45%)', /* Secondary teal */
+					dark: 'hsl(210, 40%, 4%)', /* Deep fintech dark */
+					accent: 'hsl(180, 85%, 35%)', /* Darker teal accent */
+					muted: 'hsl(210, 10%, 65%)', /* Fintech muted */
 				},
 				primary: {
 					DEFAULT: 'hsl(var(--primary))',

@@ -8,51 +8,51 @@ const Features = () => {
   
   const features = [
     {
-      title: "Payment Automation",
-      description: "Automate payment processing and reconciliation to reduce manual errors and improve efficiency.",
-      expandedDescription: "Set up automated payment workflows with custom approval chains. Schedule recurring payments, automate invoice processing, and create conditional rules for different transaction types. Reduce manual intervention and ensure compliance with financial regulations.",
+      title: "Real-time Price Analytics",
+      description: "Monitor market movements with millisecond precision across 50+ exchanges and asset classes.",
+      expandedDescription: "Access live price feeds, volume data, and order book information from major exchanges worldwide. Track cryptocurrencies, stocks, forex, commodities, and derivatives with advanced charting tools and technical indicators.",
       icon: (
-        <Layers size={24} className="text-cosmic-accent" />
+        <TrendingUp size={24} className="text-primary" />
       )
     },
     {
-      title: "Real-time Analytics",
-      description: "Monitor financial performance with real-time dashboards and comprehensive reporting.",
-      expandedDescription: "Track key financial metrics with customizable dashboards. Monitor cash flow, payment volumes, and transaction success rates in real-time. Generate detailed reports for stakeholders and identify trends before they impact your business.",
+      title: "Market Trend Predictions",
+      description: "AI-powered forecasting models with 85% accuracy to predict market movements.",
+      expandedDescription: "Leverage machine learning algorithms trained on historical data, sentiment analysis, and market indicators. Get predictions with confidence intervals, risk assessments, and automated alerts for significant trend changes.",
       icon: (
-        <Grid3x3 size={24} className="text-cosmic-accent" />
+        <Grid3x3 size={24} className="text-accent" />
       )
     },
     {
-      title: "Risk Management",
-      description: "Advanced fraud detection and risk assessment tools to protect your business.",
-      expandedDescription: "Utilize machine learning algorithms to detect suspicious transactions and prevent fraud. Set up custom risk rules, monitor transaction patterns, and receive instant alerts for unusual activity. Protect your business with enterprise-grade security measures.",
+      title: "Portfolio Visualization",
+      description: "Interactive dashboards to track and analyze your investment portfolios in real-time.",
+      expandedDescription: "Visualize portfolio performance with advanced charts, heat maps, and correlation analysis. Track asset allocation, risk metrics, and performance attribution across multiple accounts and time periods.",
       icon: (
-        <LayoutDashboard size={24} className="text-cosmic-accent" />
+        <LayoutDashboard size={24} className="text-fintech-teal" />
       )
     },
     {
-      title: "Compliance Tools",
-      description: "Built-in compliance features to meet regulatory requirements effortlessly.",
-      expandedDescription: "Stay compliant with financial regulations across multiple jurisdictions. Automated KYC/AML checks, transaction monitoring, and regulatory reporting. Generate audit trails and maintain documentation to meet compliance standards.",
+      title: "Custom Dashboards",
+      description: "Build personalized analytics dashboards with drag-and-drop widgets and tools.",
+      expandedDescription: "Create custom layouts with 50+ widgets including price charts, news feeds, economic calendars, and technical indicators. Save multiple dashboard configurations and share insights with your team.",
       icon: (
-        <ListCheck size={24} className="text-cosmic-accent" />
+        <ListCheck size={24} className="text-primary" />
       )
     },
     {
-      title: "Multi-currency Support",
-      description: "Process payments in multiple currencies with real-time exchange rates.",
-      expandedDescription: "Accept and process payments in over 150 currencies with competitive exchange rates. Automatic currency conversion, hedging tools, and multi-currency accounting. Expand your business globally with seamless international payment processing.",
+      title: "Risk Management Tools",
+      description: "Advanced risk analytics and portfolio optimization tools for informed decision making.",
+      expandedDescription: "Calculate Value at Risk (VaR), beta, volatility, and correlation metrics. Set up automated alerts for risk thresholds and portfolio rebalancing recommendations based on your risk tolerance.",
       icon: (
-        <Star size={24} className="text-cosmic-accent" />
+        <Star size={24} className="text-accent" />
       )
     },
     {
       title: "API Integration",
-      description: "Powerful APIs for seamless integration with your existing financial systems.",
-      expandedDescription: "Connect with your ERP, accounting software, and banking systems through our comprehensive APIs. Real-time webhooks, detailed documentation, and SDKs for popular programming languages. Build custom integrations that fit your unique business needs.",
+      description: "Robust APIs for seamless integration with trading platforms and financial systems.",
+      expandedDescription: "Connect with brokers, exchanges, and third-party tools through our comprehensive REST and WebSocket APIs. Real-time data streaming, automated trading capabilities, and extensive documentation with code examples.",
       icon: (
-        <BookOpen size={24} className="text-cosmic-accent" />
+        <BookOpen size={24} className="text-fintech-teal" />
       )
     }
   ];
@@ -66,10 +66,10 @@ const Features = () => {
       <div className="max-w-7xl mx-auto space-y-12">
         <div className="text-center space-y-3 max-w-3xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-medium tracking-tighter">
-            Everything your business needs
+            Everything you need for market analytics
           </h2>
-          <p className="text-cosmic-muted text-lg">
-            Comprehensive fintech solutions to streamline your financial operations and drive growth
+          <p className="text-muted-foreground text-lg">
+            Comprehensive fintech tools to analyze markets, predict trends, and optimize your investment strategy
           </p>
         </div>
         
