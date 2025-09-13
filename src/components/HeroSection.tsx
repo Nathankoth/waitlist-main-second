@@ -1,90 +1,116 @@
 import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
+import { ArrowRight, Play, CircleDot } from 'lucide-react';
 import AnalyticsCarousel from './AnalyticsCarousel';
-import { TrendingUp } from 'lucide-react';
 import heroImage from '@/assets/hero-analytics.jpg';
+
 const HeroSection = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const [dashboardVisible, setDashboardVisible] = useState(false);
+
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsVisible(true);
     }, 300);
-    return () => clearTimeout(timer);
+    
+    const dashboardTimer = setTimeout(() => {
+      setDashboardVisible(true);
+    }, 800);
+
+    return () => {
+      clearTimeout(timer);
+      clearTimeout(dashboardTimer);
+    };
   }, []);
-  return <section className="relative w-full py-12 md:py-20 px-6 md:px-12 flex flex-col items-center justify-center overflow-hidden min-h-screen">
-      {/* Hero Background Image with Overlay */}
+
+  return (
+    <section className="relative w-full min-h-screen flex flex-col items-center justify-center overflow-hidden">
+      {/* Hero Background Image */}
       <div 
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{ backgroundImage: `url(${heroImage})` }}
       >
-        <div className="absolute inset-0 bg-gradient-to-br from-background/90 via-background/75 to-background/85"></div>
-        <div className="absolute inset-0 bg-gradient-to-r from-fintech-cyan/20 via-transparent to-fintech-teal/15"></div>
-        <div className="absolute inset-0 fintech-gradient opacity-15"></div>
       </div>
       
-      {/* Cosmic particle effect */}
-      <div className="absolute inset-0 cosmic-grid opacity-20"></div>
+      {/* Premium gradient overlay */}
+      <div className="absolute inset-0" style={{ background: 'var(--gradient-overlay)' }}></div>
       
-      {/* Gradient glow effect */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full">
-        <div className="w-full h-full opacity-20 bg-primary blur-[150px]"></div>
+      {/* Floating particles effect */}
+      <div className="absolute inset-0 opacity-30">
+        <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-primary/40 rounded-full animate-pulse"></div>
+        <div className="absolute top-1/3 right-1/3 w-1 h-1 bg-accent/60 rounded-full animate-ping"></div>
+        <div className="absolute bottom-1/4 left-1/3 w-1.5 h-1.5 bg-primary/30 rounded-full animate-pulse delay-1000"></div>
+        <div className="absolute top-2/3 right-1/4 w-1 h-1 bg-accent/50 rounded-full animate-ping delay-500"></div>
       </div>
-      
-      <div className={`relative z-10 max-w-4xl text-center space-y-6 transition-all duration-700 transform ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-        <div className="flex justify-center">
-          <span className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-full bg-muted/50 text-primary backdrop-blur-sm border border-primary/20">
-            <span className="flex h-2 w-2 rounded-full bg-primary animate-pulse"></span>
+
+      {/* Main Content */}
+      <div className={`relative z-10 text-center space-y-8 max-w-4xl mx-auto px-6 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+        <div className="space-y-6">
+          <div className="inline-flex items-center px-4 py-2 rounded-full bg-primary/20 backdrop-blur-sm border border-primary/30 text-primary text-sm font-medium animate-fade-in">
+            <CircleDot className="w-3 h-3 mr-2" />
             AI-Powered Market Intelligence
-            <TrendingUp className="h-4 w-4 text-primary" />
-          </span>
+          </div>
+          
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-heading font-bold tracking-tight text-white leading-tight">
+            Real-time Market Analytics.
+            <br />
+            <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+              Smarter Decisions.
+            </span>
+          </h1>
+          
+          <p className="text-xl md:text-2xl text-gray-200 max-w-3xl mx-auto leading-relaxed font-body">
+            Harness AI-driven insights and real-time real estate data for smarter investment and visualization.
+          </p>
         </div>
-        
-        <h1 className="text-4xl md:text-6xl lg:text-7xl font-medium tracking-tighter text-balance text-foreground">
-          Real-time Market Analytics. <span className="fintech-gradient bg-clip-text text-transparent">Smarter Decisions.</span>
-        </h1>
-        
-        <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto text-balance">
-          Harness the power of AI-driven insights and real-time market data to make informed investment decisions. Built for traders, analysts, and financial professionals who demand precision.
-        </p>
-        
-        <div className="flex flex-col sm:flex-row gap-4 justify-center pt-6 items-center">
-          <Button className="fintech-gradient text-primary-foreground hover:opacity-90 text-base h-12 px-8 transition-all duration-200 min-h-[48px] shadow-lg">
+
+        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+          <Button 
+            size="lg" 
+            className="text-lg px-8 py-4 bg-primary hover:bg-primary/90 text-primary-foreground font-semibold transition-all duration-500 hover:scale-105 shadow-luxury hover:shadow-xl"
+          >
             Get Started
+            <ArrowRight className="ml-2 h-5 w-5" />
           </Button>
-          <Button variant="outline" className="border-primary/30 text-foreground hover:bg-primary/10 hover:border-primary/50 text-base h-12 px-8 transition-all duration-200 min-h-[48px]">
+          <Button 
+            size="lg" 
+            variant="outline" 
+            className="text-lg px-8 py-4 border-white/30 text-white hover:bg-white/10 hover:border-primary/50 font-semibold backdrop-blur-sm transition-all duration-300 hover:shadow-lg"
+          >
+            <Play className="mr-2 h-5 w-5" />
             Explore Dashboard Demo
           </Button>
         </div>
         
-        <div className="pt-6 text-sm text-muted-foreground">
+        <div className="text-sm text-gray-300 font-body">
           Free 14-day trial • No credit card required • Real-time data included
         </div>
       </div>
-      
+
       {/* Analytics Dashboard Preview */}
-      <div className={`w-full max-w-7xl mt-16 z-10 transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`}>
-        <div className="cosmic-glow relative rounded-xl overflow-hidden border border-primary/20 backdrop-blur-sm bg-card/50 shadow-2xl">
+      <div className={`w-full max-w-7xl mt-16 px-6 z-10 transition-all duration-1000 delay-500 ${dashboardVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`}>
+        <div className="relative rounded-2xl overflow-hidden border border-white/20 shadow-glass backdrop-blur-xl" style={{ background: 'var(--gradient-glass)' }}>
           {/* Dashboard Header */}
-          <div className="bg-card/80 backdrop-blur-md w-full border-b border-primary/10">
-            <div className="flex items-center justify-between p-4">
+          <div className="bg-background/10 backdrop-blur-md w-full border-b border-white/10">
+            <div className="flex items-center justify-between p-6">
               <div className="flex items-center gap-4">
-                <div className="h-8 w-8 rounded-md bg-primary/20 flex items-center justify-center">
-                  <TrendingUp className="h-4 w-4 text-primary" />
+                <div className="h-10 w-10 rounded-lg bg-primary/20 flex items-center justify-center">
+                  <div className="h-5 w-5 rounded bg-primary/80"></div>
                 </div>
-                <span className="text-foreground font-medium">VistaForge Analytics Dashboard</span>
+                <span className="text-white font-heading font-semibold text-lg">VistaForge Analytics Dashboard</span>
               </div>
               
-              <div className="flex items-center gap-3">
+              <div className="flex items-center gap-4">
                 <div className="flex -space-x-2">
-                  <div className="h-8 w-8 rounded-full bg-primary/20 border-2 border-card"></div>
-                  <div className="h-8 w-8 rounded-full bg-accent/20 border-2 border-card"></div>
-                  <div className="h-8 w-8 rounded-full bg-secondary/40 border-2 border-card"></div>
-                  <div className="h-8 w-8 rounded-full bg-muted/60 border-2 border-card flex items-center justify-center text-xs text-foreground">+5</div>
+                  <div className="h-8 w-8 rounded-full bg-primary/30 border-2 border-white/20"></div>
+                  <div className="h-8 w-8 rounded-full bg-accent/30 border-2 border-white/20"></div>
+                  <div className="h-8 w-8 rounded-full bg-white/20 border-2 border-white/20"></div>
+                  <div className="h-8 w-8 rounded-full bg-white/10 border-2 border-white/20 flex items-center justify-center text-xs text-white">+12</div>
                 </div>
                 
-                <div className="h-8 px-3 rounded-md bg-primary/10 border border-primary/20 flex items-center justify-center text-primary text-sm font-medium">
+                <Button size="sm" className="bg-primary/20 text-primary border border-primary/30 hover:bg-primary/30 backdrop-blur-sm">
                   Share Dashboard
-                </div>
+                </Button>
               </div>
             </div>
           </div>
@@ -95,6 +121,15 @@ const HeroSection = () => {
           </div>
         </div>
       </div>
-    </section>;
+
+      {/* Scroll indicator */}
+      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+        <div className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center">
+          <div className="w-1 h-3 bg-primary rounded-full mt-2 animate-pulse"></div>
+        </div>
+      </div>
+    </section>
+  );
 };
+
 export default HeroSection;

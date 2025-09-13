@@ -1,10 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
-import { ChevronLeft, ChevronRight, TrendingUp, PieChart, BarChart3, LineChart } from 'lucide-react';
-import chartsImage from '@/assets/dashboard-charts.jpg';
-import workspaceImage from '@/assets/workspace-modern.jpg';
-import tradingImage from '@/assets/trading-setup.jpg';
-import financialImage from '@/assets/financial-data.jpg';
+import { ChevronLeft, ChevronRight, TrendingUp, BarChart3, Calculator, Search, ShoppingCart, PieChart, Building, Home } from 'lucide-react';
+import heroAnalytics from '@/assets/hero-analytics.jpg';
+import dashboardCharts from '@/assets/dashboard-charts.jpg';
+import workspaceModern from '@/assets/workspace-modern.jpg';
+import officeAnalytics from '@/assets/office-analytics.jpg';
+import teamCollaboration from '@/assets/team-collaboration.jpg';
+import financialData from '@/assets/financial-data.jpg';
+import tradingSetup from '@/assets/trading-setup.jpg';
+import businessMeeting from '@/assets/business-meeting.jpg';
 
 const AnalyticsCarousel = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -12,54 +16,106 @@ const AnalyticsCarousel = () => {
   const slides = [
     {
       id: 1,
-      title: "Real-time Market Data",
-      description: "Track price movements and market trends with millisecond precision",
-      image: chartsImage,
+      title: "Market Analysis Overview",
+      description: "Comprehensive real estate market data and investment insights with real-time analytics",
+      image: heroAnalytics,
       icon: <TrendingUp className="h-8 w-8 text-primary" />,
-      feature: "Live price feeds from 50+ exchanges",
+      feature: "Real-time Analytics",
       metrics: {
-        price: "$42,156.78",
-        change: "+2.45%",
-        volume: "2.1M"
+        value: "$2.4M",
+        trend: "+12.5%",
+        properties: "10K+"
       }
     },
     {
       id: 2,
-      title: "AI-Powered Predictions",
-      description: "Advanced machine learning algorithms analyze market patterns",
-      image: tradingImage,
-      icon: <LineChart className="h-8 w-8 text-accent" />,
-      feature: "Predictive analytics with confidence intervals",
+      title: "2D Rendering & Visualization",
+      description: "Advanced visualization tools for property design and planning with AI-powered rendering",
+      image: dashboardCharts,
+      icon: <BarChart3 className="h-8 w-8 text-accent" />,
+      feature: "Design Tools",
       metrics: {
-        accuracy: "94.2%",
-        signals: "127",
-        confidence: "High"
+        speed: "89%",
+        quality: "4K",
+        projects: "500+"
       }
     },
     {
       id: 3,
-      title: "Portfolio Analytics",
-      description: "Comprehensive portfolio tracking and risk assessment tools",
-      image: financialImage,
-      icon: <PieChart className="h-8 w-8 text-fintech-teal" />,
-      feature: "Multi-asset portfolio tracking",
+      title: "ROI Calculator",
+      description: "Calculate investment returns with precision and accuracy using advanced algorithms",
+      image: workspaceModern,
+      icon: <Calculator className="h-8 w-8 text-primary" />,
+      feature: "Investment Analysis",
       metrics: {
-        returns: "+18.5%",
-        risk: "Medium",
-        allocation: "Balanced"
+        roi: "15.8%",
+        accuracy: "98%",
+        calculations: "1M+"
       }
     },
     {
       id: 4,
-      title: "Professional Workspace",
-      description: "Modern analytics workspace designed for financial professionals",
-      image: workspaceImage,
-      icon: <BarChart3 className="h-8 w-8 text-secondary" />,
-      feature: "Enterprise-grade analytics platform",
+      title: "Real Estate Search",
+      description: "Discover existing properties with advanced search filters and market intelligence",
+      image: officeAnalytics,
+      icon: <Search className="h-8 w-8 text-accent" />,
+      feature: "Property Discovery",
       metrics: {
-        uptime: "99.9%",
-        speed: "2.1s",
-        users: "50K+"
+        listings: "50K+",
+        updated: "Daily",
+        matches: "95%"
+      }
+    },
+    {
+      id: 5,
+      title: "Marketplace",
+      description: "Buy and sell properties in our integrated marketplace with secure transactions",
+      image: teamCollaboration,
+      icon: <ShoppingCart className="h-8 w-8 text-primary" />,
+      feature: "Trading Platform",
+      metrics: {
+        volume: "$50M",
+        growth: "+18.9%",
+        users: "25K+"
+      }
+    },
+    {
+      id: 6,
+      title: "Portfolio Visualization",
+      description: "Track and visualize your real estate investment portfolio with advanced analytics",
+      image: financialData,
+      icon: <PieChart className="h-8 w-8 text-accent" />,
+      feature: "Portfolio Management",
+      metrics: {
+        properties: "24",
+        growth: "+4",
+        value: "$1.2M"
+      }
+    },
+    {
+      id: 7,
+      title: "Commercial Real Estate News",
+      description: "Stay updated with the latest commercial property market trends and opportunities",
+      image: tradingSetup,
+      icon: <Building className="h-8 w-8 text-primary" />,
+      feature: "Market Intelligence",
+      metrics: {
+        updates: "Daily",
+        sources: "100+",
+        accuracy: "99%"
+      }
+    },
+    {
+      id: 8,
+      title: "Residential Real Estate News",
+      description: "Latest insights on residential property markets and investment opportunities",
+      image: businessMeeting,
+      icon: <Home className="h-8 w-8 text-accent" />,
+      feature: "Residential Intel",
+      metrics: {
+        insights: "500+",
+        regions: "50",
+        verified: "98%"
       }
     }
   ];

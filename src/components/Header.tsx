@@ -43,7 +43,7 @@ const Header = () => {
 
   return (
     <div className="sticky top-0 z-50 pt-8 px-4">
-      <header className="w-full max-w-7xl mx-auto py-4 px-6 md:px-8 flex items-center justify-between bg-background/5 backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl supports-[backdrop-filter]:bg-background/5">
+      <header className="w-full max-w-7xl mx-auto py-4 px-6 md:px-8 flex items-center justify-between backdrop-blur-xl border border-white/20 rounded-2xl shadow-glass supports-[backdrop-filter]:bg-white/5" style={{ background: 'var(--gradient-glass)' }}>
         <div className="p-3">
           <Logo />
         </div>
@@ -58,13 +58,15 @@ const Header = () => {
         
         {/* Desktop navigation */}
         <nav className="hidden md:flex items-center absolute left-1/2 transform -translate-x-1/2">
-          <div className="rounded-full px-1 py-1 backdrop-blur-xl bg-background/10 border border-white/20 shadow-2xl supports-[backdrop-filter]:bg-background/5">
+          <div className="rounded-full px-1 py-1 backdrop-blur-xl border border-white/20 shadow-glass supports-[backdrop-filter]:bg-white/5" style={{ background: 'var(--gradient-glass)' }}>
             <ToggleGroup type="single" value={activePage} onValueChange={(value) => value && setActivePage(value)}>
               <ToggleGroupItem 
                 value="features"
                 className={cn(
-                  "px-4 py-2 rounded-full transition-colors relative",
-                  activePage === 'features' ? 'text-accent-foreground bg-accent' : 'text-muted-foreground hover:text-foreground hover:bg-muted'
+                  "px-4 py-2 rounded-full transition-all duration-300 relative group",
+                  activePage === 'features' 
+                    ? 'text-primary-foreground bg-primary shadow-luxury' 
+                    : 'text-muted-foreground hover:text-primary hover:bg-primary/10 hover:shadow-lg'
                 )}
                 onClick={handleNavClick('features')}
               >
@@ -73,8 +75,10 @@ const Header = () => {
               <ToggleGroupItem 
                 value="dashboard" 
                 className={cn(
-                  "px-4 py-2 rounded-full transition-colors relative",
-                  activePage === 'dashboard' ? 'text-accent-foreground bg-accent' : 'text-muted-foreground hover:text-foreground hover:bg-muted'
+                  "px-4 py-2 rounded-full transition-all duration-300 relative group",
+                  activePage === 'dashboard' 
+                    ? 'text-primary-foreground bg-primary shadow-luxury' 
+                    : 'text-muted-foreground hover:text-primary hover:bg-primary/10 hover:shadow-lg'
                 )}
                 onClick={handleNavClick('dashboard')}
               >
@@ -83,8 +87,10 @@ const Header = () => {
               <ToggleGroupItem 
                 value="pricing" 
                 className={cn(
-                  "px-4 py-2 rounded-full transition-colors relative",
-                  activePage === 'pricing' ? 'text-accent-foreground bg-accent' : 'text-muted-foreground hover:text-foreground hover:bg-muted'
+                  "px-4 py-2 rounded-full transition-all duration-300 relative group",
+                  activePage === 'pricing' 
+                    ? 'text-primary-foreground bg-primary shadow-luxury' 
+                    : 'text-muted-foreground hover:text-primary hover:bg-primary/10 hover:shadow-lg'
                 )}
                 onClick={handleNavClick('pricing')}
               >
@@ -96,12 +102,12 @@ const Header = () => {
         
         {/* Mobile navigation */}
         {mobileMenuOpen && (
-          <div className="md:hidden absolute top-20 left-4 right-4 bg-background/5 backdrop-blur-xl py-4 px-6 border border-white/20 rounded-2xl shadow-2xl z-50 supports-[backdrop-filter]:bg-background/5">
+          <div className="md:hidden absolute top-20 left-4 right-4 backdrop-blur-xl py-4 px-6 border border-white/20 rounded-2xl shadow-glass z-50 supports-[backdrop-filter]:bg-white/5" style={{ background: 'var(--gradient-glass)' }}>
             <div className="flex flex-col gap-4">
               <a 
                 href="#features" 
-                className={`px-3 py-2 text-sm rounded-md transition-colors ${
-                  activePage === 'features' ? 'bg-accent text-accent-foreground' : 'text-muted-foreground hover:text-foreground hover:bg-muted'
+                className={`px-3 py-2 text-sm rounded-md transition-all duration-300 ${
+                  activePage === 'features' ? 'bg-primary text-primary-foreground shadow-luxury' : 'text-muted-foreground hover:text-primary hover:bg-primary/10'
                 }`}
                 onClick={handleNavClick('features')}
               >
@@ -109,8 +115,8 @@ const Header = () => {
               </a>
               <a 
                 href="#dashboard" 
-                className={`px-3 py-2 text-sm rounded-md transition-colors ${
-                  activePage === 'dashboard' ? 'bg-accent text-accent-foreground' : 'text-muted-foreground hover:text-foreground hover:bg-muted'
+                className={`px-3 py-2 text-sm rounded-md transition-all duration-300 ${
+                  activePage === 'dashboard' ? 'bg-primary text-primary-foreground shadow-luxury' : 'text-muted-foreground hover:text-primary hover:bg-primary/10'
                 }`}
                 onClick={handleNavClick('dashboard')}
               >
@@ -118,8 +124,8 @@ const Header = () => {
               </a>
               <a 
                 href="#pricing" 
-                className={`px-3 py-2 text-sm rounded-md transition-colors ${
-                  activePage === 'pricing' ? 'bg-accent text-accent-foreground' : 'text-muted-foreground hover:text-foreground hover:bg-muted'
+                className={`px-3 py-2 text-sm rounded-md transition-all duration-300 ${
+                  activePage === 'pricing' ? 'bg-primary text-primary-foreground shadow-luxury' : 'text-muted-foreground hover:text-primary hover:bg-primary/10'
                 }`}
                 onClick={handleNavClick('pricing')}
               >
@@ -155,7 +161,7 @@ const Header = () => {
             <Sun size={18} className={`${!isDarkMode ? 'text-primary' : 'text-muted-foreground'}`} />
           </div>
           <div className="rounded-2xl">
-            <Button variant="ghost" className="text-muted-foreground hover:text-foreground hover:bg-muted">Log in</Button>
+            <Button variant="ghost" className="text-muted-foreground hover:text-primary hover:bg-primary/10 transition-all duration-300">Log in</Button>
           </div>
         </div>
       </header>

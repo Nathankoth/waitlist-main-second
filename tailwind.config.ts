@@ -107,6 +107,8 @@ export default {
 				'gradient-shift': 'gradient-shift 8s ease infinite'
 			},
 			fontFamily: {
+				'heading': ['Poppins', 'sans-serif'],
+				'body': ['Inter', 'sans-serif'],
 				'inter': ['Inter', 'sans-serif']
 			},
 			letterSpacing: {
