@@ -110,23 +110,43 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: center;
     border-radius: 8px;
     transition: transform 0.3s ease, opacity 0.3s ease;
   }
   
-  /* Image container specific rules */
-  .image-container img {
+  /* Image container specific rules for full coverage */
+  .image-container img,
+  .hero-section img,
+  .features img {
+    object-fit: cover;
     object-position: center;
   }
 
-  /* Carousel specific image styling */
+  /* Carousel specific image styling - show full image without cropping */
   .carousel img {
     width: 100%;
     height: 100%;
-    object-fit: contain;   /* show full image without cropping */
+    object-fit: contain;
     object-position: center;
-    background-color: #000; /* fills any empty space */
-    border-radius: 8px;    /* smooth edges */
+    background-color: transparent;
+    border-radius: 8px;
+  }
+
+  /* Generation showcase images - perfect fit */
+  .generation-showcase img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  /* Feature background images - subtle coverage */
+  .features-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
   }
   
   body {
