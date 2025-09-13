@@ -118,6 +118,16 @@
   .image-container img {
     object-position: center;
   }
+
+  /* Carousel specific image styling */
+  .carousel img {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: scale-down; /* scales down only if too big */
+    object-position: center;
+  }
   
   body {
     @apply bg-background text-foreground font-body;
