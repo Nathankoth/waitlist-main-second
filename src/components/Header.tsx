@@ -55,7 +55,7 @@ const Header = () => {
   return (
     <div className="sticky top-0 z-50 pt-4 sm:pt-6 md:pt-8 px-3 sm:px-4 md:px-6">
       <header className="w-full max-w-7xl mx-auto py-3 sm:py-4 px-4 sm:px-6 md:px-8 flex items-center justify-between backdrop-blur-xl border border-white/20 rounded-xl md:rounded-2xl shadow-glass supports-[backdrop-filter]:bg-white/5" style={{ background: 'var(--gradient-glass)' }}>
-        <div className="p-2 sm:p-3">
+        <div className="p-2 sm:p-3 md:flex-shrink-0">
           <Logo />
         </div>
         
@@ -69,7 +69,7 @@ const Header = () => {
         </button>
         
         {/* Desktop navigation */}
-        <nav className="hidden md:flex items-center absolute left-1/2 transform -translate-x-1/2">
+        <nav className="hidden md:flex items-center md:flex-1 md:justify-center lg:absolute lg:left-1/2 lg:transform lg:-translate-x-1/2">
           <div className="rounded-full px-1 py-1 backdrop-blur-xl border border-white/20 shadow-glass supports-[backdrop-filter]:bg-white/5" style={{ background: 'var(--gradient-glass)' }}>
             <ToggleGroup type="single" value={activePage} onValueChange={(value) => value && setActivePage(value)} className="gap-0">
               <ToggleGroupItem 
@@ -189,7 +189,7 @@ const Header = () => {
           </div>
         )}
         
-        <div className="hidden md:flex items-center gap-3 lg:gap-4">
+        <div className="hidden md:flex items-center gap-3 lg:gap-4 md:flex-shrink-0">
           {/* Theme toggle for desktop */}
           <div className="flex items-center gap-2 rounded-full px-3 py-2 backdrop-blur-sm bg-white/5 border border-white/10">
             <Sun size={16} className={`transition-colors ${!isDarkMode ? 'text-primary' : 'text-muted-foreground'}`} />
