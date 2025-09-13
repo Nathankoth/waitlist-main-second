@@ -157,8 +157,26 @@
     animation: slideUp 0.8s ease-out;
   }
 
-  .animate-glow {
-    animation: glow 2s ease-in-out infinite;
+  /* Text truncation utilities */
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  /* Responsive text sizing */
+  @media (max-width: 640px) {
+    .animate-glow {
+      animation: none; /* Disable glow on mobile for performance */
+    }
   }
 
   /* Hover effects */

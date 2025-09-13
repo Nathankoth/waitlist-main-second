@@ -53,18 +53,18 @@ const Header = () => {
   };
 
   return (
-    <div className="sticky top-0 z-50 pt-8 px-4">
-      <header className="w-full max-w-7xl mx-auto py-4 px-6 md:px-8 flex items-center justify-between backdrop-blur-xl border border-white/20 rounded-2xl shadow-glass supports-[backdrop-filter]:bg-white/5" style={{ background: 'var(--gradient-glass)' }}>
-        <div className="p-3">
+    <div className="sticky top-0 z-50 pt-4 sm:pt-6 md:pt-8 px-3 sm:px-4 md:px-6">
+      <header className="w-full max-w-7xl mx-auto py-3 sm:py-4 px-4 sm:px-6 md:px-8 flex items-center justify-between backdrop-blur-xl border border-white/20 rounded-xl md:rounded-2xl shadow-glass supports-[backdrop-filter]:bg-white/5" style={{ background: 'var(--gradient-glass)' }}>
+        <div className="p-2 sm:p-3">
           <Logo />
         </div>
         
         {/* Mobile menu button */}
         <button 
-          className="md:hidden p-3 rounded-2xl text-muted-foreground hover:text-foreground"
+          className="md:hidden p-2 sm:p-3 rounded-xl text-muted-foreground hover:text-foreground transition-colors"
           onClick={toggleMobileMenu}
         >
-          {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
         </button>
         
         {/* Desktop navigation */}
@@ -113,7 +113,7 @@ const Header = () => {
         
         {/* Mobile navigation */}
         {mobileMenuOpen && (
-          <div className="md:hidden absolute top-20 left-4 right-4 backdrop-blur-xl py-4 px-6 border border-white/20 rounded-2xl shadow-glass z-50 supports-[backdrop-filter]:bg-white/5" style={{ background: 'var(--gradient-glass)' }}>
+          <div className="md:hidden absolute top-16 sm:top-20 left-3 right-3 sm:left-4 sm:right-4 backdrop-blur-xl py-4 px-4 sm:px-6 border border-white/20 rounded-xl shadow-glass z-50 supports-[backdrop-filter]:bg-white/5" style={{ background: 'var(--gradient-glass)' }}>
             <div className="flex flex-col gap-4">
               <a 
                 href="#features" 

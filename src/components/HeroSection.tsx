@@ -44,79 +44,88 @@ const HeroSection = () => {
       </div>
 
       {/* Main Content */}
-      <div className={`relative z-10 text-center space-y-8 max-w-4xl mx-auto px-6 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-        <div className="space-y-6">
-          <div className="inline-flex items-center px-4 py-2 rounded-full bg-primary/20 backdrop-blur-sm border border-primary/30 text-primary text-sm font-medium animate-fade-in">
-            <CircleDot className="w-3 h-3 mr-2" />
-            AI-Powered Market Intelligence
+      <div className={`relative z-10 text-center space-y-6 md:space-y-8 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+        <div className="space-y-4 md:space-y-6">
+          <div className="inline-flex items-center px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-primary/20 backdrop-blur-sm border border-primary/30 text-primary text-xs sm:text-sm font-medium animate-fade-in">
+            <CircleDot className="w-2.5 h-2.5 sm:w-3 sm:h-3 mr-1.5 sm:mr-2" />
+            <span className="hidden sm:inline">AI-Powered Market Intelligence</span>
+            <span className="sm:hidden">AI Market Intelligence</span>
           </div>
           
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-heading font-bold tracking-tight text-white leading-tight">
-            Real-time Market Analytics.
-            <br />
-            <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-heading font-bold tracking-tight text-white leading-tight px-2 sm:px-0">
+            <span className="block sm:inline">Real-time Market</span>
+            <span className="block sm:inline"> Analytics.</span>
+            <br className="hidden sm:block" />
+            <span className="block mt-2 sm:mt-0 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
               Smarter Decisions.
             </span>
           </h1>
           
-          <p className="text-xl md:text-2xl text-gray-200 max-w-3xl mx-auto leading-relaxed font-body">
-            Harness AI-driven insights and real-time real estate data for smarter investment and visualization.
+          <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-200 max-w-xs sm:max-w-2xl lg:max-w-3xl mx-auto leading-relaxed font-body px-4 sm:px-0">
+            <span className="hidden sm:inline">Harness AI-driven insights and real-time real estate data for smarter investment and visualization.</span>
+            <span className="sm:hidden">AI-driven real estate insights for smarter investment decisions.</span>
           </p>
         </div>
 
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+        <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center px-4 sm:px-0">
           <Button 
             size="lg" 
-            className="text-lg px-8 py-4 bg-primary hover:bg-primary/90 text-primary-foreground font-semibold transition-all duration-500 hover:scale-105 shadow-luxury hover:shadow-xl"
+            className="w-full sm:w-auto text-base sm:text-lg px-6 sm:px-8 py-3 sm:py-4 bg-primary hover:bg-primary/90 text-primary-foreground font-semibold transition-all duration-500 hover:scale-105 shadow-luxury hover:shadow-xl"
           >
             Get Started
-            <ArrowRight className="ml-2 h-5 w-5" />
+            <ArrowRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5" />
           </Button>
           <Button 
             size="lg" 
             variant="outline" 
-            className="text-lg px-8 py-4 border-white/30 text-white hover:bg-white/10 hover:border-primary/50 font-semibold backdrop-blur-sm transition-all duration-300 hover:shadow-lg"
+            className="w-full sm:w-auto text-base sm:text-lg px-6 sm:px-8 py-3 sm:py-4 border-white/30 text-white hover:bg-white/10 hover:border-primary/50 font-semibold backdrop-blur-sm transition-all duration-300 hover:shadow-lg"
           >
-            <Play className="mr-2 h-5 w-5" />
-            Explore Dashboard Demo
+            <Play className="mr-2 h-4 w-4 sm:h-5 sm:w-5" />
+            <span className="hidden sm:inline">Explore Dashboard Demo</span>
+            <span className="sm:hidden">Demo</span>
           </Button>
         </div>
         
-        <div className="text-sm text-gray-300 font-body">
-          Free 14-day trial • No credit card required • Real-time data included
+        <div className="text-xs sm:text-sm text-gray-300 font-body px-4 sm:px-0">
+          <span className="hidden sm:inline">Free 14-day trial • No credit card required • Real-time data included</span>
+          <span className="sm:hidden">Free 14-day trial • No credit card required</span>
         </div>
       </div>
 
       {/* Analytics Dashboard Preview */}
-      <div className={`w-full max-w-7xl mt-16 px-6 z-10 transition-all duration-1000 delay-500 ${dashboardVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`}>
-        <div className="relative rounded-2xl overflow-hidden border border-white/20 shadow-glass backdrop-blur-xl" style={{ background: 'var(--gradient-glass)' }}>
+      <div className={`w-full max-w-7xl mt-8 md:mt-16 px-4 sm:px-6 lg:px-8 z-10 transition-all duration-1000 delay-500 ${dashboardVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`}>
+        <div className="relative rounded-xl md:rounded-2xl overflow-hidden border border-white/20 shadow-glass backdrop-blur-xl" style={{ background: 'var(--gradient-glass)' }}>
           {/* Dashboard Header */}
           <div className="bg-background/10 backdrop-blur-md w-full border-b border-white/10">
-            <div className="flex items-center justify-between p-6">
-              <div className="flex items-center gap-4">
-                <div className="h-10 w-10 rounded-lg bg-primary/20 flex items-center justify-center">
-                  <div className="h-5 w-5 rounded bg-primary/80"></div>
+            <div className="flex items-center justify-between p-3 sm:p-4 md:p-6">
+              <div className="flex items-center gap-2 sm:gap-3 md:gap-4">
+                <div className="h-8 w-8 md:h-10 md:w-10 rounded-md md:rounded-lg bg-primary/20 flex items-center justify-center">
+                  <div className="h-3 w-3 md:h-5 md:w-5 rounded bg-primary/80"></div>
                 </div>
-                <span className="text-white font-heading font-semibold text-lg">VistaForge Analytics Dashboard</span>
+                <span className="text-white font-heading font-semibold text-sm sm:text-base md:text-lg">
+                  <span className="hidden sm:inline">VistaForge Analytics Dashboard</span>
+                  <span className="sm:hidden">VistaForge Analytics</span>
+                </span>
               </div>
               
-              <div className="flex items-center gap-4">
-                <div className="flex -space-x-2">
-                  <div className="h-8 w-8 rounded-full bg-primary/30 border-2 border-white/20"></div>
-                  <div className="h-8 w-8 rounded-full bg-accent/30 border-2 border-white/20"></div>
-                  <div className="h-8 w-8 rounded-full bg-white/20 border-2 border-white/20"></div>
-                  <div className="h-8 w-8 rounded-full bg-white/10 border-2 border-white/20 flex items-center justify-center text-xs text-white">+12</div>
+              <div className="flex items-center gap-2 sm:gap-3 md:gap-4">
+                <div className="hidden sm:flex -space-x-1 md:-space-x-2">
+                  <div className="h-6 w-6 md:h-8 md:w-8 rounded-full bg-primary/30 border-2 border-white/20"></div>
+                  <div className="h-6 w-6 md:h-8 md:w-8 rounded-full bg-accent/30 border-2 border-white/20"></div>
+                  <div className="h-6 w-6 md:h-8 md:w-8 rounded-full bg-white/20 border-2 border-white/20"></div>
+                  <div className="h-6 w-6 md:h-8 md:w-8 rounded-full bg-white/10 border-2 border-white/20 flex items-center justify-center text-xs text-white">+12</div>
                 </div>
                 
-                <Button size="sm" className="bg-primary/20 text-primary border border-primary/30 hover:bg-primary/30 backdrop-blur-sm">
-                  Share Dashboard
+                <Button size="sm" className="bg-primary/20 text-primary border border-primary/30 hover:bg-primary/30 backdrop-blur-sm text-xs sm:text-sm px-2 sm:px-3">
+                  <span className="hidden sm:inline">Share Dashboard</span>
+                  <span className="sm:hidden">Share</span>
                 </Button>
               </div>
             </div>
           </div>
           
           {/* Analytics Carousel */}
-          <div className="p-6">
+          <div className="p-3 sm:p-4 md:p-6">
             <AnalyticsCarousel />
           </div>
         </div>
