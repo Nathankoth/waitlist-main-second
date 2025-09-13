@@ -2,6 +2,8 @@
 import React, { useState } from 'react';
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 import { ChevronDown, TrendingUp, Grid3x3, ListCheck, BookOpen, Star, LayoutDashboard } from "lucide-react";
+import warmInterior from '@/assets/warm-interior.jpg';
+import traditionalArchitecture from '@/assets/traditional-architecture.jpg';
 
 const Features = () => {
   const [openFeature, setOpenFeature] = useState<number | null>(null);
@@ -62,8 +64,20 @@ const Features = () => {
   };
   
   return (
-    <section id="features" className="w-full py-12 md:py-16 px-6 md:px-12">
-      <div className="max-w-7xl mx-auto space-y-12">
+    <section id="features" className="w-full py-12 md:py-16 px-6 md:px-12 relative">
+      {/* Background Images */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute top-0 left-0 w-1/3 h-1/2 opacity-5">
+          <img src={warmInterior} alt="" className="w-full h-full object-cover" />
+          <div className="absolute inset-0 bg-gradient-to-r from-background via-background/80 to-transparent"></div>
+        </div>
+        <div className="absolute bottom-0 right-0 w-1/3 h-1/2 opacity-5">
+          <img src={traditionalArchitecture} alt="" className="w-full h-full object-cover" />
+          <div className="absolute inset-0 bg-gradient-to-l from-background via-background/80 to-transparent"></div>
+        </div>
+      </div>
+      
+      <div className="max-w-7xl mx-auto space-y-12 relative z-10">
         <div className="text-center space-y-3 max-w-3xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-medium tracking-tighter">
             All-in-One Real Estate Analytics & Visualization

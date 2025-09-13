@@ -1,14 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { ChevronLeft, ChevronRight, TrendingUp, BarChart3, Calculator, Search, ShoppingCart, PieChart, Building, Home } from 'lucide-react';
-import heroAnalytics from '@/assets/hero-analytics.jpg';
-import dashboardCharts from '@/assets/dashboard-charts.jpg';
-import workspaceModern from '@/assets/workspace-modern.jpg';
-import officeAnalytics from '@/assets/office-analytics.jpg';
-import teamCollaboration from '@/assets/team-collaboration.jpg';
-import financialData from '@/assets/financial-data.jpg';
-import tradingSetup from '@/assets/trading-setup.jpg';
-import businessMeeting from '@/assets/business-meeting.jpg';
+import vistaModernHouse1 from '@/assets/vista-modern-house-1.jpg';
+import vistaModernHouse2 from '@/assets/vista-modern-house-2.jpg';
+import modernInterior from '@/assets/modern-interior.jpg';
+import whiteModernHouse from '@/assets/white-modern-house.jpg';
+import curvedModernHouse from '@/assets/curved-modern-house.jpg';
 
 const AnalyticsCarousel = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -16,9 +13,9 @@ const AnalyticsCarousel = () => {
   const slides = [
     {
       id: 1,
-      title: "Market Analysis Overview",
-      description: "Comprehensive real estate market data and investment insights with real-time analytics",
-      image: heroAnalytics,
+      title: "Luxury Property Analytics",
+      description: "Comprehensive real estate market data and investment insights with real-time analytics for high-end properties",
+      image: vistaModernHouse1,
       icon: <TrendingUp className="h-8 w-8 text-primary" />,
       feature: "Real-time Analytics",
       metrics: {
@@ -29,9 +26,9 @@ const AnalyticsCarousel = () => {
     },
     {
       id: 2,
-      title: "2D Rendering & Visualization",
-      description: "Advanced visualization tools for property design and planning with AI-powered rendering",
-      image: dashboardCharts,
+      title: "Modern Architecture Showcase",
+      description: "Advanced visualization tools for contemporary property design and architectural planning",
+      image: vistaModernHouse2,
       icon: <BarChart3 className="h-8 w-8 text-accent" />,
       feature: "Design Tools",
       metrics: {
@@ -42,9 +39,9 @@ const AnalyticsCarousel = () => {
     },
     {
       id: 3,
-      title: "ROI Calculator",
-      description: "Calculate investment returns with precision and accuracy using advanced algorithms",
-      image: workspaceModern,
+      title: "Interior Design Intelligence",
+      description: "Calculate investment returns with precision and accuracy using advanced algorithms for interior spaces",
+      image: modernInterior,
       icon: <Calculator className="h-8 w-8 text-primary" />,
       feature: "Investment Analysis",
       metrics: {
@@ -55,9 +52,9 @@ const AnalyticsCarousel = () => {
     },
     {
       id: 4,
-      title: "Real Estate Search",
-      description: "Discover existing properties with advanced search filters and market intelligence",
-      image: officeAnalytics,
+      title: "Premium Property Search",
+      description: "Discover luxury properties with advanced search filters and exclusive market intelligence",
+      image: whiteModernHouse,
       icon: <Search className="h-8 w-8 text-accent" />,
       feature: "Property Discovery",
       metrics: {
@@ -68,54 +65,15 @@ const AnalyticsCarousel = () => {
     },
     {
       id: 5,
-      title: "Marketplace",
-      description: "Buy and sell properties in our integrated marketplace with secure transactions",
-      image: teamCollaboration,
+      title: "Architectural Marketplace",
+      description: "Buy and sell exceptional properties in our curated marketplace with secure transactions",
+      image: curvedModernHouse,
       icon: <ShoppingCart className="h-8 w-8 text-primary" />,
       feature: "Trading Platform",
       metrics: {
         volume: "$50M",
         growth: "+18.9%",
         users: "25K+"
-      }
-    },
-    {
-      id: 6,
-      title: "Portfolio Visualization",
-      description: "Track and visualize your real estate investment portfolio with advanced analytics",
-      image: financialData,
-      icon: <PieChart className="h-8 w-8 text-accent" />,
-      feature: "Portfolio Management",
-      metrics: {
-        properties: "24",
-        growth: "+4",
-        value: "$1.2M"
-      }
-    },
-    {
-      id: 7,
-      title: "Commercial Real Estate News",
-      description: "Stay updated with the latest commercial property market trends and opportunities",
-      image: tradingSetup,
-      icon: <Building className="h-8 w-8 text-primary" />,
-      feature: "Market Intelligence",
-      metrics: {
-        updates: "Daily",
-        sources: "100+",
-        accuracy: "99%"
-      }
-    },
-    {
-      id: 8,
-      title: "Residential Real Estate News",
-      description: "Latest insights on residential property markets and investment opportunities",
-      image: businessMeeting,
-      icon: <Home className="h-8 w-8 text-accent" />,
-      feature: "Residential Intel",
-      metrics: {
-        insights: "500+",
-        regions: "50",
-        verified: "98%"
       }
     }
   ];
