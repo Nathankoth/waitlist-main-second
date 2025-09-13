@@ -111,6 +111,12 @@ export default {
 				'body': ['Inter', 'sans-serif'],
 				'inter': ['Inter', 'sans-serif']
 			},
+			transitionTimingFunction: {
+				'default': 'ease-in-out',
+			},
+			transitionDuration: {
+				'default': '350ms',
+			},
 			letterSpacing: {
 				'tighter': '-0.05em',
 			},
