@@ -24,19 +24,11 @@ const HeroSection = () => {
   }, []);
 
   return (
-    <section className="relative w-full min-h-screen flex flex-col items-center justify-center overflow-hidden">
-      {/* Hero Background Image */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: `url(${heroImage})` }}
-      >
-      </div>
-      
-      {/* Premium gradient overlay */}
-      <div className="absolute inset-0" style={{ background: 'var(--gradient-overlay)' }}></div>
+    <section className="relative w-full min-h-screen flex flex-col items-center justify-center overflow-hidden hero-background" style={{ backgroundImage: `url(${heroImage})` }}>
+      {/* Enhanced gradient overlay is now handled by CSS */}
       
       {/* Floating particles effect */}
-      <div className="absolute inset-0 opacity-30">
+      <div className="absolute inset-0 opacity-30 z-10">
         <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-primary/40 rounded-full animate-pulse"></div>
         <div className="absolute top-1/3 right-1/3 w-1 h-1 bg-accent/60 rounded-full animate-ping"></div>
         <div className="absolute bottom-1/4 left-1/3 w-1.5 h-1.5 bg-primary/30 rounded-full animate-pulse delay-1000"></div>
@@ -44,7 +36,7 @@ const HeroSection = () => {
       </div>
 
       {/* Main Content */}
-      <div className={`relative z-10 text-center space-y-6 md:space-y-8 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+      <div className={`relative z-20 text-center space-y-6 md:space-y-8 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
         <div className="space-y-4 md:space-y-6">
           <div className="inline-flex items-center px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-primary/20 backdrop-blur-sm border border-primary/30 text-primary text-xs sm:text-sm font-medium animate-fade-in">
             <CircleDot className="w-2.5 h-2.5 sm:w-3 sm:h-3 mr-1.5 sm:mr-2" />
@@ -93,7 +85,7 @@ const HeroSection = () => {
       </div>
 
       {/* Analytics Dashboard Preview */}
-      <div className={`w-full max-w-7xl mt-8 md:mt-16 px-4 sm:px-6 lg:px-8 z-10 transition-all duration-1000 delay-500 ${dashboardVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`}>
+      <div className={`w-full max-w-7xl mt-8 md:mt-16 px-4 sm:px-6 lg:px-8 z-20 transition-all duration-1000 delay-500 ${dashboardVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`}>
         <div className="relative rounded-xl md:rounded-2xl overflow-hidden border border-white/20 shadow-glass backdrop-blur-xl" style={{ background: 'var(--gradient-glass)' }}>
           {/* Dashboard Header */}
           <div className="bg-background/10 backdrop-blur-md w-full border-b border-white/10">
