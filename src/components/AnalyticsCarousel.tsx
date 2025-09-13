@@ -1,54 +1,66 @@
 import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { ChevronLeft, ChevronRight, TrendingUp, PieChart, BarChart3, LineChart } from 'lucide-react';
+import chartsImage from '@/assets/dashboard-charts.jpg';
+import workspaceImage from '@/assets/workspace-modern.jpg';
+import tradingImage from '@/assets/trading-setup.jpg';
+import financialImage from '@/assets/financial-data.jpg';
 
 const AnalyticsCarousel = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const slides = [
     {
-      title: "Real-time Price Analytics",
-      description: "Track market movements as they happen with millisecond precision. Our advanced algorithms process thousands of data points per second.",
+      id: 1,
+      title: "Real-time Market Data",
+      description: "Track price movements and market trends with millisecond precision",
+      image: chartsImage,
       icon: <TrendingUp className="h-8 w-8 text-primary" />,
       feature: "Live price feeds from 50+ exchanges",
-      mockData: [
-        { symbol: "BTC/USD", price: "$67,245.32", change: "+2.45%" },
-        { symbol: "ETH/USD", price: "$3,824.56", change: "+1.89%" },
-        { symbol: "SPY", price: "$428.91", change: "-0.23%" },
-      ]
+      metrics: {
+        price: "$42,156.78",
+        change: "+2.45%",
+        volume: "2.1M"
+      }
     },
     {
-      title: "AI-Powered Forecasting",
-      description: "Leverage machine learning models trained on historical data to predict market trends with 85% accuracy.",
+      id: 2,
+      title: "AI-Powered Predictions",
+      description: "Advanced machine learning algorithms analyze market patterns",
+      image: tradingImage,
       icon: <LineChart className="h-8 w-8 text-accent" />,
       feature: "Predictive analytics with confidence intervals",
-      mockData: [
-        { period: "Next 24h", prediction: "Bullish", confidence: "89%" },
-        { period: "Next Week", prediction: "Neutral", confidence: "76%" },
-        { period: "Next Month", prediction: "Bearish", confidence: "68%" },
-      ]
+      metrics: {
+        accuracy: "94.2%",
+        signals: "127",
+        confidence: "High"
+      }
     },
     {
-      title: "Portfolio Visualization",
-      description: "Manage and track your portfolios with interactive charts and real-time performance metrics.",
+      id: 3,
+      title: "Portfolio Analytics",
+      description: "Comprehensive portfolio tracking and risk assessment tools",
+      image: financialImage,
       icon: <PieChart className="h-8 w-8 text-fintech-teal" />,
       feature: "Multi-asset portfolio tracking",
-      mockData: [
-        { asset: "Stocks", allocation: "45%", value: "$125,430" },
-        { asset: "Crypto", allocation: "30%", value: "$83,620" },
-        { asset: "Bonds", allocation: "25%", value: "$69,684" },
-      ]
+      metrics: {
+        returns: "+18.5%",
+        risk: "Medium",
+        allocation: "Balanced"
+      }
     },
     {
-      title: "Custom Dashboards",
-      description: "Create personalized dashboards with drag-and-drop widgets tailored to your trading strategy.",
+      id: 4,
+      title: "Professional Workspace",
+      description: "Modern analytics workspace designed for financial professionals",
+      image: workspaceImage,
       icon: <BarChart3 className="h-8 w-8 text-secondary" />,
-      feature: "50+ customizable widgets available",
-      mockData: [
-        { widget: "Price Alerts", active: "12" },
-        { widget: "News Feed", active: "8" },
-        { widget: "Technical Indicators", active: "15" },
-      ]
+      feature: "Enterprise-grade analytics platform",
+      metrics: {
+        uptime: "99.9%",
+        speed: "2.1s",
+        users: "50K+"
+      }
     }
   ];
 
@@ -69,7 +81,7 @@ const AnalyticsCarousel = () => {
     <div className="relative w-full h-[500px] overflow-hidden rounded-lg">
       {slides.map((slide, index) => (
         <div
-          key={index}
+          key={slide.id}
           className={`absolute inset-0 transition-all duration-700 ease-in-out transform ${
             index === currentSlide
               ? 'translate-x-0 opacity-100'
@@ -100,42 +112,28 @@ const AnalyticsCarousel = () => {
               </Button>
             </div>
             
-            {/* Mock Data Visualization */}
+            {/* Image Preview with Overlay */}
             <div className="flex-1">
-              <div className="h-full bg-card/50 rounded-lg border border-primary/10 p-6">
-                <h4 className="text-lg font-medium text-foreground mb-4">Live Preview</h4>
-                <div className="space-y-4">
-                  {slide.mockData.map((item, itemIndex) => (
-                    <div
-                      key={itemIndex}
-                      className="flex justify-between items-center p-3 rounded-md bg-muted/20 border border-primary/5"
-                    >
-                      <div className="flex flex-col">
-                        <span className="text-foreground font-medium">
-                          {Object.values(item)[0] as string}
-                        </span>
-                        <span className="text-muted-foreground text-sm">
-                          {Object.keys(item)[0]}
-                        </span>
+              <div className="h-full relative rounded-lg overflow-hidden border border-primary/10">
+                <img 
+                  src={slide.image} 
+                  alt={slide.title}
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-background/95 via-background/60 to-background/20"></div>
+                <div className="absolute inset-0 bg-gradient-to-br from-fintech-cyan/10 via-transparent to-fintech-teal/10"></div>
+                
+                {/* Overlay Content */}
+                <div className="absolute bottom-0 left-0 right-0 p-6">
+                  <h4 className="text-lg font-medium text-foreground mb-4">Live Metrics</h4>
+                  <div className="grid grid-cols-3 gap-4">
+                    {Object.entries(slide.metrics).map(([key, value], metricIndex) => (
+                      <div key={metricIndex} className="text-center">
+                        <div className="text-xl font-bold text-foreground">{value}</div>
+                        <div className="text-sm text-muted-foreground capitalize">{key}</div>
                       </div>
-                      <div className="text-right">
-                        <div className="text-foreground font-semibold">
-                          {Object.values(item)[1] as string}
-                        </div>
-                        {Object.values(item)[2] && (
-                          <div className={`text-sm ${
-                            (Object.values(item)[2] as string).startsWith('+') 
-                              ? 'text-green-400' 
-                              : (Object.values(item)[2] as string).startsWith('-')
-                              ? 'text-red-400'
-                              : 'text-muted-foreground'
-                          }`}>
-                            {Object.values(item)[2] as string}
-                          </div>
-                        )}
-                      </div>
-                    </div>
-                  ))}
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>

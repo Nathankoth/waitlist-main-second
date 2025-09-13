@@ -43,7 +43,7 @@ const Header = () => {
 
   return (
     <div className="sticky top-0 z-50 pt-8 px-4">
-      <header className="w-full max-w-7xl mx-auto py-3 px-6 md:px-8 flex items-center justify-between">
+      <header className="w-full max-w-7xl mx-auto py-3 px-6 md:px-8 flex items-center justify-between bg-background/10 backdrop-blur-md border border-white/10 rounded-2xl shadow-xl">
         <div className="p-3">
           <Logo />
         </div>
@@ -58,7 +58,7 @@ const Header = () => {
         
         {/* Desktop navigation */}
         <nav className="hidden md:flex items-center absolute left-1/2 transform -translate-x-1/2">
-          <div className="rounded-full px-1 py-1 backdrop-blur-md bg-background/80 border border-border shadow-lg">
+          <div className="rounded-full px-1 py-1 backdrop-blur-md bg-background/20 border border-white/20 shadow-lg">
             <ToggleGroup type="single" value={activePage} onValueChange={(value) => value && setActivePage(value)}>
               <ToggleGroupItem 
                 value="features"
@@ -96,7 +96,7 @@ const Header = () => {
         
         {/* Mobile navigation */}
         {mobileMenuOpen && (
-          <div className="md:hidden absolute top-20 left-4 right-4 bg-background/95 backdrop-blur-md py-4 px-6 border border-border rounded-2xl shadow-lg z-50">
+          <div className="md:hidden absolute top-20 left-4 right-4 bg-background/20 backdrop-blur-md py-4 px-6 border border-white/20 rounded-2xl shadow-lg z-50">
             <div className="flex flex-col gap-4">
               <a 
                 href="#features" 

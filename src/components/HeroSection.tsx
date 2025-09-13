@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import AnalyticsCarousel from './AnalyticsCarousel';
 import { TrendingUp } from 'lucide-react';
-import heroImage from '@/assets/hero-fintech.jpg';
+import heroImage from '@/assets/hero-analytics.jpg';
 const HeroSection = () => {
   const [isVisible, setIsVisible] = useState(false);
   useEffect(() => {
@@ -17,8 +17,9 @@ const HeroSection = () => {
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{ backgroundImage: `url(${heroImage})` }}
       >
-        <div className="absolute inset-0 bg-gradient-to-br from-background/95 via-background/85 to-background/90"></div>
-        <div className="absolute inset-0 fintech-gradient opacity-20"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-background/90 via-background/75 to-background/85"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-fintech-cyan/20 via-transparent to-fintech-teal/15"></div>
+        <div className="absolute inset-0 fintech-gradient opacity-15"></div>
       </div>
       
       {/* Cosmic particle effect */}
