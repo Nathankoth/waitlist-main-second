@@ -7,32 +7,32 @@ const Pricing = () => {
   const plans = [
     {
       name: "Starter",
-      price: "Free",
-      description: "Perfect for small businesses starting their fintech journey",
+      price: "Free Trial",
+      description: "Perfect for beginners exploring real estate data",
       features: [
-        "Up to 100 transactions/month",
-        "Basic payment processing",
-        "Standard reporting",
-        "Email support",
-        "Basic fraud protection"
+        "14-day free trial",
+        "Access to basic analytics",
+        "Limited property search",
+        "One portfolio project",
+        "Email support"
       ],
-      buttonText: "Get Started",
+      buttonText: "Start Free Trial",
       buttonVariant: "outline",
       popular: false
     },
     {
       name: "Professional",
-      price: "$99",
+      price: "$49",
       period: "per month",
-      description: "Ideal for growing businesses with higher transaction volumes",
+      description: "For active investors and small firms",
       features: [
-        "Up to 10,000 transactions/month",
-        "Advanced payment processing",
-        "Real-time analytics",
-        "Multi-currency support",
-        "Advanced fraud protection",
+        "Advanced analytics & ROI calculator",
+        "2D rendering previews",
+        "Unlimited property searches",
+        "Portfolio visualization",
         "API access",
-        "Priority support"
+        "Priority support",
+        "Market trend analysis"
       ],
       buttonText: "Start 14-day trial",
       buttonVariant: "default",
@@ -40,16 +40,17 @@ const Pricing = () => {
     },
     {
       name: "Enterprise",
-      price: "Custom",
-      description: "For large organizations with complex financial operations",
+      price: "$199",
+      period: "per month",
+      description: "For developers, brokers, and large investment firms",
       features: [
-        "Unlimited transactions",
-        "Custom payment workflows",
-        "Advanced compliance tools",
-        "Dedicated infrastructure",
-        "White-label solutions",
-        "Dedicated account manager",
-        "24/7 premium support"
+        "Full real estate analytics suite",
+        "3D rendering and design tools",
+        "Multi-user team dashboard",
+        "API access & integrations",
+        "Priority support",
+        "Custom workflows",
+        "Dedicated account manager"
       ],
       buttonText: "Contact Sales",
       buttonVariant: "outline",
@@ -62,10 +63,10 @@ const Pricing = () => {
       <div className="max-w-7xl mx-auto space-y-16">
         <div className="text-center space-y-4 max-w-3xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-medium tracking-tighter text-foreground">
-            Transparent pricing for every stage
+            Simple, Transparent Pricing
           </h2>
           <p className="text-muted-foreground text-lg">
-            Scale your financial operations with plans that grow with your business
+            Whether you're an independent investor or a large-scale developer, VistaForge grows with you
           </p>
         </div>
         

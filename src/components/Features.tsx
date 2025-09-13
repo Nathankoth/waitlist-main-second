@@ -8,49 +8,49 @@ const Features = () => {
   
   const features = [
     {
-      title: "Real-time Price Analytics",
-      description: "Monitor market movements with millisecond precision across 50+ exchanges and asset classes.",
-      expandedDescription: "Access live price feeds, volume data, and order book information from major exchanges worldwide. Track cryptocurrencies, stocks, forex, commodities, and derivatives with advanced charting tools and technical indicators.",
+      title: "Market Analysis Overview",
+      description: "Real-time insights on residential, commercial, and land assets with comprehensive market data.",
+      expandedDescription: "Access live property valuations, market trends, and comparative analysis across different neighborhoods and property types. Track price movements, inventory levels, and market activity with detailed analytics and reporting tools.",
       icon: (
         <TrendingUp size={24} className="text-primary" />
       )
     },
     {
-      title: "Market Trend Predictions",
-      description: "AI-powered forecasting models with 85% accuracy to predict market movements.",
-      expandedDescription: "Leverage machine learning algorithms trained on historical data, sentiment analysis, and market indicators. Get predictions with confidence intervals, risk assessments, and automated alerts for significant trend changes.",
+      title: "2D & 3D Rendering",
+      description: "Visualize properties and interior designs before they're built with advanced rendering tools.",
+      expandedDescription: "Create stunning 2D floor plans and immersive 3D visualizations of properties. Design interior layouts, experiment with different configurations, and showcase projects to clients with photorealistic rendering capabilities.",
       icon: (
         <Grid3x3 size={24} className="text-accent" />
       )
     },
     {
-      title: "Portfolio Visualization",
-      description: "Interactive dashboards to track and analyze your investment portfolios in real-time.",
-      expandedDescription: "Visualize portfolio performance with advanced charts, heat maps, and correlation analysis. Track asset allocation, risk metrics, and performance attribution across multiple accounts and time periods.",
+      title: "ROI Calculator",
+      description: "Forecast your returns with precision-driven financial models and investment analysis.",
+      expandedDescription: "Calculate potential returns on investment with detailed financial modeling. Factor in purchase price, renovation costs, rental income, appreciation rates, and tax implications to make informed investment decisions.",
       icon: (
         <LayoutDashboard size={24} className="text-fintech-teal" />
       )
     },
     {
-      title: "Custom Dashboards",
-      description: "Build personalized analytics dashboards with drag-and-drop widgets and tools.",
-      expandedDescription: "Create custom layouts with 50+ widgets including price charts, news feeds, economic calendars, and technical indicators. Save multiple dashboard configurations and share insights with your team.",
+      title: "Property Search",
+      description: "Explore verified listings and existing assets in your target market with advanced filtering.",
+      expandedDescription: "Search through comprehensive property databases with detailed filters for location, price, property type, and investment criteria. Access verified listings, market history, and neighborhood analytics to find the perfect investment opportunities.",
       icon: (
         <ListCheck size={24} className="text-primary" />
       )
     },
     {
-      title: "Risk Management Tools",
-      description: "Advanced risk analytics and portfolio optimization tools for informed decision making.",
-      expandedDescription: "Calculate Value at Risk (VaR), beta, volatility, and correlation metrics. Set up automated alerts for risk thresholds and portfolio rebalancing recommendations based on your risk tolerance.",
+      title: "Marketplace",
+      description: "Buy, sell, or showcase properties with AI-driven recommendations and smart matching.",
+      expandedDescription: "Connect with buyers, sellers, and investors through our intelligent marketplace. Get AI-powered property recommendations, automated valuation models, and smart matching based on your investment preferences and criteria.",
       icon: (
         <Star size={24} className="text-accent" />
       )
     },
     {
-      title: "API Integration",
-      description: "Robust APIs for seamless integration with trading platforms and financial systems.",
-      expandedDescription: "Connect with brokers, exchanges, and third-party tools through our comprehensive REST and WebSocket APIs. Real-time data streaming, automated trading capabilities, and extensive documentation with code examples.",
+      title: "Portfolio Visualization",
+      description: "Track, compare, and manage your entire real estate portfolio in one comprehensive dashboard.",
+      expandedDescription: "Monitor all your properties with detailed performance analytics, cash flow tracking, and portfolio optimization tools. Compare properties side-by-side and get insights on asset allocation and diversification strategies.",
       icon: (
         <BookOpen size={24} className="text-fintech-teal" />
       )
@@ -66,10 +66,10 @@ const Features = () => {
       <div className="max-w-7xl mx-auto space-y-12">
         <div className="text-center space-y-3 max-w-3xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-medium tracking-tighter">
-            Everything you need for market analytics
+            All-in-One Real Estate Analytics & Visualization
           </h2>
           <p className="text-muted-foreground text-lg">
-            Comprehensive fintech tools to analyze markets, predict trends, and optimize your investment strategy
+            Comprehensive tools to analyze markets, visualize properties, and maximize your real estate investment opportunities
           </p>
         </div>
         

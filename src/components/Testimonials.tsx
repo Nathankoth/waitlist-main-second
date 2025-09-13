@@ -4,21 +4,21 @@ import React from 'react';
 const Testimonials = () => {
   const testimonials = [
     {
-      quote: "Our payment processing efficiency increased by 40% and transaction failures dropped to near zero. The automation features are game-changing.",
-      author: "Sarah Johnson",
-      position: "CFO at TechCorp",
+      quote: "VistaForge transformed the way I evaluate properties. The ROI calculator alone saves me hours of research.",
+      author: "Sarah M.",
+      position: "Real Estate Investor",
       avatar: "bg-cosmic-light/30"
     },
     {
-      quote: "The real-time analytics and fraud detection capabilities have saved us millions. We can spot issues before they become problems.",
-      author: "Michael Chen",
-      position: "Head of Risk at FinanceFlow",
+      quote: "As a developer, the 3D rendering tool helps me showcase projects to clients before construction begins. It's a game-changer.",
+      author: "David L.",
+      position: "Property Developer",
       avatar: "bg-cosmic-light/20"
     },
     {
-      quote: "Compliance used to be a nightmare. Now our regulatory reporting is automated and we're always audit-ready.",
-      author: "Leila Rodriguez",
-      position: "Operations Director at GlobalPay",
+      quote: "Finally, a platform that combines market analytics with real estate visualization. VistaForge has become an essential tool in my portfolio management.",
+      author: "Aisha K.",
+      position: "Real Estate Analyst",
       avatar: "bg-cosmic-light/40"
     }
   ];
@@ -31,10 +31,10 @@ const Testimonials = () => {
       <div className="max-w-7xl mx-auto space-y-16 relative z-10">
         <div className="text-center space-y-4 max-w-3xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-medium tracking-tighter text-foreground">
-            Trusted by finance teams worldwide
+            Trusted by Real Estate Professionals Worldwide
           </h2>
           <p className="text-muted-foreground text-lg">
-            See how our platform transforms financial operations for businesses
+            From independent investors to global property firms, VistaForge empowers smarter real estate decisions
           </p>
         </div>
         

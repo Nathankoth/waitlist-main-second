@@ -53,17 +53,17 @@ const HeroSection = () => {
           </div>
           
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-heading font-bold tracking-tight text-white leading-tight px-2 sm:px-0">
-            <span className="block sm:inline">Real-time Market</span>
-            <span className="block sm:inline"> Analytics.</span>
+            <span className="block sm:inline">Smarter Real Estate</span>
+            <span className="block sm:inline"> Decisions.</span>
             <br className="hidden sm:block" />
             <span className="block mt-2 sm:mt-0 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-              Smarter Decisions.
+              Powered by AI Market Intelligence.
             </span>
           </h1>
           
           <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-200 max-w-xs sm:max-w-2xl lg:max-w-3xl mx-auto leading-relaxed font-body px-4 sm:px-0">
-            <span className="hidden sm:inline">Harness AI-driven insights and real-time real estate data for smarter investment and visualization.</span>
-            <span className="sm:hidden">AI-driven real estate insights for smarter investment decisions.</span>
+            <span className="hidden sm:inline">VistaForge helps investors, developers, and property professionals visualize, analyze, and maximize real estate opportunities. From market analytics to 2D/3D design previews, our platform delivers the insights you need to invest with confidence.</span>
+            <span className="sm:hidden">Visualize, analyze, and maximize real estate opportunities with AI-powered insights.</span>
           </p>
         </div>
 
