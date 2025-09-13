@@ -10,9 +10,8 @@ const Logo = () => {
         alt="VistaForge" 
         className="h-8 w-8 sm:h-10 sm:w-10 object-contain"
       />
-      <span className="text-lg sm:text-xl font-semibold text-foreground tracking-tight">
-        <span className="hidden sm:inline">VistaForge</span>
-        <span className="sm:hidden">Vista</span>
+      <span className="text-base sm:text-lg md:text-xl font-semibold text-foreground tracking-tight whitespace-nowrap">
+        VistaForge
       </span>
     </div>
   );

@@ -92,7 +92,7 @@ const AnalyticsCarousel = () => {
   }, []);
 
   return (
-    <div className="relative w-full h-[350px] sm:h-[400px] md:h-[450px] lg:h-[500px] overflow-hidden rounded-lg">
+    <div className="relative w-full aspect-video overflow-hidden rounded-lg">{/* Fixed 16:9 aspect ratio */}
       {slides.map((slide, index) => (
         <div
           key={slide.id}
@@ -128,7 +128,7 @@ const AnalyticsCarousel = () => {
             
             {/* Image Preview with Overlay */}
             <div className="flex-1 order-1 lg:order-2">
-              <div className="h-full min-h-[180px] sm:min-h-[220px] md:min-h-[280px] relative rounded-lg overflow-hidden border border-primary/10">
+              <div className="h-full aspect-video relative rounded-lg overflow-hidden border border-primary/10">{/* Fixed aspect ratio */}
                 <img 
                   src={slide.image} 
                   alt={slide.title}
