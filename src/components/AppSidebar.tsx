@@ -9,6 +9,8 @@ import {
   Store, 
   Briefcase, 
   User,
+  MessageSquare,
+  HelpCircle,
   LogOut
 } from "lucide-react"
 import {
@@ -39,6 +41,8 @@ const menuItems = [
   { title: "Marketplace", url: "/marketplace", icon: Store },
   { title: "Portfolio", url: "/portfolio", icon: Briefcase },
   { title: "Profile", url: "/profile", icon: User },
+  { title: "Reviews", url: "/reviews", icon: MessageSquare },
+  { title: "FAQ", url: "/faq", icon: HelpCircle },
 ]
 
 export function AppSidebar() {

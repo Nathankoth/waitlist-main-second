@@ -7,7 +7,9 @@ import {
   Box, 
   Search, 
   Store, 
-  Briefcase 
+  Briefcase,
+  MessageSquare,
+  HelpCircle
 } from "lucide-react"
 
 const Dashboard = () => {
@@ -57,6 +59,18 @@ const Dashboard = () => {
       icon: Briefcase,
       link: "/portfolio",
       value: "$2.4M"
+    },
+    {
+      title: "Reviews",
+      description: "What our users say",
+      icon: MessageSquare,
+      link: "/reviews"
+    },
+    {
+      title: "FAQ",
+      description: "Frequently asked questions",
+      icon: HelpCircle,
+      link: "/faq"
     }
   ]
 
@@ -64,8 +78,8 @@ const Dashboard = () => {
     <DashboardLayout>
       <div className="space-y-6">
         <div>
-          <h1 className="text-3xl font-bold">Welcome back</h1>
-          <p className="text-muted-foreground">Your real estate hub at a glance</p>
+          <h1 className="text-3xl font-bold">Welcome</h1>
+          <p className="text-muted-foreground">Choose a service to begin</p>
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">

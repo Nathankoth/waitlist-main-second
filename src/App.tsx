@@ -16,6 +16,8 @@ import PropertySearch from "./pages/PropertySearch";
 import Marketplace from "./pages/Marketplace";
 import Portfolio from "./pages/Portfolio";
 import Profile from "./pages/Profile";
+import Reviews from "./pages/Reviews";
+import FAQ from "./pages/FAQ";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -40,6 +42,8 @@ const App = () => (
           <Route path="/marketplace" element={<Marketplace />} />
           <Route path="/portfolio" element={<Portfolio />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/reviews" element={<Reviews />} />
+          <Route path="/faq" element={<FAQ />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
