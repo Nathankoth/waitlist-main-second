@@ -77,14 +77,14 @@ const Header = () => {
   return (
     <>
       <div className="sticky top-0 z-50 pt-4 sm:pt-6 md:pt-8 px-3 sm:px-4 md:px-6">
-        <header className="w-full max-w-7xl mx-auto py-2 sm:py-3 md:py-4 px-3 sm:px-4 md:px-6 lg:px-8 flex items-center justify-between backdrop-blur-xl border border-white/20 rounded-xl md:rounded-2xl shadow-glass supports-[backdrop-filter]:bg-white/5" style={{ background: 'var(--gradient-glass)' }}>
-          <div className="flex-shrink-0 p-1 sm:p-2">
+        <header className="w-full max-w-7xl mx-auto py-3 sm:py-4 px-4 sm:px-6 md:px-8 flex items-center justify-between backdrop-blur-xl border border-white/20 rounded-xl md:rounded-2xl shadow-glass supports-[backdrop-filter]:bg-white/5" style={{ background: 'var(--gradient-glass)' }}>
+          <div className="p-2 sm:p-3 md:flex-shrink-0">
             <Logo />
           </div>
           
-          {/* Mobile/Tablet menu button */}
+          {/* Mobile menu button */}
           <button 
-            className="lg:hidden p-2 rounded-xl text-muted-foreground hover:text-primary hover:bg-primary/10 transition-all duration-300 backdrop-blur-sm"
+            className="md:hidden p-2 sm:p-3 rounded-xl text-muted-foreground hover:text-primary hover:bg-primary/10 transition-all duration-300 backdrop-blur-sm"
             onClick={toggleMobileMenu}
             aria-label="Toggle menu"
             data-menu-button
@@ -93,78 +93,76 @@ const Header = () => {
           </button>
           
           {/* Desktop navigation */}
-          <nav className="hidden lg:flex items-center flex-1 justify-center">
+          <nav className="hidden md:flex items-center md:flex-1 md:justify-center lg:absolute lg:left-1/2 lg:transform lg:-translate-x-1/2">
             <div className="rounded-full px-1 py-1 backdrop-blur-xl border border-white/20 shadow-glass supports-[backdrop-filter]:bg-white/5" style={{ background: 'var(--gradient-glass)' }}>
               <ToggleGroup type="single" value={activePage} onValueChange={(value) => value && setActivePage(value)} className="gap-0">
                 <ToggleGroupItem 
                   value="features"
                   className={cn(
-                    "px-3 xl:px-4 py-2 rounded-full transition-all duration-300 relative group text-sm xl:text-base whitespace-nowrap",
+                    "px-3 lg:px-4 py-2 rounded-full transition-all duration-300 relative group text-sm lg:text-base",
                     activePage === 'features' 
                       ? 'text-primary-foreground bg-primary shadow-luxury' 
                       : 'text-muted-foreground hover:text-primary hover:bg-primary/10 hover:shadow-lg'
                   )}
                   onClick={handleNavClick('features')}
                 >
-                  <CircleDot size={14} className="inline-block mr-1.5 xl:mr-2" /> 
+                  <CircleDot size={14} className="inline-block mr-1.5 lg:mr-2" /> 
                   Features
                 </ToggleGroupItem>
                 <ToggleGroupItem 
                   value="dashboard" 
                   className={cn(
-                    "px-3 xl:px-4 py-2 rounded-full transition-all duration-300 relative group text-sm xl:text-base whitespace-nowrap",
+                    "px-3 lg:px-4 py-2 rounded-full transition-all duration-300 relative group text-sm lg:text-base",
                     activePage === 'dashboard' 
                       ? 'text-primary-foreground bg-primary shadow-luxury' 
                       : 'text-muted-foreground hover:text-primary hover:bg-primary/10 hover:shadow-lg'
                   )}
                   onClick={handleNavClick('dashboard')}
                 >
-                  <LayoutDashboard size={14} className="inline-block mr-1.5 xl:mr-2" /> 
+                  <LayoutDashboard size={14} className="inline-block mr-1.5 lg:mr-2" /> 
                   Dashboard
                 </ToggleGroupItem>
                 <ToggleGroupItem 
                   value="pricing" 
                   className={cn(
-                    "px-3 xl:px-4 py-2 rounded-full transition-all duration-300 relative group text-sm xl:text-base whitespace-nowrap",
+                    "px-3 lg:px-4 py-2 rounded-full transition-all duration-300 relative group text-sm lg:text-base",
                     activePage === 'pricing' 
                       ? 'text-primary-foreground bg-primary shadow-luxury' 
                       : 'text-muted-foreground hover:text-primary hover:bg-primary/10 hover:shadow-lg'
                   )}
                   onClick={handleNavClick('pricing')}
                 >
-                  <DollarSign size={14} className="inline-block mr-1.5 xl:mr-2" /> 
+                  <DollarSign size={14} className="inline-block mr-1.5 lg:mr-2" /> 
                   Pricing
                 </ToggleGroupItem>
               </ToggleGroup>
             </div>
           </nav>
           
-          <div className="hidden lg:flex items-center gap-2 xl:gap-3 flex-shrink-0">
+          <div className="hidden md:flex items-center gap-3 lg:gap-4 md:flex-shrink-0">
             {/* Theme toggle for desktop */}
-            <div className="flex items-center gap-2 rounded-full px-2 xl:px-3 py-1.5 xl:py-2 backdrop-blur-sm bg-white/5 border border-white/10">
-              <Sun size={14} className={`transition-colors ${!isDarkMode ? 'text-primary' : 'text-muted-foreground'}`} />
+            <div className="flex items-center gap-2 rounded-full px-3 py-2 backdrop-blur-sm bg-white/5 border border-white/10">
+              <Sun size={16} className={`transition-colors ${!isDarkMode ? 'text-primary' : 'text-muted-foreground'}`} />
               <Switch 
                 checked={isDarkMode} 
                 onCheckedChange={toggleTheme} 
-                className="data-[state=checked]:bg-primary scale-75 xl:scale-90"
+                className="data-[state=checked]:bg-primary scale-90"
               />
-              <Moon size={14} className={`transition-colors ${isDarkMode ? 'text-primary' : 'text-muted-foreground'}`} />
+              <Moon size={16} className={`transition-colors ${isDarkMode ? 'text-primary' : 'text-muted-foreground'}`} />
             </div>
             
             {/* Authentication Buttons */}
-            <div className="flex items-center gap-1.5 xl:gap-2">
+            <div className="flex items-center gap-2 lg:gap-3">
               <Button 
                 variant="ghost" 
-                size="sm"
-                className="text-muted-foreground hover:text-primary hover:bg-primary/10 transition-all duration-300 px-2.5 xl:px-3 text-sm"
+                className="text-muted-foreground hover:text-primary hover:bg-primary/10 transition-all duration-300 px-3 lg:px-4"
                 onClick={() => window.location.href = '/login'}
               >
                 Log in
               </Button>
               <Button 
                 variant="default" 
-                size="sm"
-                className="bg-primary text-primary-foreground hover:bg-primary/90 shadow-luxury transition-all duration-300 px-2.5 xl:px-3 text-sm"
+                className="bg-primary text-primary-foreground hover:bg-primary/90 shadow-luxury transition-all duration-300 px-3 lg:px-4"
                 onClick={() => window.location.href = '/dashboard'}
               >
                 Get Started
