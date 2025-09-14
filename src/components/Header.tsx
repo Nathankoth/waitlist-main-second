@@ -156,12 +156,14 @@ const Header = () => {
               <Button 
                 variant="ghost" 
                 className="text-muted-foreground hover:text-primary hover:bg-primary/10 transition-all duration-300 px-3 lg:px-4"
+                onClick={() => window.location.href = '/login'}
               >
                 Log in
               </Button>
               <Button 
                 variant="default" 
                 className="bg-primary text-primary-foreground hover:bg-primary/90 shadow-luxury transition-all duration-300 px-3 lg:px-4"
+                onClick={() => window.location.href = '/signup'}
               >
                 Sign up
               </Button>
@@ -240,12 +242,14 @@ const Header = () => {
                 <Button 
                   variant="ghost" 
                   className="w-full justify-center text-foreground hover:text-primary hover:bg-primary/10 transition-all duration-300"
+                  onClick={() => window.location.href = '/login'}
                 >
                   Log in
                 </Button>
                 <Button 
                   variant="default" 
                   className="w-full justify-center bg-primary text-primary-foreground hover:bg-primary/90 shadow-luxury transition-all duration-300"
+                  onClick={() => window.location.href = '/signup'}
                 >
                   Sign up
                 </Button>
