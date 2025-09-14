@@ -151,13 +151,19 @@ const Header = () => {
               <Moon size={16} className={`transition-colors ${isDarkMode ? 'text-primary' : 'text-muted-foreground'}`} />
             </div>
             
-            {/* Login Button */}
-            <div className="rounded-xl">
+            {/* Authentication Buttons */}
+            <div className="flex items-center gap-2 lg:gap-3">
               <Button 
                 variant="ghost" 
-                className="text-muted-foreground hover:text-primary hover:bg-primary/10 transition-all duration-300 px-4 lg:px-6"
+                className="text-muted-foreground hover:text-primary hover:bg-primary/10 transition-all duration-300 px-3 lg:px-4"
               >
                 Log in
+              </Button>
+              <Button 
+                variant="default" 
+                className="bg-primary text-primary-foreground hover:bg-primary/90 shadow-luxury transition-all duration-300 px-3 lg:px-4"
+              >
+                Sign up
               </Button>
             </div>
           </div>
@@ -229,13 +235,19 @@ const Header = () => {
                 </div>
               </div>
               
-              {/* Login Button for Mobile */}
-              <div className="pt-2">
+              {/* Authentication Buttons for Mobile */}
+              <div className="pt-2 space-y-2">
                 <Button 
                   variant="ghost" 
                   className="w-full justify-center text-foreground hover:text-primary hover:bg-primary/10 transition-all duration-300"
                 >
                   Log in
+                </Button>
+                <Button 
+                  variant="default" 
+                  className="w-full justify-center bg-primary text-primary-foreground hover:bg-primary/90 shadow-luxury transition-all duration-300"
+                >
+                  Sign up
                 </Button>
               </div>
             </div>
