@@ -32,6 +32,29 @@ const Header = () => {
     // Save preference
     localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
   }, [isDarkMode]);
+
+  useEffect(() => {
+    // Close mobile menu when clicking outside
+    const handleClickOutside = (event: MouseEvent) => {
+      const target = event.target as Element;
+      if (mobileMenuOpen && !target.closest('[data-mobile-menu]') && !target.closest('[data-menu-button]')) {
+        setMobileMenuOpen(false);
+      }
+    };
+
+    if (mobileMenuOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+      // Prevent body scroll when menu is open
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+      document.body.style.overflow = 'unset';
+    };
+  }, [mobileMenuOpen]);
   
   const handleNavClick = (page: string) => (e: React.MouseEvent) => {
     e.preventDefault();
@@ -64,6 +87,7 @@ const Header = () => {
             className="md:hidden p-2 sm:p-3 rounded-xl text-muted-foreground hover:text-primary hover:bg-primary/10 transition-all duration-300 backdrop-blur-sm"
             onClick={toggleMobileMenu}
             aria-label="Toggle menu"
+            data-menu-button
           >
             {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
@@ -142,8 +166,21 @@ const Header = () => {
 
       {/* Mobile navigation overlay */}
       {mobileMenuOpen && (
-        <div className="md:hidden fixed inset-0 backdrop-blur-[30px] bg-black/60 z-[9999] animate-slide-up">
-          <div className="absolute top-20 sm:top-24 left-3 right-3 sm:left-4 sm:right-4 backdrop-blur-[40px] py-4 px-4 sm:px-6 border border-white/30 rounded-xl shadow-premium bg-black/40 supports-[backdrop-filter]:bg-black/40">
+        <div className="md:hidden fixed inset-0 backdrop-blur-[30px] bg-black/60 dark:bg-black/60 z-[9999] animate-slide-up">
+          <div 
+            className="absolute top-20 sm:top-24 left-3 right-3 sm:left-4 sm:right-4 backdrop-blur-[40px] py-4 px-4 sm:px-6 border border-white/30 dark:border-white/30 rounded-xl shadow-premium bg-black/40 dark:bg-black/40 supports-[backdrop-filter]:bg-black/40"
+            data-mobile-menu
+          >
+            {/* Close button */}
+            <div className="flex justify-end mb-2">
+              <button
+                onClick={toggleMobileMenu}
+                className="p-2 rounded-lg text-white/80 hover:text-white hover:bg-white/10 transition-all duration-300"
+                aria-label="Close menu"
+              >
+                <X size={20} />
+              </button>
+            </div>
             <div className="flex flex-col gap-3 sm:gap-4">
               {/* Navigation Links */}
               <div className="space-y-2">
@@ -152,7 +189,7 @@ const Header = () => {
                   className={`flex items-center px-4 py-3 text-sm sm:text-base rounded-lg transition-all duration-300 ${
                     activePage === 'features' 
                       ? 'bg-primary text-primary-foreground shadow-luxury' 
-                      : 'text-white hover:text-primary hover:bg-primary/20'
+                      : 'text-white dark:text-white hover:text-primary hover:bg-primary/20'
                   }`}
                   onClick={handleNavClick('features')}
                 >
@@ -164,7 +201,7 @@ const Header = () => {
                   className={`flex items-center px-4 py-3 text-sm sm:text-base rounded-lg transition-all duration-300 ${
                     activePage === 'dashboard' 
                       ? 'bg-primary text-primary-foreground shadow-luxury' 
-                      : 'text-white hover:text-primary hover:bg-primary/20'
+                      : 'text-white dark:text-white hover:text-primary hover:bg-primary/20'
                   }`}
                   onClick={handleNavClick('dashboard')}
                 >
@@ -176,7 +213,7 @@ const Header = () => {
                   className={`flex items-center px-4 py-3 text-sm sm:text-base rounded-lg transition-all duration-300 ${
                     activePage === 'pricing' 
                       ? 'bg-primary text-primary-foreground shadow-luxury' 
-                      : 'text-white hover:text-primary hover:bg-primary/20'
+                      : 'text-white dark:text-white hover:text-primary hover:bg-primary/20'
                   }`}
                   onClick={handleNavClick('pricing')}
                 >
@@ -186,19 +223,19 @@ const Header = () => {
               </div>
               
               {/* Divider */}
-              <div className="h-px bg-white/20"></div>
+              <div className="h-px bg-white/20 dark:bg-white/20"></div>
               
               {/* Theme Toggle */}
               <div className="flex items-center justify-between px-4 py-2">
-                <span className="text-sm text-white/80">Theme</span>
+                <span className="text-sm text-white/80 dark:text-white/80">Theme</span>
                 <div className="flex items-center gap-3">
-                  <Sun size={16} className={`transition-colors ${!isDarkMode ? 'text-primary' : 'text-white/60'}`} />
+                  <Sun size={16} className={`transition-colors ${!isDarkMode ? 'text-primary' : 'text-white/60 dark:text-white/60'}`} />
                   <Switch 
                     checked={isDarkMode} 
                     onCheckedChange={toggleTheme} 
                     className="data-[state=checked]:bg-primary"
                   />
-                  <Moon size={16} className={`transition-colors ${isDarkMode ? 'text-primary' : 'text-white/60'}`} />
+                  <Moon size={16} className={`transition-colors ${isDarkMode ? 'text-primary' : 'text-white/60 dark:text-white/60'}`} />
                 </div>
               </div>
               
@@ -206,7 +243,7 @@ const Header = () => {
               <div className="pt-2">
                 <Button 
                   variant="ghost" 
-                  className="w-full justify-center text-white hover:text-primary hover:bg-primary/20 transition-all duration-300"
+                  className="w-full justify-center text-white dark:text-white hover:text-primary hover:bg-primary/20 transition-all duration-300"
                 >
                   Log in
                 </Button>
