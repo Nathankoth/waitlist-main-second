@@ -58,9 +58,16 @@ const Rendering3D = () => {
                 </div>
               )}
               
-              <Button className="w-full mt-4" disabled={!uploadedFile}>
-                Generate 3D Render
-              </Button>
+              <div className="flex gap-2 mt-4">
+                <Button className="flex-1" disabled={!uploadedFile}>
+                  Generate 3D Render
+                </Button>
+                {uploadedFile && (
+                  <Button variant="outline" size="icon">
+                    <Box className="h-4 w-4" />
+                  </Button>
+                )}
+              </div>
             </CardContent>
           </Card>
           
@@ -70,14 +77,29 @@ const Rendering3D = () => {
               <CardDescription>Interactive 3D model preview</CardDescription>
             </CardHeader>
             <CardContent>
-              <div className="aspect-square bg-gradient-to-br from-muted to-muted/50 rounded-lg flex items-center justify-center">
-                <div className="text-center">
-                  <Box className="h-16 w-16 mx-auto text-muted-foreground mb-4" />
-                  <p className="text-muted-foreground">Upload a 3D model to view</p>
-                  <p className="text-xs text-muted-foreground mt-2">
-                    Interactive controls will be available after upload
-                  </p>
-                </div>
+              <div className="aspect-square bg-gradient-to-br from-muted via-muted/50 to-background rounded-lg flex items-center justify-center border-2 border-dashed border-border">
+                {uploadedFile ? (
+                  <div className="text-center p-6">
+                    <div className="animate-pulse">
+                      <Box className="h-16 w-16 mx-auto text-primary mb-4" />
+                      <p className="text-foreground font-medium">Loading 3D model...</p>
+                      <p className="text-muted-foreground text-sm mt-2">Interactive viewer will appear here</p>
+                      <div className="mt-4 flex justify-center gap-2">
+                        <div className="w-2 h-2 bg-primary rounded-full animate-bounce"></div>
+                        <div className="w-2 h-2 bg-primary rounded-full animate-bounce" style={{animationDelay: '0.1s'}}></div>
+                        <div className="w-2 h-2 bg-primary rounded-full animate-bounce" style={{animationDelay: '0.2s'}}></div>
+                      </div>
+                    </div>
+                  </div>
+                ) : (
+                  <div className="text-center">
+                    <Box className="h-16 w-16 mx-auto text-muted-foreground mb-4" />
+                    <p className="text-muted-foreground">Upload a 3D model to view</p>
+                    <p className="text-xs text-muted-foreground mt-2">
+                      Interactive controls will be available after upload
+                    </p>
+                  </div>
+                )}
               </div>
             </CardContent>
           </Card>

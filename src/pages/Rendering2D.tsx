@@ -58,9 +58,16 @@ const Rendering2D = () => {
                 </div>
               )}
               
-              <Button className="w-full mt-4" disabled={!uploadedFile}>
-                Generate 2D Render
-              </Button>
+              <div className="flex gap-2 mt-4">
+                <Button className="flex-1" disabled={!uploadedFile}>
+                  Generate 2D Render
+                </Button>
+                {uploadedFile && (
+                  <Button variant="outline" size="icon">
+                    <ImageIcon className="h-4 w-4" />
+                  </Button>
+                )}
+              </div>
             </CardContent>
           </Card>
           
@@ -70,11 +77,21 @@ const Rendering2D = () => {
               <CardDescription>Your 2D visualization will appear here</CardDescription>
             </CardHeader>
             <CardContent>
-              <div className="aspect-square bg-muted rounded-lg flex items-center justify-center">
-                <div className="text-center">
-                  <ImageIcon className="h-16 w-16 mx-auto text-muted-foreground mb-4" />
-                  <p className="text-muted-foreground">Upload a file to see the preview</p>
-                </div>
+              <div className="aspect-square bg-gradient-to-br from-muted via-muted/50 to-background rounded-lg flex items-center justify-center border-2 border-dashed border-border">
+                {uploadedFile ? (
+                  <div className="text-center p-6">
+                    <div className="animate-pulse">
+                      <ImageIcon className="h-16 w-16 mx-auto text-primary mb-4" />
+                      <p className="text-foreground font-medium">Processing your file...</p>
+                      <p className="text-muted-foreground text-sm mt-2">2D rendering will appear here</p>
+                    </div>
+                  </div>
+                ) : (
+                  <div className="text-center">
+                    <ImageIcon className="h-16 w-16 mx-auto text-muted-foreground mb-4" />
+                    <p className="text-muted-foreground">Upload a file to see the preview</p>
+                  </div>
+                )}
               </div>
             </CardContent>
           </Card>

@@ -14,6 +14,9 @@ const ROICalculator = () => {
     monthlyROI: number
     annualROI: number
     monthlyCashFlow: number
+    capRate: number
+    cashOnCashReturn: number
+    breakEvenRatio: number
   } | null>(null)
 
   const calculateROI = () => {
@@ -23,13 +26,21 @@ const ROICalculator = () => {
 
     if (value && rent && monthlyExpenses >= 0) {
       const monthlyCashFlow = rent - monthlyExpenses
+      const annualCashFlow = monthlyCashFlow * 12
       const monthlyROI = (monthlyCashFlow / value) * 100
       const annualROI = monthlyROI * 12
+      const capRate = (annualCashFlow / value) * 100
+      const downPayment = value * 0.2 // Assuming 20% down payment
+      const cashOnCashReturn = downPayment > 0 ? (annualCashFlow / downPayment) * 100 : 0
+      const breakEvenRatio = rent > 0 ? (monthlyExpenses / rent) * 100 : 0
 
       setResult({
         monthlyROI,
         annualROI,
-        monthlyCashFlow
+        monthlyCashFlow,
+        capRate,
+        cashOnCashReturn,
+        breakEvenRatio
       })
     }
   }
@@ -94,35 +105,73 @@ const ROICalculator = () => {
           {result && (
             <Card>
               <CardHeader>
-                <CardTitle>Results</CardTitle>
-                <CardDescription>Your investment analysis</CardDescription>
+                <CardTitle>Investment Analysis Results</CardTitle>
+                <CardDescription>Comprehensive property investment metrics</CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
-                <div className="grid grid-cols-1 gap-4">
-                  <div className="p-4 border rounded-lg">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="p-4 bg-primary/5 rounded-lg border border-primary/20">
                     <div className="text-2xl font-bold text-primary">
                       {result.monthlyCashFlow >= 0 ? '+' : ''}${result.monthlyCashFlow.toFixed(2)}
                     </div>
                     <div className="text-sm text-muted-foreground">Monthly Cash Flow</div>
                   </div>
                   
-                  <div className="p-4 border rounded-lg">
-                    <div className="text-2xl font-bold text-primary">
+                  <div className="p-4 bg-accent/5 rounded-lg border border-accent/20">
+                    <div className="text-2xl font-bold text-accent-foreground">
+                      {result.capRate.toFixed(2)}%
+                    </div>
+                    <div className="text-sm text-muted-foreground">Cap Rate</div>
+                  </div>
+                  
+                  <div className="p-4 bg-muted rounded-lg">
+                    <div className="text-2xl font-bold text-foreground">
                       {result.monthlyROI.toFixed(2)}%
                     </div>
                     <div className="text-sm text-muted-foreground">Monthly ROI</div>
                   </div>
                   
-                  <div className="p-4 border rounded-lg">
-                    <div className="text-2xl font-bold text-primary">
+                  <div className="p-4 bg-muted rounded-lg">
+                    <div className="text-2xl font-bold text-foreground">
                       {result.annualROI.toFixed(2)}%
                     </div>
                     <div className="text-sm text-muted-foreground">Annual ROI</div>
                   </div>
+                  
+                  <div className="p-4 bg-secondary/5 rounded-lg border border-secondary/20">
+                    <div className="text-2xl font-bold text-secondary-foreground">
+                      {result.cashOnCashReturn.toFixed(2)}%
+                    </div>
+                    <div className="text-sm text-muted-foreground">Cash-on-Cash Return</div>
+                    <div className="text-xs text-muted-foreground mt-1">Based on 20% down payment</div>
+                  </div>
+                  
+                  <div className="p-4 bg-muted rounded-lg">
+                    <div className="text-2xl font-bold text-foreground">
+                      {result.breakEvenRatio.toFixed(1)}%
+                    </div>
+                    <div className="text-sm text-muted-foreground">Expense Ratio</div>
+                  </div>
+                </div>
+                
+                <div className="mt-6 p-4 bg-muted/50 rounded-lg">
+                  <h5 className="font-semibold mb-2">Investment Summary</h5>
+                  <div className="grid grid-cols-2 gap-4 text-sm">
+                    <div>
+                      <span className="text-muted-foreground">Annual Income:</span>
+                      <p className="font-semibold">${(result.monthlyCashFlow * 12).toFixed(2)}</p>
+                    </div>
+                    <div>
+                      <span className="text-muted-foreground">Investment Grade:</span>
+                      <p className="font-semibold text-primary">
+                        {result.capRate >= 8 ? "Excellent" : result.capRate >= 6 ? "Good" : result.capRate >= 4 ? "Fair" : "Poor"}
+                      </p>
+                    </div>
+                  </div>
                 </div>
                 
                 <div className="text-xs text-muted-foreground">
-                  * This calculation doesn't include taxes, insurance, or other fees
+                  * Results are estimates and don't include taxes, insurance, maintenance, vacancy, or other potential costs
                 </div>
               </CardContent>
             </Card>

@@ -163,9 +163,9 @@ const Header = () => {
               <Button 
                 variant="default" 
                 className="bg-primary text-primary-foreground hover:bg-primary/90 shadow-luxury transition-all duration-300 px-3 lg:px-4"
-                onClick={() => window.location.href = '/signup'}
+                onClick={() => window.location.href = '/dashboard'}
               >
-                Sign up
+                Get Started
               </Button>
             </div>
           </div>
@@ -249,9 +249,9 @@ const Header = () => {
                 <Button 
                   variant="default" 
                   className="w-full justify-center bg-primary text-primary-foreground hover:bg-primary/90 shadow-luxury transition-all duration-300"
-                  onClick={() => window.location.href = '/signup'}
+                  onClick={() => window.location.href = '/dashboard'}
                 >
-                  Sign up
+                  Get Started
                 </Button>
               </div>
             </div>
