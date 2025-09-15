@@ -40,22 +40,22 @@ const HeroSection = () => {
         <div className="space-y-4 md:space-y-6">
           <div className="inline-flex items-center px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-primary/20 backdrop-blur-sm border border-primary/30 text-primary text-xs sm:text-sm font-medium animate-fade-in">
             <CircleDot className="w-2.5 h-2.5 sm:w-3 sm:h-3 mr-1.5 sm:mr-2" />
-            <span className="hidden sm:inline">AI-Powered Market Intelligence</span>
-            <span className="sm:hidden">AI Market Intelligence</span>
+            <span className="hidden sm:inline">AI-Powered Real Estate Platform</span>
+            <span className="sm:hidden">AI Real Estate Platform</span>
           </div>
           
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-heading font-bold tracking-tight text-white leading-tight px-2 sm:px-0">
-            <span className="block sm:inline">Smarter Real Estate</span>
-            <span className="block sm:inline"> Decisions.</span>
+            <span className="block sm:inline">Visualize Properties</span>
+            <span className="block sm:inline"> Beyond Reality</span>
             <br className="hidden sm:block" />
             <span className="block mt-2 sm:mt-0 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-              Powered by AI Market Intelligence.
+              AI-Powered Real Estate Visualization.
             </span>
           </h1>
           
           <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-200 max-w-xs sm:max-w-2xl lg:max-w-3xl mx-auto leading-relaxed font-body px-4 sm:px-0">
-            <span className="hidden sm:inline">VistaForge helps investors, developers, and property professionals visualize, analyze, and maximize real estate opportunities. From market analytics to 2D/3D design previews, our platform delivers the insights you need to invest with confidence.</span>
-            <span className="sm:hidden">Visualize, analyze, and maximize real estate opportunities with AI-powered insights.</span>
+            <span className="hidden sm:inline">Transform ordinary properties into extraordinary visual experiences with AI-powered visualization technology that reveals the hidden potential in every space.</span>
+            <span className="sm:hidden">Transform properties with AI-powered visualization technology.</span>
           </p>
         </div>
 
