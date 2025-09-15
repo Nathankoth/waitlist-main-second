@@ -1,16 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import Logo from './Logo';
-import { Menu, X, CircleDot, LayoutDashboard, DollarSign, Sun, Moon } from 'lucide-react';
+import { Menu, X, Sun, Moon } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group';
 import { Switch } from '@/components/ui/switch';
 
 const Header = () => {
-  const [activePage, setActivePage] = useState('features');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(() => {
-    // Check system preference or localStorage
     if (typeof window !== 'undefined') {
       const saved = localStorage.getItem('theme');
       if (saved) return saved === 'dark';
@@ -20,7 +17,6 @@ const Header = () => {
   });
   
   useEffect(() => {
-    // Apply the theme to the document when it changes
     const root = document.documentElement;
     if (isDarkMode) {
       root.classList.remove('light');
@@ -29,12 +25,10 @@ const Header = () => {
       root.classList.remove('dark');
       root.classList.add('light');
     }
-    // Save preference
     localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
   }, [isDarkMode]);
 
   useEffect(() => {
-    // Close mobile menu when clicking outside
     const handleClickOutside = (event: MouseEvent) => {
       const target = event.target as Element;
       if (mobileMenuOpen && !target.closest('[data-mobile-menu]') && !target.closest('[data-menu-button]')) {
@@ -44,7 +38,6 @@ const Header = () => {
 
     if (mobileMenuOpen) {
       document.addEventListener('mousedown', handleClickOutside);
-      // Prevent body scroll when menu is open
       document.body.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = 'unset';
@@ -55,16 +48,6 @@ const Header = () => {
       document.body.style.overflow = 'unset';
     };
   }, [mobileMenuOpen]);
-  
-  const handleNavClick = (page: string) => (e: React.MouseEvent) => {
-    e.preventDefault();
-    setActivePage(page);
-    const element = document.getElementById(page);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-    setMobileMenuOpen(false);
-  };
 
   const toggleMobileMenu = () => {
     setMobileMenuOpen(!mobileMenuOpen);
@@ -74,161 +57,107 @@ const Header = () => {
     setIsDarkMode(!isDarkMode);
   };
 
+  const navigationLinks = [
+    { label: "Overview", link: "/" },
+    { label: "Market Analysis", link: "/market-analysis" },
+    { label: "2D Rendering", link: "/rendering-2d" },
+    { label: "3D Rendering", link: "/rendering-3d" },
+    { label: "ROI Calculator", link: "/roi-calculator" },
+    { label: "Marketplace", link: "/marketplace" }
+  ];
+
   return (
     <>
-      <div className="sticky top-0 z-50 pt-4 sm:pt-6 md:pt-8 px-3 sm:px-4 md:px-6">
-        <header className="w-full max-w-7xl mx-auto py-2 sm:py-3 md:py-4 px-3 sm:px-4 md:px-6 lg:px-8 flex items-center justify-between backdrop-blur-xl border border-white/20 rounded-xl md:rounded-2xl shadow-glass supports-[backdrop-filter]:bg-white/5" style={{ background: 'var(--gradient-glass)' }}>
-          <div className="flex-shrink-0 p-1 sm:p-2">
+      <div className="sticky top-0 z-50 bg-background/80 backdrop-blur-md border-b border-border/40">
+        <header className="container mx-auto px-4 py-3 flex items-center justify-between">
+          {/* Logo */}
+          <div className="flex items-center gap-2">
             <Logo />
+            <span className="font-bold text-lg text-foreground">VistaFold</span>
           </div>
           
-          {/* Mobile/Tablet menu button */}
+          {/* Desktop Navigation */}
+          <nav className="hidden lg:flex items-center space-x-8">
+            {navigationLinks.map((item) => (
+              <a
+                key={item.label}
+                href={item.link}
+                className="text-muted-foreground hover:text-primary transition-colors duration-200 font-medium"
+              >
+                {item.label}
+              </a>
+            ))}
+          </nav>
+          
+          {/* Desktop Right Actions */}
+          <div className="hidden lg:flex items-center gap-4">
+            {/* Theme Toggle */}
+            <div className="flex items-center gap-2">
+              <Sun size={16} className={`transition-colors ${!isDarkMode ? 'text-primary' : 'text-muted-foreground'}`} />
+              <Switch 
+                checked={isDarkMode} 
+                onCheckedChange={toggleTheme} 
+                className="data-[state=checked]:bg-primary"
+              />
+              <Moon size={16} className={`transition-colors ${isDarkMode ? 'text-primary' : 'text-muted-foreground'}`} />
+            </div>
+            
+            <Button 
+              variant="ghost" 
+              size="sm"
+              className="text-muted-foreground hover:text-primary"
+              onClick={() => window.location.href = '/login'}
+            >
+              Login
+            </Button>
+            <Button 
+              variant="default" 
+              size="sm"
+              onClick={() => window.location.href = '/signup'}
+            >
+              Sign Up
+            </Button>
+          </div>
+          
+          {/* Mobile/Tablet Hamburger Menu Button */}
           <button 
-            className="lg:hidden p-2 rounded-xl text-muted-foreground hover:text-primary hover:bg-primary/10 transition-all duration-300 backdrop-blur-sm"
+            className="lg:hidden p-2 rounded-md text-muted-foreground hover:text-primary hover:bg-muted/50 transition-colors"
             onClick={toggleMobileMenu}
             aria-label="Toggle menu"
             data-menu-button
           >
-            {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
+            {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
-          
-          {/* Desktop navigation */}
-          <nav className="hidden lg:flex items-center flex-1 justify-center">
-            <div className="rounded-full px-1 py-1 backdrop-blur-xl border border-white/20 shadow-glass supports-[backdrop-filter]:bg-white/5" style={{ background: 'var(--gradient-glass)' }}>
-              <ToggleGroup type="single" value={activePage} onValueChange={(value) => value && setActivePage(value)} className="gap-0">
-                <ToggleGroupItem 
-                  value="features"
-                  className={cn(
-                    "px-3 xl:px-4 py-2 rounded-full transition-all duration-300 relative group text-sm xl:text-base whitespace-nowrap",
-                    activePage === 'features' 
-                      ? 'text-primary-foreground bg-primary shadow-luxury' 
-                      : 'text-muted-foreground hover:text-primary hover:bg-primary/10 hover:shadow-lg'
-                  )}
-                  onClick={handleNavClick('features')}
-                >
-                  <CircleDot size={14} className="inline-block mr-1.5 xl:mr-2" /> 
-                  Features
-                </ToggleGroupItem>
-                <ToggleGroupItem 
-                  value="dashboard" 
-                  className={cn(
-                    "px-3 xl:px-4 py-2 rounded-full transition-all duration-300 relative group text-sm xl:text-base whitespace-nowrap",
-                    activePage === 'dashboard' 
-                      ? 'text-primary-foreground bg-primary shadow-luxury' 
-                      : 'text-muted-foreground hover:text-primary hover:bg-primary/10 hover:shadow-lg'
-                  )}
-                  onClick={handleNavClick('dashboard')}
-                >
-                  <LayoutDashboard size={14} className="inline-block mr-1.5 xl:mr-2" /> 
-                  Dashboard
-                </ToggleGroupItem>
-                <ToggleGroupItem 
-                  value="pricing" 
-                  className={cn(
-                    "px-3 xl:px-4 py-2 rounded-full transition-all duration-300 relative group text-sm xl:text-base whitespace-nowrap",
-                    activePage === 'pricing' 
-                      ? 'text-primary-foreground bg-primary shadow-luxury' 
-                      : 'text-muted-foreground hover:text-primary hover:bg-primary/10 hover:shadow-lg'
-                  )}
-                  onClick={handleNavClick('pricing')}
-                >
-                  <DollarSign size={14} className="inline-block mr-1.5 xl:mr-2" /> 
-                  Pricing
-                </ToggleGroupItem>
-              </ToggleGroup>
-            </div>
-          </nav>
-          
-          <div className="hidden lg:flex items-center gap-2 xl:gap-3 flex-shrink-0">
-            {/* Theme toggle for desktop */}
-            <div className="flex items-center gap-2 rounded-full px-2 xl:px-3 py-1.5 xl:py-2 backdrop-blur-sm bg-white/5 border border-white/10">
-              <Sun size={14} className={`transition-colors ${!isDarkMode ? 'text-primary' : 'text-muted-foreground'}`} />
-              <Switch 
-                checked={isDarkMode} 
-                onCheckedChange={toggleTheme} 
-                className="data-[state=checked]:bg-primary scale-75 xl:scale-90"
-              />
-              <Moon size={14} className={`transition-colors ${isDarkMode ? 'text-primary' : 'text-muted-foreground'}`} />
-            </div>
-            
-            {/* Authentication Buttons */}
-            <div className="flex items-center gap-1.5 xl:gap-2">
-              <Button 
-                variant="ghost" 
-                size="sm"
-                className="text-muted-foreground hover:text-primary hover:bg-primary/10 transition-all duration-300 px-2.5 xl:px-3 text-sm"
-                onClick={() => window.location.href = '/login'}
-              >
-                Log in
-              </Button>
-              <Button 
-                variant="default" 
-                size="sm"
-                className="bg-primary text-primary-foreground hover:bg-primary/90 shadow-luxury transition-all duration-300 px-2.5 xl:px-3 text-sm"
-                onClick={() => window.location.href = '/dashboard'}
-              >
-                Get Started
-              </Button>
-            </div>
-          </div>
         </header>
       </div>
 
-      {/* Mobile navigation overlay */}
+      {/* Mobile/Tablet Navigation Overlay */}
       {mobileMenuOpen && (
-        <div className="md:hidden fixed inset-0 backdrop-blur-[30px] bg-black/60 dark:bg-black/70 z-[9999] animate-slide-up">
+        <div className="lg:hidden fixed inset-0 z-50 bg-background/80 backdrop-blur-md">
           <div 
-            className="absolute top-20 sm:top-24 left-3 right-3 sm:left-4 sm:right-4 backdrop-blur-[40px] py-4 px-4 sm:px-6 border border-white/30 dark:border-white/20 rounded-xl shadow-premium bg-background/90 dark:bg-background/90 supports-[backdrop-filter]:bg-background/90"
+            className="absolute top-16 left-4 right-4 bg-background/95 backdrop-blur-xl border border-border rounded-lg shadow-lg p-6"
             data-mobile-menu
           >
-            <div className="flex flex-col gap-3 sm:gap-4">
+            <div className="flex flex-col space-y-4">
               {/* Navigation Links */}
-              <div className="space-y-2">
-                <a 
-                  href="#features" 
-                  className={`flex items-center px-4 py-3 text-sm sm:text-base rounded-lg transition-all duration-300 ${
-                    activePage === 'features' 
-                      ? 'bg-primary text-primary-foreground shadow-luxury' 
-                      : 'text-foreground hover:text-primary hover:bg-primary/10'
-                  }`}
-                  onClick={handleNavClick('features')}
+              {navigationLinks.map((item) => (
+                <a
+                  key={item.label}
+                  href={item.link}
+                  className="text-foreground hover:text-primary transition-colors duration-200 py-2 font-medium"
+                  onClick={() => setMobileMenuOpen(false)}
                 >
-                  <CircleDot size={16} className="mr-3" /> 
-                  Features
+                  {item.label}
                 </a>
-                <a 
-                  href="#dashboard" 
-                  className={`flex items-center px-4 py-3 text-sm sm:text-base rounded-lg transition-all duration-300 ${
-                    activePage === 'dashboard' 
-                      ? 'bg-primary text-primary-foreground shadow-luxury' 
-                      : 'text-foreground hover:text-primary hover:bg-primary/10'
-                  }`}
-                  onClick={handleNavClick('dashboard')}
-                >
-                  <LayoutDashboard size={16} className="mr-3" /> 
-                  Dashboard
-                </a>
-                <a 
-                  href="#pricing" 
-                  className={`flex items-center px-4 py-3 text-sm sm:text-base rounded-lg transition-all duration-300 ${
-                    activePage === 'pricing' 
-                      ? 'bg-primary text-primary-foreground shadow-luxury' 
-                      : 'text-foreground hover:text-primary hover:bg-primary/10'
-                  }`}
-                  onClick={handleNavClick('pricing')}
-                >
-                  <DollarSign size={16} className="mr-3" /> 
-                  Pricing
-                </a>
-              </div>
+              ))}
               
               {/* Divider */}
-              <div className="h-px bg-border"></div>
+              <div className="h-px bg-border my-4"></div>
               
               {/* Theme Toggle */}
-              <div className="flex items-center justify-between px-4 py-2">
+              <div className="flex items-center justify-between py-2">
                 <span className="text-sm text-muted-foreground">Theme</span>
-                <div className="flex items-center gap-3">
+                <div className="flex items-center gap-2">
                   <Sun size={16} className={`transition-colors ${!isDarkMode ? 'text-primary' : 'text-muted-foreground'}`} />
                   <Switch 
                     checked={isDarkMode} 
@@ -239,21 +168,27 @@ const Header = () => {
                 </div>
               </div>
               
-              {/* Authentication Buttons for Mobile */}
-              <div className="pt-2 space-y-2">
+              {/* Authentication Buttons */}
+              <div className="pt-4 space-y-3">
                 <Button 
                   variant="ghost" 
-                  className="w-full justify-center text-foreground hover:text-primary hover:bg-primary/10 transition-all duration-300"
-                  onClick={() => window.location.href = '/login'}
+                  className="w-full justify-center"
+                  onClick={() => {
+                    window.location.href = '/login';
+                    setMobileMenuOpen(false);
+                  }}
                 >
-                  Log in
+                  Login
                 </Button>
                 <Button 
                   variant="default" 
-                  className="w-full justify-center bg-primary text-primary-foreground hover:bg-primary/90 shadow-luxury transition-all duration-300"
-                  onClick={() => window.location.href = '/dashboard'}
+                  className="w-full justify-center"
+                  onClick={() => {
+                    window.location.href = '/signup';
+                    setMobileMenuOpen(false);
+                  }}
                 >
-                  Get Started
+                  Sign Up
                 </Button>
               </div>
             </div>
