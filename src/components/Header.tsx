@@ -58,12 +58,10 @@ const Header = () => {
   };
 
   const navigationLinks = [
-    { label: "Overview", link: "/" },
-    { label: "Market Analysis", link: "/market-analysis" },
-    { label: "2D Rendering", link: "/rendering-2d" },
-    { label: "3D Rendering", link: "/rendering-3d" },
-    { label: "ROI Calculator", link: "/roi-calculator" },
-    { label: "Marketplace", link: "/marketplace" }
+    { label: "Features", link: "/#features" },
+    { label: "Services", link: "/#services" },
+    { label: "Pricing", link: "/#pricing" },
+    { label: "FAQ", link: "/faq" }
   ];
 
   return (
@@ -73,24 +71,24 @@ const Header = () => {
           {/* Logo */}
           <div className="flex items-center gap-2">
             <Logo />
-            <span className="font-bold text-lg text-foreground">VistaFold</span>
+            <span className="font-bold text-lg text-foreground">VistaForge</span>
           </div>
           
-          {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center space-x-8">
+          {/* Desktop & Tablet Navigation */}
+          <nav className="hidden md:flex items-center space-x-4 lg:space-x-8">
             {navigationLinks.map((item) => (
               <a
                 key={item.label}
                 href={item.link}
-                className="text-muted-foreground hover:text-primary transition-colors duration-200 font-medium"
+                className="text-muted-foreground hover:text-primary transition-colors duration-200 font-medium text-sm lg:text-base"
               >
                 {item.label}
               </a>
             ))}
           </nav>
           
-          {/* Desktop Right Actions */}
-          <div className="hidden lg:flex items-center gap-4">
+          {/* Desktop & Tablet Right Actions */}
+          <div className="hidden md:flex items-center gap-2 lg:gap-4">
             {/* Theme Toggle */}
             <div className="flex items-center gap-2">
               <Sun size={16} className={`transition-colors ${!isDarkMode ? 'text-primary' : 'text-muted-foreground'}`} />
@@ -119,9 +117,9 @@ const Header = () => {
             </Button>
           </div>
           
-          {/* Mobile/Tablet Hamburger Menu Button */}
+          {/* Mobile Hamburger Menu Button */}
           <button 
-            className="lg:hidden p-2 rounded-md text-muted-foreground hover:text-primary hover:bg-muted/50 transition-colors"
+            className="md:hidden p-2 rounded-md text-muted-foreground hover:text-primary hover:bg-muted/50 transition-colors"
             onClick={toggleMobileMenu}
             aria-label="Toggle menu"
             data-menu-button
@@ -131,9 +129,9 @@ const Header = () => {
         </header>
       </div>
 
-      {/* Mobile/Tablet Navigation Overlay */}
+      {/* Mobile Navigation Overlay */}
       {mobileMenuOpen && (
-        <div className="lg:hidden fixed inset-0 z-50 bg-background/80 backdrop-blur-md">
+        <div className="md:hidden fixed inset-0 z-50 bg-background/80 backdrop-blur-md">
           <div 
             className="absolute top-16 left-4 right-4 bg-background/95 backdrop-blur-xl border border-border rounded-lg shadow-lg p-6"
             data-mobile-menu
