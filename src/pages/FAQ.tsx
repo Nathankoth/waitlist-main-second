@@ -9,8 +9,8 @@ import {
 const FAQ = () => {
   const faqItems = [
     {
-      question: "What is VistaFold?",
-      answer: "VistaFold is a comprehensive real estate platform that provides market analysis, ROI calculations, 2D/3D rendering, property search, and portfolio management tools for real estate professionals and investors."
+      question: "What is VistaForge?",
+      answer: "VistaForge is a comprehensive real estate platform that provides market analysis, ROI calculations, 2D/3D rendering, property search, and portfolio management tools for real estate professionals and investors."
     },
     {
       question: "How accurate is the ROI Calculator?",
@@ -55,7 +55,7 @@ const FAQ = () => {
       <div className="space-y-6">
         <div>
           <h1 className="text-3xl font-bold">Frequently Asked Questions</h1>
-          <p className="text-muted-foreground">Find answers to common questions about VistaFold</p>
+          <p className="text-muted-foreground">Find answers to common questions about VistaForge</p>
         </div>
         
         <div className="max-w-4xl">

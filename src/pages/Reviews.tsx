@@ -97,7 +97,7 @@ const Reviews = () => {
           <Card>
             <CardHeader>
               <CardTitle>Leave a Review</CardTitle>
-              <CardDescription>Share your experience with VistaFold</CardDescription>
+              <CardDescription>Share your experience with VistaForge</CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
               <div>

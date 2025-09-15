@@ -79,7 +79,7 @@ export function AppSidebar() {
         <SidebarGroup>
           <SidebarGroupLabel className="flex items-center gap-2 px-2 py-4">
             <Logo />
-            {state !== "collapsed" && <span className="font-bold text-lg">VistaFold</span>}
+            {state !== "collapsed" && <span className="font-bold text-lg">VistaForge</span>}
           </SidebarGroupLabel>
           
           <SidebarGroupContent>
