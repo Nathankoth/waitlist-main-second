@@ -67,14 +67,14 @@ const Header = () => {
   return (
     <>
       <div className="sticky top-0 z-50 bg-background/80 backdrop-blur-md border-b border-border/40">
-        <header className="container mx-auto px-4 py-3 flex items-center justify-between">
+        <header className="container mx-auto px-4 py-3 flex items-center justify-between lg:grid lg:grid-cols-3 lg:gap-8">
           {/* Logo */}
-          <div className="flex items-center">
+          <div className="flex items-center lg:justify-start">
             <Logo />
           </div>
           
           {/* Desktop & Tablet Navigation */}
-          <nav className="hidden md:flex items-center space-x-4 lg:space-x-8">
+          <nav className="hidden md:flex items-center justify-center lg:justify-center space-x-4 lg:space-x-8">
             {navigationLinks.map((item) => (
               <a
                 key={item.label}
@@ -87,7 +87,7 @@ const Header = () => {
           </nav>
           
           {/* Desktop & Tablet Right Actions */}
-          <div className="hidden md:flex items-center gap-2 lg:gap-4">
+          <div className="hidden md:flex items-center justify-end gap-2 lg:gap-4">
             {/* Theme Toggle */}
             <div className="flex items-center gap-2">
               <Sun size={16} className={`transition-colors ${!isDarkMode ? 'text-primary' : 'text-muted-foreground'}`} />
