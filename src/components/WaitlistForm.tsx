@@ -58,7 +58,7 @@ const WaitlistForm = ({ isOpen, onClose }: WaitlistFormProps) => {
 
     try {
       // Call serverless endpoint
-      const response = await fetch(`${import.meta.env.VITE_SUPABASE_URL}/functions/v1/waitlist`, {
+      const response = await fetch('/api/waitlist', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
