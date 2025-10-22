@@ -1,0 +1,13 @@
+HERO SECTION COPY
+
+Kicker: "Vistaforge — Early Access"
+
+Headline: "Instant property snapshots — from phone photos to clear next steps"
+
+Subheadline: "Upload phone photos or plans, get instant 2D diagnostic insights, a lightweight ROI triage, and an easy path to paid verification & photoreal renders."
+
+Primary CTA: "Join the Waitlist"
+
+Secondary CTA: "Request a demo"
+
+Supporting Text: "Early access launching soon • Priority for waitlist members"
