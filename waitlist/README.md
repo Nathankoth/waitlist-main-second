@@ -30,7 +30,7 @@ SLACK_WEBHOOK_URL=https://hooks.slack.com/services/YOUR/SLACK/WEBHOOK
 Run the following SQL in your Supabase SQL editor to create the waitlist table:
 
 ```sql
-  Create waitlist table
+-- Create waitlist table
 CREATE TABLE IF NOT EXISTS waitlist (
   id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
   email VARCHAR(255) NOT NULL UNIQUE,
@@ -42,15 +42,15 @@ CREATE TABLE IF NOT EXISTS waitlist (
   updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
 );
 
-  Create indexes for better performance
+-- Create indexes for better performance
 CREATE INDEX IF NOT EXISTS idx_waitlist_email ON waitlist(email);
 CREATE INDEX IF NOT EXISTS idx_waitlist_role ON waitlist(role);
 CREATE INDEX IF NOT EXISTS idx_waitlist_created_at ON waitlist(created_at);
 
-  Enable Row Level Security
+-- Enable Row Level Security
 ALTER TABLE waitlist ENABLE ROW LEVEL SECURITY;
 
-  Create policy for service role
+-- Create policy for service role
 CREATE POLICY "Service role can manage waitlist" ON waitlist
   FOR ALL USING (auth.role() = 'service_role');
 ```
@@ -61,7 +61,7 @@ CREATE POLICY "Service role can manage waitlist" ON waitlist
 
 1. Install Supabase CLI: `npm install -g supabase`
 2. Login: `supabase login`
-3. Link your project: `supabase link  project-ref your-project-ref`
+3. Link your project: `supabase link --project-ref your-project-ref`
 4. Deploy: `supabase functions deploy waitlist`
 
 ### Vercel/Netlify

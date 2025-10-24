@@ -217,24 +217,24 @@ curl -X OPTIONS \
 After submitting test data, verify in Supabase:
 
 ```sql
-  View all waitlist entries
+-- View all waitlist entries
 SELECT * FROM waitlist ORDER BY created_at DESC;
 
-  Check for specific email
+-- Check for specific email
 SELECT * FROM waitlist WHERE email = 'test@example.com';
 
-  View role statistics
+-- View role statistics
 SELECT role, COUNT(*) as count 
 FROM waitlist 
 GROUP BY role 
 ORDER BY count DESC;
 
-  View waitlist stats view
+-- View waitlist stats view
 SELECT * FROM waitlist_stats;
 
-  Test RLS policies
-  As anonymous user (should only be able to insert)
-  As authenticated admin (should be able to select)
+-- Test RLS policies
+-- As anonymous user (should only be able to insert)
+-- As authenticated admin (should be able to select)
 ```
 
 ### Integration Tests
@@ -304,7 +304,7 @@ curl -X POST \
   'https://YOUR_PROJECT_ID.supabase.co/functions/v1/waitlist' \
   -H 'Content-Type: application/json' \
   -d '{
-    "email": "test@example.com'\'' OR 1=1 ",
+    "email": "test@example.com'\'' OR 1=1--",
     "role": "realtor"
   }'
 ```
@@ -330,14 +330,14 @@ curl -X POST \
 After testing, clean up test data:
 
 ```sql
-  Delete test entries
+-- Delete test entries
 DELETE FROM waitlist 
 WHERE email LIKE '%@example.com' 
    OR email LIKE 'test%@%' 
    OR email LIKE 'load-test%@%'
    OR email LIKE 'rate-test%@%';
 
-  Verify cleanup
+-- Verify cleanup
 SELECT COUNT(*) FROM waitlist;
 ```
 

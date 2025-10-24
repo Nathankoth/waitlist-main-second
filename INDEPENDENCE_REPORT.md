@@ -101,7 +101,7 @@ The project now includes:
 ### **Hosting**: Vercel (NathanCourt scope)
 ### **Independence**: Fully detached from Lovable.dev and Cursor.ai
 
- 
+---
 
 **🎯 Mission Status: COMPLETE**  
 Your VistaForge waitlist is now **100% independent and subscription-free**!

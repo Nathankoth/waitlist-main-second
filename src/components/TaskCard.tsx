@@ -92,7 +92,7 @@ const TaskCard: React.FC<TaskCardProps> = ({ task, onDragStart, onDragEnd, onSta
                 key={i}
                 className="h-6 w-6 rounded-full bg-muted border-2 border-card"
                 style={{
-                  backgroundColor: `hsl(var( muted) / ${0.8 - i * 0.1})`
+                  backgroundColor: `hsl(var(--muted) / ${0.8 - i * 0.1})`
                 }}
               ></div>
             ))}
