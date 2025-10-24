@@ -1,6 +1,6 @@
 # VistaForge Waitlist - Fully Independent
 
-> **🎉 100% Subscription-Free & Independent** - No Lovable.dev or Cursor.ai dependencies
+> **🎉 100% Subscription Free & Independent** - No Lovable.dev or Cursor.ai dependencies
 
 A modern, fully independent waitlist application built with React, Vite, and Supabase. This project has been completely detached from external AI platform dependencies and runs entirely on your own infrastructure.
 

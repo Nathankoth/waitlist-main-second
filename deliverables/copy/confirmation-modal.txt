@@ -1,8 +1,8 @@
 CONFIRMATION MODAL COPY
 
-Title: "Thanks — you're on the list!"
+Title: "Thanks, you're on the list!"
 
-Message: "We'll email early access + launch discounts. Invite a friend to move up the list!"
+Message: "We'll email early access and launch discounts. Invite a friend to move up the list!"
 
 Share Buttons:
 - Share on Twitter
