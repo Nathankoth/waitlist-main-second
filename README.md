@@ -139,7 +139,7 @@ The app works with fallback Supabase values, but for full functionality:
 ### Environment Variables
 
 | Variable | Description | Required |
-|----------|-------------|----------|
+| | | |
 | `VITE_SUPABASE_URL` | Your Supabase project URL | No (has fallback) |
 | `VITE_SUPABASE_ANON_KEY` | Your Supabase anon key | No (has fallback) |
 
@@ -190,7 +190,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - **Repository**: https://github.com/Nathankoth/waitlist-main-second.git
 - **Vercel Dashboard**: https://vercel.com/nathankoths-projects/waitlist
 
----
+ 
 
 ## 🎯 Independence Status
 

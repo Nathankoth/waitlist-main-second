@@ -6,6 +6,7 @@ import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Loader2, CheckCircle2, Share2, Copy } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
+import copy from '@/content/copy.json';
 
 interface WaitlistFormProps {
   isOpen: boolean;
@@ -77,8 +78,8 @@ const WaitlistForm = ({ isOpen, onClose }: WaitlistFormProps) => {
 
       setIsSuccess(true);
       toast({
-        title: "You're on the list!",
-        description: "We'll email you with early access and launch discounts.",
+        title: copy.thankYou.title,
+        description: copy.thankYou.message,
       });
     } catch (error) {
       toast({
@@ -91,21 +92,13 @@ const WaitlistForm = ({ isOpen, onClose }: WaitlistFormProps) => {
     }
   };
 
-  const handleShare = (platform: 'twitter' | 'linkedin' | 'copy') => {
+  const handleShare = () => {
     const shareUrl = window.location.origin;
-    const shareText = "Join me on the VistaForge waitlist - instant property insights from phone photos!";
-    
-    if (platform === 'twitter') {
-      window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(shareUrl)}`, '_blank');
-    } else if (platform === 'linkedin') {
-      window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}`, '_blank');
-    } else {
-      navigator.clipboard.writeText(shareUrl);
-      toast({
-        title: "Link copied!",
-        description: "Share link has been copied to clipboard.",
-      });
-    }
+    navigator.clipboard.writeText(shareUrl);
+    toast({
+      title: "Link copied!",
+      description: "Share link has been copied to clipboard.",
+    });
   };
 
   const resetForm = () => {
@@ -129,24 +122,16 @@ const WaitlistForm = ({ isOpen, onClose }: WaitlistFormProps) => {
             <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-primary/20">
               <CheckCircle2 className="h-6 w-6 text-primary" />
             </div>
-            <DialogTitle className="text-center">Thanks — you're on the list!</DialogTitle>
+            <DialogTitle className="text-center">{copy.thankYou.title}</DialogTitle>
             <DialogDescription className="text-center">
-              We'll email early access + launch discounts. Invite a friend to move up the list!
+              {copy.thankYou.message}
             </DialogDescription>
           </DialogHeader>
           
           <div className="flex flex-col gap-2 mt-4">
-            <Button onClick={() => handleShare('twitter')} variant="outline" className="w-full">
-              <Share2 className="mr-2 h-4 w-4" />
-              Share on Twitter
-            </Button>
-            <Button onClick={() => handleShare('linkedin')} variant="outline" className="w-full">
-              <Share2 className="mr-2 h-4 w-4" />
-              Share on LinkedIn
-            </Button>
-            <Button onClick={() => handleShare('copy')} variant="outline" className="w-full">
+            <Button onClick={handleShare} variant="outline" className="w-full">
               <Copy className="mr-2 h-4 w-4" />
-              Copy Link
+              Copy link to share
             </Button>
           </div>
         </DialogContent>
@@ -160,7 +145,7 @@ const WaitlistForm = ({ isOpen, onClose }: WaitlistFormProps) => {
         <DialogHeader>
           <DialogTitle>Join the Waitlist</DialogTitle>
           <DialogDescription>
-            Get early access and exclusive launch discounts
+            {copy.hero.subheadline}
           </DialogDescription>
         </DialogHeader>
         
@@ -170,7 +155,7 @@ const WaitlistForm = ({ isOpen, onClose }: WaitlistFormProps) => {
             <Input
               id="email"
               type="email"
-              placeholder="your@email.com"
+              placeholder={copy.hero.emailPlaceholder}
               value={formData.email}
               onChange={(e) => setFormData({ ...formData, email: e.target.value })}
               className={errors.email ? 'border-destructive' : ''}

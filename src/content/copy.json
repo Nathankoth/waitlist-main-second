@@ -1,0 +1,20 @@
+{
+  "siteName": "VistaForge",
+  "metaTitle": "VistaForge — AI visual builder for creators | Early access",
+  "metaDescription": "VistaForge helps creators and teams build visuals fast using AI. Join the early-access list for an invite and product updates.",
+  "hero": {
+    "headline": "Design finished visuals in minutes — not hours.",
+    "subheadline": "VistaForge turns simple ideas into beautiful visuals with AI-assisted templates and instant previews. Join the early-access list for priority invites and launch perks.",
+    "cta": "Get early access",
+    "emailPlaceholder": "Your best email address",
+    "privacyNote": "We'll only email you about the product — no spam, ever."
+  },
+  "thankYou": {
+    "title": "You're on the list 👏",
+    "message": "Thanks! You'll hear from us with an invite and updates. Meanwhile, keep an eye on your inbox."
+  },
+  "footer": {
+    "copyright": "© VistaForge. All rights reserved.",
+    "privacy": "We respect your privacy. Your email will only be used for launch communications."
+  }
+}

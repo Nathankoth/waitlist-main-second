@@ -3,6 +3,7 @@ import { Button } from '@/components/ui/button';
 import { ArrowRight, Sparkles } from 'lucide-react';
 import heroImage from '@/assets/hero-analytics.jpg';
 import WaitlistForm from './WaitlistForm';
+import copy from '@/content/copy.json';
 
 const WaitlistHero = () => {
   const [showForm, setShowForm] = useState(false);
@@ -17,11 +18,11 @@ const WaitlistHero = () => {
           </div>
           
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-heading font-bold tracking-tight text-white leading-tight px-2 sm:px-0">
-            Instant property snapshots — from phone photos to clear next steps
+            {copy.hero.headline}
           </h1>
           
           <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-200 max-w-xs sm:max-w-2xl lg:max-w-3xl mx-auto leading-relaxed font-body px-4 sm:px-0">
-            Upload phone photos or plans, get instant 2D diagnostic insights, a lightweight ROI triage, and an easy path to paid verification & photoreal renders.
+            {copy.hero.subheadline}
           </p>
         </div>
 
@@ -32,7 +33,7 @@ const WaitlistHero = () => {
             className="w-full sm:w-auto text-base sm:text-lg px-6 sm:px-8 py-3 sm:py-4 bg-primary hover:bg-primary/90 text-primary-foreground font-semibold transition-all duration-500 hover:scale-105 shadow-luxury hover:shadow-xl"
           >
             <Sparkles className="mr-2 h-4 w-4 sm:h-5 sm:w-5" />
-            Join the Waitlist
+            {copy.hero.cta}
             <ArrowRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5" />
           </Button>
           <Button 
@@ -45,7 +46,7 @@ const WaitlistHero = () => {
         </div>
         
         <div className="text-xs sm:text-sm text-gray-300 font-body px-4 sm:px-0">
-          Early access launching soon • Priority for waitlist members
+          {copy.hero.privacyNote}
         </div>
       </div>
 

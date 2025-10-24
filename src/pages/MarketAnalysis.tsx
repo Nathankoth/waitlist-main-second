@@ -51,7 +51,7 @@ const MarketAnalysis = () => {
                   <XAxis dataKey="month" />
                   <YAxis />
                   <Tooltip formatter={(value) => [`$${value.toLocaleString()}`, 'Price']} />
-                  <Line type="monotone" dataKey="price" stroke="hsl(var(--primary))" strokeWidth={2} />
+                  <Line type="monotone" dataKey="price" stroke="hsl(var( primary))" strokeWidth={2} />
                 </LineChart>
               </ResponsiveContainer>
             </CardContent>
@@ -69,7 +69,7 @@ const MarketAnalysis = () => {
                   <XAxis dataKey="month" />
                   <YAxis />
                   <Tooltip />
-                  <Bar dataKey="volume" fill="hsl(var(--primary))" />
+                  <Bar dataKey="volume" fill="hsl(var( primary))" />
                 </BarChart>
               </ResponsiveContainer>
             </CardContent>

@@ -86,7 +86,7 @@ const HeroSection = () => {
 
       {/* Analytics Dashboard Preview */}
       <div className={`w-full max-w-7xl mt-8 md:mt-16 px-4 sm:px-6 lg:px-8 z-20 transition-all duration-1000 delay-500 ${dashboardVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`}>
-        <div className="relative rounded-xl md:rounded-2xl overflow-hidden border border-white/20 shadow-glass backdrop-blur-xl" style={{ background: 'var(--gradient-glass)' }}>
+        <div className="relative rounded-xl md:rounded-2xl overflow-hidden border border-white/20 shadow-glass backdrop-blur-xl" style={{ background: 'var( gradient-glass)' }}>
           {/* Dashboard Header */}
           <div className="bg-background/10 backdrop-blur-md w-full border-b border-white/10">
             <div className="flex items-center justify-between p-3 sm:p-4 md:p-6">
