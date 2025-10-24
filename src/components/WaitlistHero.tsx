@@ -13,15 +13,15 @@ const WaitlistHero = () => {
         <div className="space-y-4 md:space-y-6">
           <div className="inline-flex items-center px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-primary/20 backdrop-blur-sm border border-primary/30 text-primary text-xs sm:text-sm font-medium animate-fade-in">
             <Sparkles className="w-2.5 h-2.5 sm:w-3 sm:h-3 mr-1.5 sm:mr-2" />
-            <span>Vistaforge — Early Access</span>
+            <span>Vistaforge Early Access</span>
           </div>
           
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-heading font-bold tracking-tight text-white leading-tight px-2 sm:px-0">
-            Instant property snapshots — from phone photos to clear next steps
+            Instant property snapshots from phone photos to clear next steps
           </h1>
           
           <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-200 max-w-xs sm:max-w-2xl lg:max-w-3xl mx-auto leading-relaxed font-body px-4 sm:px-0">
-            Upload phone photos or plans, get instant 2D diagnostic insights, a lightweight ROI triage, and an easy path to paid verification & photoreal renders.
+            Upload phone photos or plans, get instant 2D diagnostic insights, a lightweight ROI triage, and an easy path to paid verification and photoreal renders.
           </p>
         </div>
 
