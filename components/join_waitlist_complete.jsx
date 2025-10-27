@@ -22,7 +22,7 @@ export default function JoinWaitlistComplete({ className = '' }) {
     const name = (form.name?.value || '').trim();
     const email = (form.email?.value || '').trim().toLowerCase();
     const monthly_user = form.monthly_user?.value || null;
-    const role = (form.role?.value && form.role.value !== '') ? form.role.value : null;
+    const role = form.role?.value?.trim() || null;
 
     if (!name) { setStatus('error'); setMessage('Please enter your full name.'); setLoading(false); return; }
     if (!email || !/\S+@\S+\.\S+/.test(email)) { setStatus('error'); setMessage('Please enter a valid email.'); setLoading(false); return; }
@@ -64,15 +64,7 @@ export default function JoinWaitlistComplete({ className = '' }) {
 
           <label>
             <div style={{ fontSize: 13, marginBottom: 6 }}>Role (optional)</div>
-            <select name="role" defaultValue="" style={{ width: '100%', padding: '10px', borderRadius: 8 }}>
-              <option value="">Prefer not to say</option>
-              <option value="Homeowner / Buyer">Homeowner / Buyer</option>
-              <option value="Investor">Investor</option>
-              <option value="Real Estate Agent / Realtor">Real Estate Agent / Realtor</option>
-              <option value="Architect">Architect</option>
-              <option value="Surveyor">Surveyor</option>
-              <option value="Lawyer">Lawyer</option>
-            </select>
+            <input name="role" type="text" placeholder="Agent, Broker, Owner..." style={{ width: '100%', padding: '10px', borderRadius: 8 }} />
           </label>
 
           <div style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
