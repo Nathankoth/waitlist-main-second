@@ -5,9 +5,11 @@ import { Menu, X, Sun, Moon } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Switch } from '@/components/ui/switch';
 import { useTheme } from '@/contexts/ThemeContext';
+import WaitlistForm from './WaitlistForm';
 
 const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [showWaitlistForm, setShowWaitlistForm] = useState(false);
   const { theme, toggleTheme } = useTheme();
   const isDarkMode = theme === 'dark';
 
@@ -83,19 +85,12 @@ const Header = () => {
             </div>
             
             <Button 
-              variant="ghost" 
-              size="sm"
-              className="text-muted-foreground hover:text-primary"
-              onClick={() => window.location.href = '/login'}
-            >
-              Login
-            </Button>
-            <Button 
               variant="default" 
               size="sm"
-              onClick={() => window.location.href = '/signup'}
+              className="bg-primary hover:bg-primary/90"
+              onClick={() => setShowWaitlistForm(true)}
             >
-              Sign Up
+              Join Waitlist
             </Button>
           </div>
           
@@ -149,32 +144,24 @@ const Header = () => {
               </div>
               
               {/* Authentication Buttons */}
-              <div className="pt-4 space-y-3">
-                <Button 
-                  variant="ghost" 
-                  className="w-full justify-center"
-                  onClick={() => {
-                    window.location.href = '/login';
-                    setMobileMenuOpen(false);
-                  }}
-                >
-                  Login
-                </Button>
+              <div className="pt-4">
                 <Button 
                   variant="default" 
-                  className="w-full justify-center"
+                  className="w-full justify-center bg-primary hover:bg-primary/90"
                   onClick={() => {
-                    window.location.href = '/signup';
+                    setShowWaitlistForm(true);
                     setMobileMenuOpen(false);
                   }}
                 >
-                  Sign Up
+                  Join Waitlist
                 </Button>
               </div>
             </div>
           </div>
         </div>
       )}
+      
+      <WaitlistForm isOpen={showWaitlistForm} onClose={() => setShowWaitlistForm(false)} />
     </>
   );
 };

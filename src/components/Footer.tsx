@@ -59,7 +59,7 @@ const Footer = () => {
             </div>
           </div>
           
-          <div className="space-y-4">
+          <div className="space-y-4" data-hidden-by-cursor="true" style={{ display: 'none' }}>
             <h4 className="font-medium text-lg text-foreground">Product</h4>
             <ul className="space-y-3">
               <li><a href="#features" className="text-muted-foreground hover:text-foreground transition-colors">Features</a></li>
@@ -70,7 +70,7 @@ const Footer = () => {
             </ul>
           </div>
           
-          <div className="space-y-4">
+          <div className="space-y-4" data-hidden-by-cursor="true" style={{ display: 'none' }}>
             <h4 className="font-medium text-lg text-foreground">Company</h4>
             <ul className="space-y-3">
               <li><a href="#" className="text-muted-foreground hover:text-foreground transition-colors">About</a></li>
@@ -81,7 +81,7 @@ const Footer = () => {
             </ul>
           </div>
           
-          <div className="space-y-4">
+          <div className="space-y-4" data-hidden-by-cursor="true" style={{ display: 'none' }}>
             <h4 className="font-medium text-lg text-foreground">Resources</h4>
             <ul className="space-y-3">
               <li><a href="#" className="text-muted-foreground hover:text-foreground transition-colors">Documentation</a></li>
