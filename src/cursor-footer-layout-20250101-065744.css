@@ -1,0 +1,135 @@
+/* injected by Cursor — footer layout fix */
+/* Replace `.site-footer` below with detected footer selector if different */
+.site-footer, footer, .footer, #footer {
+  box-sizing: border-box;
+}
+
+.footer-layout-wrapper { 
+  display: flex; 
+  flex-direction: row; 
+  justify-content: space-between; 
+  align-items: flex-start; 
+  gap: 32px; 
+  width: 100%; 
+  max-width: 1200px; 
+  margin: 0 auto; 
+  padding: 28px 20px; 
+}
+
+.footer-left, .footer-right { 
+  display: flex; 
+  flex-direction: column; 
+  gap: 10px; 
+}
+
+.footer-left { 
+  flex: 1 1 60%; 
+  align-items: flex-start; 
+}
+
+.footer-right { 
+  flex: 0 0 36%; 
+  align-items: flex-end; 
+  text-align: right; 
+}
+
+.footer-left .brand { 
+  display: flex; 
+  flex-direction: column; 
+  gap: 6px; 
+  align-items: flex-start; 
+}
+
+.footer-left .brand .logo { 
+  /* keep existing logo sizing; do not override */ 
+}
+
+.footer-left .tagline { 
+  color: var(--footer-secondary, #A6A6A6); 
+  font-size: 0.95rem; 
+  line-height: 1.35; 
+}
+
+.footer-left .mini-list { 
+  display: flex; 
+  gap: 12px; 
+  flex-wrap: wrap; 
+  color: var(--footer-text, #CCCCCC); 
+}
+
+.footer-right .contact { 
+  display: flex; 
+  flex-direction: column; 
+  gap: 8px; 
+  align-items: flex-end; 
+}
+
+.footer-right a.contact-link { 
+  color: var(--footer-text, #CCCCCC); 
+  font-weight: 600; 
+  text-decoration: none; 
+}
+
+.footer-right .socials { 
+  display: flex; 
+  gap: 12px; 
+  margin-top: 6px; 
+}
+
+.footer-right .socials a { 
+  width: 40px; 
+  height: 40px; 
+  display: inline-flex; 
+  align-items: center; 
+  justify-content: center; 
+  border-radius: 8px; 
+  transition: transform .12s ease, color .12s ease, background-color .12s ease; 
+  color: var(--footer-text, #CCCCCC); 
+}
+
+.footer-right .socials a:hover { 
+  transform: translateY(-3px); 
+  color: var(--brand-accent, #FFD36F); 
+  background-color: rgba(255,255,255,0.03); 
+}
+
+.footer-legal { 
+  margin-top: 14px; 
+  color: var(--footer-secondary, #A6A6A6); 
+  font-size: 0.85rem; 
+  text-align: center; 
+  width: 100%; 
+}
+
+/* Mobile: stack and center */
+@media (max-width: 760px) {
+  .footer-layout-wrapper { 
+    flex-direction: column; 
+    align-items: center; 
+    padding: 20px; 
+    gap: 14px; 
+  }
+  .footer-left, .footer-right { 
+    width: 100%; 
+    align-items: center; 
+    text-align: center; 
+  }
+  .footer-right { 
+    align-items: center; 
+  }
+  .footer-right .contact { 
+    align-items: center; 
+  }
+}
+
+/* Override existing grid layout */
+.footer-top {
+  display: none !important;
+}
+
+/* Ensure proper spacing for legal section */
+.footer-legal {
+  border-top: 1px solid rgba(255,255,255,0.06);
+  padding-top: 20px;
+  margin-top: 20px;
+}
