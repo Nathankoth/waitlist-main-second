@@ -3,9 +3,12 @@ import { Button } from '@/components/ui/button';
 import { ArrowRight, Sparkles } from 'lucide-react';
 import heroImage from '@/assets/hero-analytics.jpg';
 import WaitlistForm from './WaitlistForm';
+import { useTheme } from '@/contexts/ThemeContext';
 
 const WaitlistHero = () => {
   const [showForm, setShowForm] = useState(false);
+  const { theme } = useTheme();
+  const isDarkMode = theme === 'dark';
 
   return (
     <section className="relative w-full min-h-screen flex flex-col items-center justify-center overflow-hidden hero-background" style={{ backgroundImage: `url(${heroImage})` }}>
@@ -38,7 +41,7 @@ const WaitlistHero = () => {
           <Button 
             size="lg" 
             variant="outline" 
-            className="w-full sm:w-auto text-base sm:text-lg px-6 sm:px-8 py-3 sm:py-4 border-white/30 text-white hover:bg-white/10 hover:border-primary/50 font-semibold backdrop-blur-sm transition-all duration-300 hover:shadow-lg"
+            className={`w-full sm:w-auto text-base sm:text-lg px-6 sm:px-8 py-3 sm:py-4 border-white/30 hover:bg-white/10 hover:border-primary/50 font-semibold backdrop-blur-sm transition-all duration-300 hover:shadow-lg ${isDarkMode ? 'text-white' : 'text-black'}`}
           >
             Request a demo
           </Button>
