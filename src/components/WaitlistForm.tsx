@@ -65,7 +65,7 @@ const WaitlistForm = ({ isOpen, onClose }: WaitlistFormProps) => {
         },
         body: JSON.stringify({
           ...formData,
-          monthly_listings: formData.monthly_listings ? parseInt(formData.monthly_listings) : null,
+          monthly_listings: formData.monthly_listings || null,
         }),
       });
 
@@ -220,13 +220,21 @@ const WaitlistForm = ({ isOpen, onClose }: WaitlistFormProps) => {
 
           <div className="space-y-2">
             <Label htmlFor="monthly_listings">Monthly Listings (optional)</Label>
-            <Input
-              id="monthly_listings"
-              type="number"
-              placeholder="Number of listings per month"
+            <Select
               value={formData.monthly_listings}
-              onChange={(e) => setFormData({ ...formData, monthly_listings: e.target.value })}
-            />
+              onValueChange={(value) => setFormData({ ...formData, monthly_listings: value })}
+            >
+              <SelectTrigger>
+                <SelectValue placeholder="Select approximate number of listings" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="0–5 listings">0–5 listings</SelectItem>
+                <SelectItem value="5–10 listings">5–10 listings</SelectItem>
+                <SelectItem value="10–20 listings">10–20 listings</SelectItem>
+                <SelectItem value="20–40 listings">20–40 listings</SelectItem>
+                <SelectItem value="40+ listings">40+ listings</SelectItem>
+              </SelectContent>
+            </Select>
           </div>
 
           <div className="space-y-2">

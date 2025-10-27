@@ -39,6 +39,15 @@ const VALID_ROLES = [
   'other'
 ];
 
+// Valid monthly listings options
+const VALID_MONTHLY_LISTINGS = [
+  '0–5 listings',
+  '5–10 listings',
+  '10–20 listings',
+  '20–40 listings',
+  '40+ listings'
+];
+
 /**
  * Validates and sanitizes input data
  */
@@ -51,16 +60,15 @@ function validateInput(data) {
   }
   
   // Validate role
-  if (data.role && !VALID_ROLES.includes(data.role.toLowerCase())) {
+  if (!data.role) {
+    errors.push('Role is required');
+  } else if (!VALID_ROLES.includes(data.role.toLowerCase())) {
     errors.push('Invalid role');
   }
   
   // Validate monthly_listings (if provided)
-  if (data.monthly_listings !== null && data.monthly_listings !== undefined) {
-    const listings = parseInt(data.monthly_listings);
-    if (isNaN(listings) || listings < 0 || listings > 100000) {
-      errors.push('Invalid monthly listings value');
-    }
+  if (data.monthly_listings && !VALID_MONTHLY_LISTINGS.includes(data.monthly_listings)) {
+    errors.push('Invalid monthly listings value');
   }
   
   return errors;
@@ -76,7 +84,7 @@ async function insertToDatabase(supabase, data) {
       email: data.email.toLowerCase().trim(),
       role: data.role?.toLowerCase() || null,
       company: data.company?.trim() || null,
-      monthly_listings: data.monthly_listings ? parseInt(data.monthly_listings) : null,
+      monthly_listings: data.monthly_listings || null,
       how_heard: data.how_heard?.trim() || null,
     }])
     .select()
