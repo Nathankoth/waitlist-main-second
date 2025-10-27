@@ -57,12 +57,14 @@ This project is **completely independent** and will continue working even if:
    npm install
    ```
 
-3. **Set up environment variables** (optional)
-   Create a `.env.local` file:
+3. **Set up environment variables**
+   Copy `.env.example` to `.env.local` and fill in your values:
    ```env
-   VITE_SUPABASE_URL=your_supabase_project_url
+   VITE_SUPABASE_URL=https://blwcbwzhjhmrkadndmip.supabase.co
    VITE_SUPABASE_ANON_KEY=your_supabase_anon_key
    ```
+   
+   **⚠️ Security Note**: Never commit `.env.local` or any environment files to version control.
 
 4. **Start development server**
    ```bash
@@ -142,6 +144,17 @@ The app works with fallback Supabase values, but for full functionality:
 |----------|-------------|----------|
 | `VITE_SUPABASE_URL` | Your Supabase project URL | No (has fallback) |
 | `VITE_SUPABASE_ANON_KEY` | Your Supabase anon key | No (has fallback) |
+
+## 🔒 Security
+
+This project is configured for secure, independent deployment:
+
+- **Environment Variables**: All sensitive data is stored in environment variables
+- **No Hardcoded Secrets**: No API keys or secrets are committed to version control
+- **Gitignore Protection**: All `.env` files and sensitive data are gitignored
+- **Vercel Integration**: Secure deployment with environment variable injection
+
+See [SECURITY.md](./SECURITY.md) for detailed security configuration.
 
 ## 🛡️ Independence Features
 
