@@ -1,0 +1,118 @@
+/* Footer polish injected by Cursor — non-destructive override */
+.footer, footer, .site-footer, #footer {
+  border-top: 1px solid rgba(255,255,255,0.06);
+  padding: 28px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.footer .footer-top, footer .footer-top { 
+  display: flex; 
+  flex-direction: row; 
+  gap: 24px; 
+  align-items: center; 
+  width: 100%; 
+}
+
+.footer .brand-block { 
+  display: flex; 
+  flex-direction: column; 
+  gap: 6px; 
+}
+
+.footer .brand-block .tagline { 
+  color: var(--footer-secondary, #A6A6A6); 
+  font-size: 0.95rem; 
+  line-height: 1.35; 
+}
+
+.footer .contact-block { 
+  display: flex; 
+  flex-direction: column; 
+  gap: 6px; 
+  margin-top: 6px; 
+}
+
+.footer .contact-block a, .footer .contact-block span { 
+  color: var(--footer-text, #CCCCCC); 
+  font-weight: 500; 
+  text-decoration: none; 
+}
+
+.footer .socials { 
+  display: flex; 
+  gap: 12px; 
+  margin-top: 8px; 
+}
+
+.footer .socials a { 
+  color: var(--footer-text, #CCCCCC); 
+  display: inline-flex; 
+  align-items: center; 
+  justify-content: center; 
+  width: 36px; 
+  height: 36px; 
+  border-radius: 8px; 
+  transition: transform .12s ease, background-color .12s ease; 
+}
+
+.footer .socials a:hover { 
+  transform: translateY(-3px); 
+  background-color: rgba(255,255,255,0.03); 
+  color: var(--brand-accent, #FFD36F); 
+}
+
+.footer .legal { 
+  color: var(--footer-secondary, #A6A6A6); 
+  font-size: 0.85rem; 
+  margin-top: 12px; 
+}
+
+/* Responsive: stack center on small screens */
+@media (max-width: 760px) {
+  .footer, footer, .site-footer { 
+    text-align: center; 
+    align-items: center; 
+  }
+  .footer .footer-top { 
+    flex-direction: column; 
+    align-items: center; 
+  }
+  .footer .socials { 
+    justify-content: center; 
+  }
+}
+
+/* Override existing Tailwind classes for better hierarchy */
+footer .text-muted-foreground {
+  color: var(--footer-text, #CCCCCC) !important;
+}
+
+footer .text-sm {
+  font-size: 0.95rem !important;
+  font-weight: 500 !important;
+}
+
+footer .h-10.w-10 {
+  width: 36px !important;
+  height: 36px !important;
+}
+
+/* Ensure social icons have proper hover states */
+footer a[target="_blank"]:hover {
+  color: var(--brand-accent, #FFD36F) !important;
+  transform: translateY(-3px);
+  background-color: rgba(255,255,255,0.03);
+}
+
+/* Legal links styling */
+footer .mt-16.pt-8 a {
+  color: var(--footer-secondary, #A6A6A6) !important;
+  font-size: 0.85rem !important;
+}
+
+footer .mt-16.pt-8 a:hover {
+  color: var(--footer-text, #CCCCCC) !important;
+}
