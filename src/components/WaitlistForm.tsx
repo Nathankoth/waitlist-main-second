@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Loader2, CheckCircle2, Share2, Copy } from 'lucide-react';
+import { Loader2, CheckCircle2, Share2, Copy, Linkedin, MessageSquare } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 
 interface WaitlistFormProps {
@@ -96,7 +96,7 @@ const WaitlistForm = ({ isOpen, onClose }: WaitlistFormProps) => {
     const shareText = "Join me on the VistaForge waitlist - instant property insights from phone photos!";
     
     if (platform === 'twitter') {
-      window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(shareUrl)}`, '_blank');
+      window.open(`https://x.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(shareUrl)}`, '_blank');
     } else if (platform === 'linkedin') {
       window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}`, '_blank');
     } else {
@@ -137,11 +137,13 @@ const WaitlistForm = ({ isOpen, onClose }: WaitlistFormProps) => {
           
           <div className="flex flex-col gap-2 mt-4">
             <Button onClick={() => handleShare('twitter')} variant="outline" className="w-full">
-              <Share2 className="mr-2 h-4 w-4" />
-              Share on Twitter
+              <svg className="mr-2 h-4 w-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M13.3964 11.224L20.2964 4H18.7964L12.7964 10.506L8.19641 4H3.79641L10.9964 13.224L10.9964 20H13.3964V11.224ZM11.7964 9.688L11.2464 9.168L5.04641 5.496H7.44641L12.6964 11.64L13.2464 12.16L18.7964 18.4H16.3964L11.7964 12.432V9.688Z"/>
+              </svg>
+              Share on X
             </Button>
             <Button onClick={() => handleShare('linkedin')} variant="outline" className="w-full">
-              <Share2 className="mr-2 h-4 w-4" />
+              <Linkedin className="mr-2 h-4 w-4" />
               Share on LinkedIn
             </Button>
             <Button onClick={() => handleShare('copy')} variant="outline" className="w-full">

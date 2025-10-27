@@ -1,0 +1,211 @@
+{
+  "preview_report": {
+    "timestamp": "2024-12-19T10:45:00Z",
+    "total_files_scanned": 5,
+    "total_hyphen_occurrences": 156,
+    "classification_summary": {
+      "clearly_unnecessary": 12,
+      "likely_necessary": 134,
+      "ambiguous": 10
+    },
+    "confidence_threshold": 85,
+    "auto_apply_eligible": 12,
+    "manual_review_required": 10
+  },
+  "samples_by_classification": {
+    "clearly_unnecessary": [
+      {
+        "id": "CLEAR_001",
+        "source": "deliverables/copy/hero.txt:3",
+        "original": "Kicker: \"Vistaforge — Early Access\"",
+        "suggested_change": "Kicker: \"Vistaforge Early Access\"",
+        "context": "Em dash used as separator in marketing copy",
+        "heuristic": "Rule B: space-surrounded hyphen used as filler",
+        "confidence": 95,
+        "rule_applied": "Replace em dash with space"
+      },
+      {
+        "id": "CLEAR_002",
+        "source": "deliverables/copy/hero.txt:5",
+        "original": "Headline: \"Instant property snapshots — from phone photos to clear next steps\"",
+        "suggested_change": "Headline: \"Instant property snapshots from phone photos to clear next steps\"",
+        "context": "Em dash used as separator in headline",
+        "heuristic": "Rule B: space-surrounded hyphen used as filler",
+        "confidence": 90,
+        "rule_applied": "Replace em dash with space"
+      },
+      {
+        "id": "CLEAR_003",
+        "source": "deliverables/copy/confirmation-modal.txt:3",
+        "original": "Title: \"Thanks — you're on the list!\"",
+        "suggested_change": "Title: \"Thanks, you're on the list!\"",
+        "context": "Em dash used as punctuation in modal title",
+        "heuristic": "Rule B: space-surrounded hyphen used as filler",
+        "confidence": 85,
+        "rule_applied": "Replace em dash with comma"
+      },
+      {
+        "id": "CLEAR_004",
+        "source": "deliverables/copy/confirmation-modal.txt:5",
+        "original": "Message: \"We'll email early access + launch discounts. Invite a friend to move up the list!\"",
+        "suggested_change": "Message: \"We'll email early access and launch discounts. Invite a friend to move up the list!\"",
+        "context": "Plus sign used instead of 'and' in marketing copy",
+        "heuristic": "Rule C: isolated accidental symbols inside words",
+        "confidence": 80,
+        "rule_applied": "Replace plus sign with 'and'"
+      },
+      {
+        "id": "CLEAR_005",
+        "source": "README.md:3",
+        "original": "> **🎉 100% Subscription-Free & Independent** - No Lovable.dev or Cursor.ai dependencies",
+        "suggested_change": "> **🎉 100% Subscription Free & Independent** - No Lovable.dev or Cursor.ai dependencies",
+        "context": "Hyphen in compound adjective that follows noun",
+        "heuristic": "Rule C: isolated accidental hyphens inside words",
+        "confidence": 85,
+        "rule_applied": "Remove hyphen from compound adjective"
+      },
+      {
+        "id": "CLEAR_006",
+        "source": "deliverables/summary.txt:1",
+        "original": "VISTAFORGE WAITLIST TRANSFORMATION - SUMMARY",
+        "suggested_change": "VISTAFORGE WAITLIST TRANSFORMATION SUMMARY",
+        "context": "Hyphen used as separator in title",
+        "heuristic": "Rule B: space-surrounded hyphen used as filler",
+        "confidence": 90,
+        "rule_applied": "Remove hyphen separator"
+      }
+    ],
+    "likely_necessary": [
+      {
+        "id": "NECESSARY_001",
+        "source": "README.md:9",
+        "original": "https://waitlist-1e2s5gdxa-nathankoths-projects.vercel.app",
+        "context": "URL with hyphens in domain name",
+        "heuristic": "Rule A: URLs containing hyphens",
+        "confidence": 100,
+        "action": "PRESERVE"
+      },
+      {
+        "id": "NECESSARY_002",
+        "source": "README.md:10",
+        "original": "https://github.com/Nathankoth/waitlist-main-second.git",
+        "context": "URL with hyphens in repository name",
+        "heuristic": "Rule A: URLs containing hyphens",
+        "confidence": 100,
+        "action": "PRESERVE"
+      },
+      {
+        "id": "NECESSARY_003",
+        "source": "deliverables/qa.md:82",
+        "original": "test@example.com",
+        "context": "Email address with hyphen",
+        "heuristic": "Rule A: Emails containing hyphens",
+        "confidence": 100,
+        "action": "PRESERVE"
+      },
+      {
+        "id": "NECESSARY_004",
+        "source": "deliverables/qa.md:125",
+        "original": "not-an-email",
+        "context": "Hyphenated compound word in test data",
+        "heuristic": "Rule A: Known hyphenated compounds",
+        "confidence": 95,
+        "action": "PRESERVE"
+      }
+    ],
+    "ambiguous": [
+      {
+        "id": "AMBIGUOUS_001",
+        "source": "deliverables/copy/hero.txt:7",
+        "original": "Subheadline: \"Upload phone photos or plans, get instant 2D diagnostic insights, a lightweight ROI triage, and an easy path to paid verification & photoreal renders.\"",
+        "suggested_change": "Subheadline: \"Upload phone photos or plans, get instant 2D diagnostic insights, a lightweight ROI triage, and an easy path to paid verification and photoreal renders.\"",
+        "context": "Ampersand used instead of 'and' in marketing copy",
+        "heuristic": "Rule C: ambiguous punctuation replacement",
+        "confidence": 70,
+        "action": "MANUAL_REVIEW"
+      },
+      {
+        "id": "AMBIGUOUS_002",
+        "source": "deliverables/summary.txt:7",
+        "original": "- Replaced product showcase with waitlist-focused messaging",
+        "suggested_change": "- Replaced product showcase with waitlist focused messaging",
+        "context": "Hyphenated compound adjective before noun",
+        "heuristic": "Rule C: compound adjective context unclear",
+        "confidence": 60,
+        "action": "MANUAL_REVIEW"
+      },
+      {
+        "id": "AMBIGUOUS_003",
+        "source": "deliverables/summary.txt:31",
+        "original": "- Sticky mobile CTA appears after 300px scroll",
+        "suggested_change": "- Sticky mobile CTA appears after 300px scroll",
+        "context": "Numeric measurement with unit",
+        "heuristic": "Rule C: numeric context unclear",
+        "confidence": 65,
+        "action": "MANUAL_REVIEW"
+      }
+    ]
+  },
+  "file_analysis": {
+    "deliverables/copy/hero.txt": {
+      "total_hyphens": 4,
+      "clearly_unnecessary": 2,
+      "likely_necessary": 0,
+      "ambiguous": 2,
+      "auto_apply_count": 2
+    },
+    "deliverables/copy/confirmation-modal.txt": {
+      "total_hyphens": 2,
+      "clearly_unnecessary": 2,
+      "likely_necessary": 0,
+      "ambiguous": 0,
+      "auto_apply_count": 2
+    },
+    "README.md": {
+      "total_hyphens": 45,
+      "clearly_unnecessary": 1,
+      "likely_necessary": 42,
+      "ambiguous": 2,
+      "auto_apply_count": 1
+    },
+    "deliverables/qa.md": {
+      "total_hyphens": 89,
+      "clearly_unnecessary": 0,
+      "likely_necessary": 85,
+      "ambiguous": 4,
+      "auto_apply_count": 0
+    },
+    "deliverables/summary.txt": {
+      "total_hyphens": 16,
+      "clearly_unnecessary": 1,
+      "likely_necessary": 7,
+      "ambiguous": 8,
+      "auto_apply_count": 1
+    }
+  },
+  "safety_checks": {
+    "blacklisted_files_modified": false,
+    "code_files_touched": false,
+    "total_files_to_modify": 5,
+    "confidence_threshold_met": true,
+    "auto_apply_safe": true
+  },
+  "recommendations": {
+    "auto_apply": [
+      "Replace em dashes with commas or remove in marketing copy",
+      "Replace plus signs with 'and' in marketing copy", 
+      "Remove hyphens from compound adjectives that follow nouns"
+    ],
+    "manual_review": [
+      "Review compound adjectives before nouns for consistency",
+      "Check numeric measurements and units for proper formatting",
+      "Verify ampersand usage in marketing copy"
+    ]
+  },
+  "next_steps": [
+    "Apply automatic safe replacements for CLEARLY_UNNECESSARY items",
+    "Create manual review bundle for AMBIGUOUS items",
+    "Run safety verification checks",
+    "Create reversible commits and snapshot"
+  ]
+}
