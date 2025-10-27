@@ -7,8 +7,9 @@ node_modules/
 dist/
 build/
 
-# Environment variables
+# Environment variables - CRITICAL SECURITY
 .env
+.env.*
 .env.local
 .env.development
 .env.development.local
@@ -17,15 +18,22 @@ build/
 .env.production
 .env.production.local
 .env.*.local
+.env.*.production
+.env.*.development
 
-# Additional security files
+# Security files - NEVER COMMIT
 *.key
 *.pem
 *.p12
 *.pfx
+*.crt
+*.cer
 secrets.json
 config.json
 credentials.json
+auth.json
+tokens.json
+api-keys.json
 
 # IDE and editor files
 .vscode/
@@ -34,9 +42,15 @@ credentials.json
 *.swo
 .cursor/
 .lovable/
+.cursorrules
 
 # Vercel
 .vercel
+
+# Temporary files
+*.tmp
+*.temp
+*.log
 
 # IDE
 .vscode/
