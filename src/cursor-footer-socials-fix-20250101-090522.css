@@ -1,0 +1,49 @@
+/* Footer social icons spacing fix - remove YouTube spacing */
+.footer .social-icons { 
+  display: flex; 
+  gap: 12px; 
+  align-items: center; 
+}
+
+.footer .social-icons a { 
+  width: 40px; 
+  height: 40px; 
+  display: inline-flex; 
+  align-items: center; 
+  justify-content: center; 
+}
+
+.footer .social-icons a[data-provider="youtube"] { 
+  display: none !important; 
+}
+
+/* Ensure proper spacing after YouTube removal */
+.footer .social-icons {
+  gap: 12px;
+  flex-wrap: nowrap;
+}
+
+/* Contact links styling */
+.footer .contact a {
+  color: #CCCCCC;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.95rem;
+  transition: color 0.2s ease;
+}
+
+.footer .contact a:hover {
+  color: #FFD36F;
+}
+
+/* Ensure social icons maintain proper size and spacing */
+.footer .social-icons svg {
+  width: 24px;
+  height: 24px;
+}
+
+.footer .social-icons a:hover {
+  color: #FFD36F;
+  transform: translateY(-3px);
+  background-color: rgba(255, 255, 255, 0.05);
+}

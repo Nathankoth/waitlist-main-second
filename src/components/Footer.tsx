@@ -4,6 +4,7 @@ import Logo from './Logo';
 import '../cursor-footer-polish-20250101-064951.css';
 import '../cursor-footer-layout-20250101-065744.css';
 import '../cursor-footer-fullwidth-20250101-073000.css';
+import '../cursor-footer-socials-fix-20250101-090522.css';
 
 const Footer = () => {
   return (
@@ -20,11 +21,11 @@ const Footer = () => {
         
         <div className="footer-right">
           <div className="contact">
-            <a href="mailto:info@vistaphone.com">
-              info@vistaphone.com
+            <a href="mailto:Nathaniel@volarisgloba.com">
+              Nathaniel@volarisgloba.com
             </a>
-            <a href="tel:+2348100000000">
-              +234 810 000 0000
+            <a href="tel:+2349169178313">
+              +234 916 917 8313
             </a>
           </div>
           <div className="social-icons">
@@ -45,12 +46,6 @@ const Footer = () => {
                 <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
                 <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/>
                 <path d="M17.5 6.5h.01"/>
-              </svg>
-            </a>
-            <a href="https://www.youtube.com/@vistaforge" target="_blank" rel="noopener noreferrer" aria-label="VistaForge on YouTube">
-              <svg viewBox="0 0 24 24" fill="currentColor">
-                <path d="M22.54 6.42a2.78 2.78 0 00-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 00-1.94 2A29 29 0 001 11.75a29 29 0 00.46 5.33A2.78 2.78 0 003.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 001.94-2c.313-1.732.467-3.482.46-5.33a29.005 29.005 0 00-.46-5.33z"/>
-                <path d="M9.75 15.02l5.75-3.27-5.75-3.27v6.54z"/>
               </svg>
             </a>
           </div>
