@@ -55,6 +55,13 @@ api-keys.json
 *.temp
 *.log
 
+# ignore env and local secrets
+.env
+.env.local
+.env.*
+.vercel
+.node_modules
+
 # IDE
 .vscode/
 .idea/

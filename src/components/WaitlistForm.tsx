@@ -15,11 +15,10 @@ interface WaitlistFormProps {
 
 const WaitlistForm = ({ isOpen, onClose }: WaitlistFormProps) => {
   const [formData, setFormData] = useState({
+    name: '',
     email: '',
-    role: '',
     company: '',
     monthly_listings: '',
-    how_heard: '',
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
@@ -34,14 +33,18 @@ const WaitlistForm = ({ isOpen, onClose }: WaitlistFormProps) => {
   const validateForm = () => {
     const newErrors: Record<string, string> = {};
     
+    if (!formData.name) {
+      newErrors.name = 'Name is required';
+    }
+    
     if (!formData.email) {
       newErrors.email = 'Email is required';
     } else if (!validateEmail(formData.email)) {
       newErrors.email = 'Please enter a valid email';
     }
     
-    if (!formData.role) {
-      newErrors.role = 'Please select your role';
+    if (!formData.company) {
+      newErrors.company = 'Company is required';
     }
     
     setErrors(newErrors);
@@ -62,11 +65,10 @@ const WaitlistForm = ({ isOpen, onClose }: WaitlistFormProps) => {
       const { data: result, error } = await supabase
         .from('waitlist')
         .insert([{
+          name: formData.name.trim(),
           email: formData.email.toLowerCase().trim(),
-          role: formData.role?.toLowerCase() || null,
-          company: formData.company?.trim() || null,
+          company: formData.company.trim(),
           monthly_listings: formData.monthly_listings || null,
-          how_heard: formData.how_heard?.trim() || null,
         }])
         .select()
         .single();
@@ -115,11 +117,10 @@ const WaitlistForm = ({ isOpen, onClose }: WaitlistFormProps) => {
 
   const resetForm = () => {
     setFormData({
+      name: '',
       email: '',
-      role: '',
       company: '',
       monthly_listings: '',
-      how_heard: '',
     });
     setErrors({});
     setIsSuccess(false);
@@ -173,6 +174,21 @@ const WaitlistForm = ({ isOpen, onClose }: WaitlistFormProps) => {
         
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="space-y-2">
+            <Label htmlFor="name">Full Name *</Label>
+            <Input
+              id="name"
+              type="text"
+              placeholder="Your full name"
+              value={formData.name}
+              onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+              className={errors.name ? 'border-destructive' : ''}
+            />
+            {errors.name && (
+              <p className="text-sm text-destructive">{errors.name}</p>
+            )}
+          </div>
+
+          <div className="space-y-2">
             <Label htmlFor="email">Email *</Label>
             <Input
               id="email"
@@ -188,39 +204,18 @@ const WaitlistForm = ({ isOpen, onClose }: WaitlistFormProps) => {
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="role">Role *</Label>
-            <Select
-              value={formData.role}
-              onValueChange={(value) => setFormData({ ...formData, role: value })}
-            >
-              <SelectTrigger className={errors.role ? 'border-destructive' : ''}>
-                <SelectValue placeholder="Select your role" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="realtor">Realtor</SelectItem>
-                <SelectItem value="investor">Investor</SelectItem>
-                <SelectItem value="architect">Architect</SelectItem>
-                <SelectItem value="surveyor">Surveyor</SelectItem>
-                <SelectItem value="homebuyer">Homebuyer</SelectItem>
-                <SelectItem value="homeowner">Homeowner</SelectItem>
-                <SelectItem value="lawyer">Lawyer</SelectItem>
-                <SelectItem value="other">Other</SelectItem>
-              </SelectContent>
-            </Select>
-            {errors.role && (
-              <p className="text-sm text-destructive">{errors.role}</p>
-            )}
-          </div>
-
-          <div className="space-y-2">
-            <Label htmlFor="company">Company (optional)</Label>
+            <Label htmlFor="company">Company *</Label>
             <Input
               id="company"
               type="text"
               placeholder="Your company"
               value={formData.company}
               onChange={(e) => setFormData({ ...formData, company: e.target.value })}
+              className={errors.company ? 'border-destructive' : ''}
             />
+            {errors.company && (
+              <p className="text-sm text-destructive">{errors.company}</p>
+            )}
           </div>
 
           <div className="space-y-2">
@@ -242,16 +237,6 @@ const WaitlistForm = ({ isOpen, onClose }: WaitlistFormProps) => {
             </Select>
           </div>
 
-          <div className="space-y-2">
-            <Label htmlFor="how_heard">How did you hear about us? (optional)</Label>
-            <Input
-              id="how_heard"
-              type="text"
-              placeholder="e.g., Twitter, LinkedIn, referral"
-              value={formData.how_heard}
-              onChange={(e) => setFormData({ ...formData, how_heard: e.target.value })}
-            />
-          </div>
 
           <Button
             type="submit"
