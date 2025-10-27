@@ -15,6 +15,9 @@ export const supabase = createClient(supabaseUrl, supabaseAnonKey, {
   }
 })
 
+// Export for direct use in components
+export default supabase
+
 // Database types for VistaForge
 export interface Database {
   public: {

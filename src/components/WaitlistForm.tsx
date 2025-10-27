@@ -6,6 +6,7 @@ import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Loader2, CheckCircle2, Share2, Copy, Linkedin, MessageSquare } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
+import { supabase } from '@/lib/supabase';
 
 interface WaitlistFormProps {
   isOpen: boolean;
@@ -57,30 +58,34 @@ const WaitlistForm = ({ isOpen, onClose }: WaitlistFormProps) => {
     setIsSubmitting(true);
 
     try {
-      // Call serverless endpoint
-      const response = await fetch('/api/waitlist', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          ...formData,
+      // Insert directly into Supabase using the client
+      const { data: result, error } = await supabase
+        .from('waitlist')
+        .insert([{
+          email: formData.email.toLowerCase().trim(),
+          role: formData.role?.toLowerCase() || null,
+          company: formData.company?.trim() || null,
           monthly_listings: formData.monthly_listings || null,
-        }),
-      });
+          how_heard: formData.how_heard?.trim() || null,
+        }])
+        .select()
+        .single();
 
-      const data = await response.json();
-
-      if (!response.ok) {
-        throw new Error(data.error || 'Failed to join waitlist');
+      if (error) {
+        if (error.code === '23505') { // Unique violation
+          throw new Error('Email already registered');
+        }
+        throw error;
       }
 
+      console.log('Database insert successful:', result.id);
       setIsSuccess(true);
       toast({
         title: "You're on the list!",
         description: "We'll email you with early access and launch discounts.",
       });
     } catch (error) {
+      console.error('Error joining waitlist:', error);
       toast({
         title: "Error",
         description: error instanceof Error ? error.message : "Failed to join waitlist. Please try again.",

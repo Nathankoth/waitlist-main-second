@@ -21,6 +21,9 @@ build/
 .env.*.production
 .env.*.development
 
+# Supabase
+.supabase/
+
 # Security files - NEVER COMMIT
 *.key
 *.pem
