@@ -44,7 +44,6 @@ const Header = () => {
 
   const navigationLinks = [
     { label: "Features", link: "/#features" },
-    { label: "Services", link: "/#services" },
     { label: "Pricing", link: "/#pricing" },
     { label: "FAQ", link: "/faq" }
   ];
