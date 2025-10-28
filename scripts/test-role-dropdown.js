@@ -27,7 +27,7 @@ const testCases = [
       name: 'John Doe',
       email: `test-role-${Date.now()}@example.com`,
       company: 'Test Company',
-      monthly_listings: '10–20 listings',
+      monthly_listings: '10 - 15',
       role: 'Real Estate Agent / Realtor'
     },
     expected: 'Real Estate Agent / Realtor'
@@ -38,7 +38,7 @@ const testCases = [
       name: 'Jane Smith',
       email: `test-empty-role-${Date.now()}@example.com`,
       company: 'Test Company',
-      monthly_listings: '5–10 listings',
+      monthly_listings: '5 - 10',
       role: ''
     },
     expected: null
@@ -49,7 +49,7 @@ const testCases = [
       name: 'Bob Wilson',
       email: `test-investor-${Date.now()}@example.com`,
       company: 'Investment Corp',
-      monthly_listings: '20–40 listings',
+      monthly_listings: '20 - 40',
       role: 'Investor'
     },
     expected: 'Investor'

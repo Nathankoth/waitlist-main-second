@@ -25,7 +25,7 @@ const testFormData = {
   email: `test-${Date.now()}@example.com`, // Unique email to avoid conflicts
   role: 'realtor',
   company: 'Test Realty Company',
-  monthly_listings: '10–20 listings',
+  monthly_listings: '10 - 15',
   how_heard: 'Local testing'
 };
 

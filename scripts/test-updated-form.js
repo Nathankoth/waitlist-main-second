@@ -24,7 +24,7 @@ const testFormData = {
   name: 'John Doe',
   email: `test-${Date.now()}@example.com`,
   company: 'Acme Realty',
-  monthly_listings: '10–20 listings'
+  monthly_listings: '10 - 15'
 };
 
 console.log('📝 Testing with updated form data:');

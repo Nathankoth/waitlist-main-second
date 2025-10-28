@@ -24,7 +24,7 @@ const testData = {
   name: 'Test User',
   email: `test-${Date.now()}@example.com`,
   company: 'Test Company',
-  monthly_listings: '10–20 listings'
+  monthly_listings: '10 - 15'
 };
 
 console.log('📝 Testing with all required fields:');

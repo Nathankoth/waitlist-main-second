@@ -61,7 +61,7 @@ try {
       email: `test2-${Date.now()}@example.com`,
       role: 'investor',
       company: 'Test Company',
-      monthly_listings: '5–10 listings'
+      monthly_listings: '5 - 10'
     };
     
     const { data: result2, error: error2 } = await supabase

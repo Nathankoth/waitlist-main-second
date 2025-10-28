@@ -41,11 +41,11 @@ const VALID_ROLES = [
 
 // Valid monthly listings options
 const VALID_MONTHLY_LISTINGS = [
-  '0–5 listings',
-  '5–10 listings',
-  '10–20 listings',
-  '20–40 listings',
-  '40+ listings'
+  '0 - 5',
+  '5 - 10',
+  '10 - 15',
+  '20 - 40',
+  '40+'
 ];
 
 /**

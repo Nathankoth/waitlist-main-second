@@ -54,10 +54,10 @@ export default function JoinWaitlistComplete({ className = '' }) {
             <div style={{ fontSize: 13, marginBottom: 6 }}>Monthly listings (optional)</div>
             <select name="monthly_user" defaultValue="" style={{ width: '100%', padding: '10px', borderRadius: 8 }}>
               <option value="">Prefer not to say</option>
-              <option value="0-5">0–5</option>
-              <option value="5-10">5–10</option>
-              <option value="10-20">10–20</option>
-              <option value="20-40">20–40</option>
+              <option value="0 - 5">0 - 5</option>
+              <option value="5 - 10">5 - 10</option>
+              <option value="10 - 15">10 - 15</option>
+              <option value="20 - 40">20 - 40</option>
               <option value="40+">40+</option>
             </select>
           </label>

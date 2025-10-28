@@ -228,11 +228,11 @@ const WaitlistForm = ({ isOpen, onClose }: WaitlistFormProps) => {
                 <SelectValue placeholder="Select approximate number of listings" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="0–5 listings">0–5 listings</SelectItem>
-                <SelectItem value="5–10 listings">5–10 listings</SelectItem>
-                <SelectItem value="10–20 listings">10–20 listings</SelectItem>
-                <SelectItem value="20–40 listings">20–40 listings</SelectItem>
-                <SelectItem value="40+ listings">40+ listings</SelectItem>
+                <SelectItem value="0 - 5">0 - 5</SelectItem>
+                <SelectItem value="5 - 10">5 - 10</SelectItem>
+                <SelectItem value="10 - 15">10 - 15</SelectItem>
+                <SelectItem value="20 - 40">20 - 40</SelectItem>
+                <SelectItem value="40+">40+</SelectItem>
               </SelectContent>
             </Select>
           </div>

@@ -74,13 +74,13 @@ const testFormData = {
   email: 'test@example.com',
   role: 'realtor',
   company: 'Test Realty',
-  monthly_listings: '10–20 listings',
+  monthly_listings: '10 - 15',
   how_heard: 'Test'
 };
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const VALID_ROLES = ['realtor', 'investor', 'architect', 'surveyor', 'homebuyer', 'homeowner', 'lawyer', 'other'];
-const VALID_MONTHLY_LISTINGS = ['0–5 listings', '5–10 listings', '10–20 listings', '20–40 listings', '40+ listings'];
+const VALID_MONTHLY_LISTINGS = ['0 - 5', '5 - 10', '10 - 15', '20 - 40', '40+'];
 
 function validateFormData(data) {
   const errors = [];
