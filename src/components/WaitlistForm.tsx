@@ -18,8 +18,8 @@ const WaitlistForm = ({ isOpen, onClose }: WaitlistFormProps) => {
     full_name: '',
     email: '',
     role: '',
+    years_experience: '',
     monthly_listings: '',
-    years_experience: 0,
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
@@ -52,8 +52,8 @@ const WaitlistForm = ({ isOpen, onClose }: WaitlistFormProps) => {
       newErrors.monthly_listings = 'Monthly listings is required';
     }
     
-    if (formData.years_experience < 0 || formData.years_experience > 80) {
-      newErrors.years_experience = 'Years of experience must be between 0 and 80';
+    if (!formData.years_experience) {
+      newErrors.years_experience = 'Years of experience is required';
     }
     
     setErrors(newErrors);
@@ -80,8 +80,8 @@ const WaitlistForm = ({ isOpen, onClose }: WaitlistFormProps) => {
           full_name: formData.full_name.trim(),
           email: formData.email.toLowerCase().trim(),
           role: formData.role.trim(),
+          years_experience: formData.years_experience.trim(),
           monthly_listings: formData.monthly_listings.trim(),
-          years_experience: parseInt(formData.years_experience.toString(), 10),
         }),
       });
 
@@ -131,8 +131,8 @@ const WaitlistForm = ({ isOpen, onClose }: WaitlistFormProps) => {
       full_name: '',
       email: '',
       role: '',
+      years_experience: '',
       monthly_listings: '',
-      years_experience: 0,
     });
     setErrors({});
     setIsSuccess(false);
@@ -225,15 +225,13 @@ const WaitlistForm = ({ isOpen, onClose }: WaitlistFormProps) => {
                 <SelectValue placeholder="Select your role" />
               </SelectTrigger>
               <SelectContent position="item-aligned">
-                <SelectItem value="Architect">Architect</SelectItem>
-                <SelectItem value="Surveyor">Surveyor</SelectItem>
-                <SelectItem value="Investor">Investor</SelectItem>
-                <SelectItem value="Homebuyer">Homebuyer</SelectItem>
-                <SelectItem value="Homeowner">Homeowner</SelectItem>
-                <SelectItem value="Realtor">Realtor</SelectItem>
-                <SelectItem value="Agent">Agent</SelectItem>
-                <SelectItem value="Lawyer">Lawyer</SelectItem>
-                <SelectItem value="Other">Other</SelectItem>
+                <SelectItem value="realtor">Realtor / Agent</SelectItem>
+                <SelectItem value="homeowner">Homeowner / Homebuyer</SelectItem>
+                <SelectItem value="investor">Investor</SelectItem>
+                <SelectItem value="lawyer">Lawyer</SelectItem>
+                <SelectItem value="surveyor">Surveyor</SelectItem>
+                <SelectItem value="architect">Architect</SelectItem>
+                <SelectItem value="other">Other</SelectItem>
               </SelectContent>
             </Select>
             {errors.role && (
@@ -251,12 +249,11 @@ const WaitlistForm = ({ isOpen, onClose }: WaitlistFormProps) => {
                 <SelectValue placeholder="Select approximate number of listings" />
               </SelectTrigger>
               <SelectContent position="item-aligned">
-                <SelectItem value="0–5">0–5</SelectItem>
-                <SelectItem value="5–10">5–10</SelectItem>
-                <SelectItem value="10–15">10–15</SelectItem>
-                <SelectItem value="15–20">15–20</SelectItem>
-                <SelectItem value="20–40">20–40</SelectItem>
-                <SelectItem value="40+">40+</SelectItem>
+                <SelectItem value="0-5">0 - 5</SelectItem>
+                <SelectItem value="5-10">5 - 10</SelectItem>
+                <SelectItem value="10-15">10 - 15</SelectItem>
+                <SelectItem value="15-20">15 - 20</SelectItem>
+                <SelectItem value="20+">20+</SelectItem>
               </SelectContent>
             </Select>
             {errors.monthly_listings && (
@@ -267,18 +264,18 @@ const WaitlistForm = ({ isOpen, onClose }: WaitlistFormProps) => {
           <div className="space-y-2">
             <Label htmlFor="years_experience">Years of Experience *</Label>
             <Select
-              value={formData.years_experience.toString()}
-              onValueChange={(value) => setFormData({ ...formData, years_experience: parseInt(value) })}
+              value={formData.years_experience}
+              onValueChange={(value) => setFormData({ ...formData, years_experience: value })}
             >
               <SelectTrigger className={errors.years_experience ? 'border-destructive' : ''}>
                 <SelectValue placeholder="Select years of experience" />
               </SelectTrigger>
               <SelectContent position="item-aligned">
-                <SelectItem value="0">0–5</SelectItem>
-                <SelectItem value="5">5–10</SelectItem>
-                <SelectItem value="10">10–15</SelectItem>
-                <SelectItem value="15">15–20</SelectItem>
-                <SelectItem value="20">20+</SelectItem>
+                <SelectItem value="0-5">0 - 5 years</SelectItem>
+                <SelectItem value="5-10">5 - 10 years</SelectItem>
+                <SelectItem value="10-15">10 - 15 years</SelectItem>
+                <SelectItem value="15-20">15 - 20 years</SelectItem>
+                <SelectItem value="20+">20+ years</SelectItem>
               </SelectContent>
             </Select>
             {errors.years_experience && (
