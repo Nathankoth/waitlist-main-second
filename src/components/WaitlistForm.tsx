@@ -72,7 +72,7 @@ const WaitlistForm = ({ isOpen, onClose }: WaitlistFormProps) => {
           name: formData.name.trim(),
           email: formData.email.toLowerCase().trim(),
           role: formData.role.trim(),
-          monthly_lists: formData.monthly_lists.trim(),
+          monthly_listings: formData.monthly_lists.trim(),
         }])
         .select()
         .single();
