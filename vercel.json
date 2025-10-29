@@ -7,10 +7,17 @@
       "config": {
         "distDir": "dist"
       }
-
+    },
+    {
+      "src": "src/routes/api/waitlist.js",
+      "use": "@vercel/node"
     }
   ],
   "routes": [
+    {
+      "src": "/api/waitlist",
+      "dest": "/src/routes/api/waitlist.js"
+    },
     {
       "src": "/assets/(.*)",
       "dest": "/assets/$1"
@@ -18,11 +25,11 @@
     {
       "src": "/(.*)",
       "dest": "/index.html"
-      
     }
   ],
   "env": {
     "VITE_SUPABASE_URL": "$VITE_SUPABASE_URL",
-    "VITE_SUPABASE_ANON_KEY": "$VITE_SUPABASE_ANON_KEY"
+    "VITE_SUPABASE_ANON_KEY": "$VITE_SUPABASE_ANON_KEY",
+    "SUPABASE_SERVICE_ROLE_KEY": "$SUPABASE_SERVICE_ROLE_KEY"
   }
 }

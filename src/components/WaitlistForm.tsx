@@ -70,25 +70,28 @@ const WaitlistForm = ({ isOpen, onClose }: WaitlistFormProps) => {
     setIsSubmitting(true);
 
     try {
-      // Submit directly to Supabase
-      const { data, error } = await supabase
-        .from('waitlist')
-        .insert([{
+      // Submit to API route
+      const response = await fetch('/api/waitlist', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
           full_name: formData.full_name.trim(),
           email: formData.email.toLowerCase().trim(),
           role: formData.role.trim(),
           monthly_listings: formData.monthly_listings.trim(),
           years_experience: parseInt(formData.years_experience.toString(), 10),
-        }])
-        .select()
-        .single();
+        }),
+      });
 
-      if (error) {
-        console.error('Supabase insert error:', error);
-        throw new Error('Failed to join waitlist. Please try again.');
+      const data = await response.json();
+
+      if (!response.ok || !data.success) {
+        throw new Error(data.error || 'Failed to join waitlist. Please try again.');
       }
 
-      console.log('Database insert successful:', data.id);
+      console.log('Waitlist submission successful');
       setIsSuccess(true);
       toast({
         title: "You're on the list!",
@@ -222,12 +225,15 @@ const WaitlistForm = ({ isOpen, onClose }: WaitlistFormProps) => {
                 <SelectValue placeholder="Select your role" />
               </SelectTrigger>
               <SelectContent position="item-aligned">
-                <SelectItem value="realtor-agent">Realtor / Agent</SelectItem>
-                <SelectItem value="homeowner-buyer">Homeowner / Buyer</SelectItem>
-                <SelectItem value="investor">Investor</SelectItem>
-                <SelectItem value="lawyer">Lawyer</SelectItem>
-                <SelectItem value="surveyor">Surveyor</SelectItem>
-                <SelectItem value="architect">Architect</SelectItem>
+                <SelectItem value="Architect">Architect</SelectItem>
+                <SelectItem value="Surveyor">Surveyor</SelectItem>
+                <SelectItem value="Investor">Investor</SelectItem>
+                <SelectItem value="Homebuyer">Homebuyer</SelectItem>
+                <SelectItem value="Homeowner">Homeowner</SelectItem>
+                <SelectItem value="Realtor">Realtor</SelectItem>
+                <SelectItem value="Agent">Agent</SelectItem>
+                <SelectItem value="Lawyer">Lawyer</SelectItem>
+                <SelectItem value="Other">Other</SelectItem>
               </SelectContent>
             </Select>
             {errors.role && (
@@ -245,10 +251,11 @@ const WaitlistForm = ({ isOpen, onClose }: WaitlistFormProps) => {
                 <SelectValue placeholder="Select approximate number of listings" />
               </SelectTrigger>
               <SelectContent position="item-aligned">
-                <SelectItem value="0-5">0–5</SelectItem>
-                <SelectItem value="5-10">5–10</SelectItem>
-                <SelectItem value="10-15">10–15</SelectItem>
-                <SelectItem value="20-40">20–40</SelectItem>
+                <SelectItem value="0–5">0–5</SelectItem>
+                <SelectItem value="5–10">5–10</SelectItem>
+                <SelectItem value="10–15">10–15</SelectItem>
+                <SelectItem value="15–20">15–20</SelectItem>
+                <SelectItem value="20–40">20–40</SelectItem>
                 <SelectItem value="40+">40+</SelectItem>
               </SelectContent>
             </Select>
@@ -259,16 +266,21 @@ const WaitlistForm = ({ isOpen, onClose }: WaitlistFormProps) => {
 
           <div className="space-y-2">
             <Label htmlFor="years_experience">Years of Experience *</Label>
-            <Input
-              id="years_experience"
-              type="number"
-              min="0"
-              max="80"
-              placeholder="0"
-              value={formData.years_experience}
-              onChange={(e) => setFormData({ ...formData, years_experience: parseInt(e.target.value) || 0 })}
-              className={errors.years_experience ? 'border-destructive' : ''}
-            />
+            <Select
+              value={formData.years_experience.toString()}
+              onValueChange={(value) => setFormData({ ...formData, years_experience: parseInt(value) })}
+            >
+              <SelectTrigger className={errors.years_experience ? 'border-destructive' : ''}>
+                <SelectValue placeholder="Select years of experience" />
+              </SelectTrigger>
+              <SelectContent position="item-aligned">
+                <SelectItem value="0">0–5</SelectItem>
+                <SelectItem value="5">5–10</SelectItem>
+                <SelectItem value="10">10–15</SelectItem>
+                <SelectItem value="15">15–20</SelectItem>
+                <SelectItem value="20">20+</SelectItem>
+              </SelectContent>
+            </Select>
             {errors.years_experience && (
               <p className="text-sm text-destructive">{errors.years_experience}</p>
             )}
