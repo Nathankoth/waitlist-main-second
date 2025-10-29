@@ -7,6 +7,7 @@
       "config": {
         "distDir": "dist"
       }
+
     }
   ],
   "routes": [
@@ -20,14 +21,7 @@
     }
   ],
   "env": {
-    "VITE_SUPABASE_URL": "@vite_supabase_url",
-    "VITE_SUPABASE_ANON_KEY": "@vite_supabase_anon_key"
-  },
-  "build": {
-    "env": {
-      "SUPABASE_SERVICE_ROLE_KEY": "@supabase_service_role_key",
-      "MAILCHIMP_API_KEY": "@mailchimp_api_key",
-      "MAILCHIMP_LIST_ID": "@mailchimp_list_id"
-    }
+    "VITE_SUPABASE_URL": "$VITE_SUPABASE_URL",
+    "VITE_SUPABASE_ANON_KEY": "$VITE_SUPABASE_ANON_KEY"
   }
 }
