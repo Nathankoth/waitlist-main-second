@@ -23,13 +23,13 @@ Go to your Vercel project dashboard → Settings → Environment Variables and a
 
 **Client-side variables:**
 ```
-VITE_SUPABASE_URL = https://blwcbwzhjhmrkadndmip.supabase.co
-VITE_SUPABASE_ANON_KEY = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJsd2Nid3poamhtcmthZG5kbWlwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjA5OTQwNTcsImV4cCI6MjA3NjU3MDA1N30._u7rwYxZsyHykkyEeNssIyFTfAFKwIdyjAFuyA9gUsE
+VITE_SUPABASE_URL = <REDACTED>
+VITE_SUPABASE_ANON_KEY = <REDACTED>
 ```
 
 **Server-side variables:**
 ```
-SUPABASE_SERVICE_ROLE_KEY = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJsd2Nid3poamhtcmthZG5kbWlwIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc2MDk5NDA1NywiZXhwIjoyMDc2NTcwMDU3fQ.EPoZ_CuptL3tjkz1pHeSnsAuKZUisl5mvDQBOqlhGr0
+SUPABASE_SERVICE_ROLE_KEY = <REDACTED>
 MAILCHIMP_API_KEY = your_mailchimp_api_key_here
 MAILCHIMP_LIST_ID = your_mailchimp_list_id_here
 ```

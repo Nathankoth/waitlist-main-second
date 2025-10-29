@@ -102,9 +102,9 @@ ALTER COLUMN monthly_listings TYPE text;
 ### 3. Environment Variables Required
 ```bash
 # In Vercel dashboard or .env.local
-VITE_SUPABASE_URL=https://blwcbwzhjhmrkadndmip.supabase.co
-VITE_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
-SUPABASE_SERVICE_ROLE_KEY=your_service_role_key_here
+VITE_SUPABASE_URL=<REDACTED>
+VITE_SUPABASE_ANON_KEY=<REDACTED>
+SUPABASE_SERVICE_ROLE_KEY=<REDACTED>
 ```
 
 ## 📋 Form Behavior

@@ -19,8 +19,8 @@ Successfully fixed Supabase connection and implemented secure integration for th
 
 ```bash
 # Public keys (safe for frontend)
-VITE_SUPABASE_URL=https://blwcbwzhjhmrkadndmip.supabase.co
-VITE_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+VITE_SUPABASE_URL=<REDACTED>
+VITE_SUPABASE_ANON_KEY=<REDACTED>
 
 # Server-side only (Vercel dashboard)
 SUPABASE_SERVICE_ROLE_KEY=your_service_role_key_here
@@ -127,9 +127,9 @@ const { data: result, error } = await supabase
 ### Vercel Environment Variables
 Set these in your Vercel dashboard:
 ```bash
-VITE_SUPABASE_URL=https://blwcbwzhjhmrkadndmip.supabase.co
-VITE_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
-SUPABASE_SERVICE_ROLE_KEY=your_service_role_key_here
+VITE_SUPABASE_URL=<REDACTED>
+VITE_SUPABASE_ANON_KEY=<REDACTED>
+SUPABASE_SERVICE_ROLE_KEY=<REDACTED>
 ```
 
 ### Supabase Table Schema

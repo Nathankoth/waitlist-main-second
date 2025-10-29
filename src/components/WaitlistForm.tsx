@@ -15,10 +15,11 @@ interface WaitlistFormProps {
 
 const WaitlistForm = ({ isOpen, onClose }: WaitlistFormProps) => {
   const [formData, setFormData] = useState({
-    name: '',
+    full_name: '',
     email: '',
     role: '',
-    monthly_lists: '',
+    monthly_listings: '',
+    years_experience: 0,
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
@@ -33,8 +34,8 @@ const WaitlistForm = ({ isOpen, onClose }: WaitlistFormProps) => {
   const validateForm = () => {
     const newErrors: Record<string, string> = {};
     
-    if (!formData.name) {
-      newErrors.name = 'Name is required';
+    if (!formData.full_name) {
+      newErrors.full_name = 'Full name is required';
     }
     
     if (!formData.email) {
@@ -47,8 +48,12 @@ const WaitlistForm = ({ isOpen, onClose }: WaitlistFormProps) => {
       newErrors.role = 'Role is required';
     }
     
-    if (!formData.monthly_lists) {
-      newErrors.monthly_lists = 'Monthly listings is required';
+    if (!formData.monthly_listings) {
+      newErrors.monthly_listings = 'Monthly listings is required';
+    }
+    
+    if (formData.years_experience < 0 || formData.years_experience > 80) {
+      newErrors.years_experience = 'Years of experience must be between 0 and 80';
     }
     
     setErrors(newErrors);
@@ -69,10 +74,11 @@ const WaitlistForm = ({ isOpen, onClose }: WaitlistFormProps) => {
       const { data, error } = await supabase
         .from('waitlist')
         .insert([{
-          name: formData.name.trim(),
+          full_name: formData.full_name.trim(),
           email: formData.email.toLowerCase().trim(),
           role: formData.role.trim(),
-          monthly_listings: formData.monthly_lists.trim(),
+          monthly_listings: formData.monthly_listings.trim(),
+          years_experience: parseInt(formData.years_experience.toString(), 10),
         }])
         .select()
         .single();
@@ -119,10 +125,11 @@ const WaitlistForm = ({ isOpen, onClose }: WaitlistFormProps) => {
 
   const resetForm = () => {
     setFormData({
-      name: '',
+      full_name: '',
       email: '',
       role: '',
-      monthly_lists: '',
+      monthly_listings: '',
+      years_experience: 0,
     });
     setErrors({});
     setIsSuccess(false);
@@ -176,17 +183,17 @@ const WaitlistForm = ({ isOpen, onClose }: WaitlistFormProps) => {
         
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="space-y-2">
-            <Label htmlFor="name">Full Name *</Label>
+            <Label htmlFor="full_name">Full Name *</Label>
             <Input
-              id="name"
+              id="full_name"
               type="text"
               placeholder="Your full name"
-              value={formData.name}
-              onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-              className={errors.name ? 'border-destructive' : ''}
+              value={formData.full_name}
+              onChange={(e) => setFormData({ ...formData, full_name: e.target.value })}
+              className={errors.full_name ? 'border-destructive' : ''}
             />
-            {errors.name && (
-              <p className="text-sm text-destructive">{errors.name}</p>
+            {errors.full_name && (
+              <p className="text-sm text-destructive">{errors.full_name}</p>
             )}
           </div>
 
@@ -229,12 +236,12 @@ const WaitlistForm = ({ isOpen, onClose }: WaitlistFormProps) => {
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="monthly_lists">Monthly Listings *</Label>
+            <Label htmlFor="monthly_listings">Monthly Listings *</Label>
             <Select
-              value={formData.monthly_lists}
-              onValueChange={(value) => setFormData({ ...formData, monthly_lists: value })}
+              value={formData.monthly_listings}
+              onValueChange={(value) => setFormData({ ...formData, monthly_listings: value })}
             >
-              <SelectTrigger className={errors.monthly_lists ? 'border-destructive' : ''}>
+              <SelectTrigger className={errors.monthly_listings ? 'border-destructive' : ''}>
                 <SelectValue placeholder="Select approximate number of listings" />
               </SelectTrigger>
               <SelectContent position="item-aligned">
@@ -245,11 +252,27 @@ const WaitlistForm = ({ isOpen, onClose }: WaitlistFormProps) => {
                 <SelectItem value="40+">40+</SelectItem>
               </SelectContent>
             </Select>
-            {errors.monthly_lists && (
-              <p className="text-sm text-destructive">{errors.monthly_lists}</p>
+            {errors.monthly_listings && (
+              <p className="text-sm text-destructive">{errors.monthly_listings}</p>
             )}
           </div>
 
+          <div className="space-y-2">
+            <Label htmlFor="years_experience">Years of Experience *</Label>
+            <Input
+              id="years_experience"
+              type="number"
+              min="0"
+              max="80"
+              placeholder="0"
+              value={formData.years_experience}
+              onChange={(e) => setFormData({ ...formData, years_experience: parseInt(e.target.value) || 0 })}
+              className={errors.years_experience ? 'border-destructive' : ''}
+            />
+            {errors.years_experience && (
+              <p className="text-sm text-destructive">{errors.years_experience}</p>
+            )}
+          </div>
 
           <Button
             type="submit"
