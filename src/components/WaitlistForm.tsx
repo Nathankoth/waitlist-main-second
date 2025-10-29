@@ -17,8 +17,8 @@ const WaitlistForm = ({ isOpen, onClose }: WaitlistFormProps) => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    company: '',
-    monthly_listings: '',
+    role: '',
+    monthly_lists: '',
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
@@ -43,8 +43,12 @@ const WaitlistForm = ({ isOpen, onClose }: WaitlistFormProps) => {
       newErrors.email = 'Please enter a valid email';
     }
     
-    if (!formData.company) {
-      newErrors.company = 'Company is required';
+    if (!formData.role) {
+      newErrors.role = 'Role is required';
+    }
+    
+    if (!formData.monthly_lists) {
+      newErrors.monthly_lists = 'Monthly listings is required';
     }
     
     setErrors(newErrors);
@@ -61,26 +65,24 @@ const WaitlistForm = ({ isOpen, onClose }: WaitlistFormProps) => {
     setIsSubmitting(true);
 
     try {
-      // Insert directly into Supabase using the client
-      const { data: result, error } = await supabase
+      // Submit directly to Supabase
+      const { data, error } = await supabase
         .from('waitlist')
         .insert([{
           name: formData.name.trim(),
           email: formData.email.toLowerCase().trim(),
-          company: formData.company.trim(),
-          monthly_listings: formData.monthly_listings || null,
+          role: formData.role.trim(),
+          monthly_lists: formData.monthly_lists.trim(),
         }])
         .select()
         .single();
 
       if (error) {
-        if (error.code === '23505') { // Unique violation
-          throw new Error('Email already registered');
-        }
-        throw error;
+        console.error('Supabase insert error:', error);
+        throw new Error('Failed to join waitlist. Please try again.');
       }
 
-      console.log('Database insert successful:', result.id);
+      console.log('Database insert successful:', data.id);
       setIsSuccess(true);
       toast({
         title: "You're on the list!",
@@ -119,8 +121,8 @@ const WaitlistForm = ({ isOpen, onClose }: WaitlistFormProps) => {
     setFormData({
       name: '',
       email: '',
-      company: '',
-      monthly_listings: '',
+      role: '',
+      monthly_lists: '',
     });
     setErrors({});
     setIsSuccess(false);
@@ -204,37 +206,48 @@ const WaitlistForm = ({ isOpen, onClose }: WaitlistFormProps) => {
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="company">Company *</Label>
-            <Input
-              id="company"
-              type="text"
-              placeholder="Your company"
-              value={formData.company}
-              onChange={(e) => setFormData({ ...formData, company: e.target.value })}
-              className={errors.company ? 'border-destructive' : ''}
-            />
-            {errors.company && (
-              <p className="text-sm text-destructive">{errors.company}</p>
+            <Label htmlFor="role">Role *</Label>
+            <Select
+              value={formData.role}
+              onValueChange={(value) => setFormData({ ...formData, role: value })}
+            >
+              <SelectTrigger className={errors.role ? 'border-destructive' : ''}>
+                <SelectValue placeholder="Select your role" />
+              </SelectTrigger>
+              <SelectContent position="item-aligned">
+                <SelectItem value="realtor-agent">Realtor / Agent</SelectItem>
+                <SelectItem value="homeowner-buyer">Homeowner / Buyer</SelectItem>
+                <SelectItem value="investor">Investor</SelectItem>
+                <SelectItem value="lawyer">Lawyer</SelectItem>
+                <SelectItem value="surveyor">Surveyor</SelectItem>
+                <SelectItem value="architect">Architect</SelectItem>
+              </SelectContent>
+            </Select>
+            {errors.role && (
+              <p className="text-sm text-destructive">{errors.role}</p>
             )}
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="monthly_listings">Monthly Listings (optional)</Label>
+            <Label htmlFor="monthly_lists">Monthly Listings *</Label>
             <Select
-              value={formData.monthly_listings}
-              onValueChange={(value) => setFormData({ ...formData, monthly_listings: value })}
+              value={formData.monthly_lists}
+              onValueChange={(value) => setFormData({ ...formData, monthly_lists: value })}
             >
-              <SelectTrigger>
+              <SelectTrigger className={errors.monthly_lists ? 'border-destructive' : ''}>
                 <SelectValue placeholder="Select approximate number of listings" />
               </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="0 - 5">0 - 5</SelectItem>
-                <SelectItem value="5 - 10">5 - 10</SelectItem>
-                <SelectItem value="10 - 15">10 - 15</SelectItem>
-                <SelectItem value="20 - 40">20 - 40</SelectItem>
+              <SelectContent position="item-aligned">
+                <SelectItem value="0-5">0–5</SelectItem>
+                <SelectItem value="5-10">5–10</SelectItem>
+                <SelectItem value="10-15">10–15</SelectItem>
+                <SelectItem value="20-40">20–40</SelectItem>
                 <SelectItem value="40+">40+</SelectItem>
               </SelectContent>
             </Select>
+            {errors.monthly_lists && (
+              <p className="text-sm text-destructive">{errors.monthly_lists}</p>
+            )}
           </div>
 
 
