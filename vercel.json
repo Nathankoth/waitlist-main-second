@@ -9,14 +9,14 @@
       }
     },
     {
-      "src": "src/pages/api/waitlist.js",
+      "src": "api/waitlist.js",
       "use": "@vercel/node"
     }
   ],
   "routes": [
     {
       "src": "/api/waitlist",
-      "dest": "/src/pages/api/waitlist.js"
+      "dest": "/api/waitlist.js"
     },
     {
       "src": "/assets/(.*)",
