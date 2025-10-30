@@ -70,25 +70,28 @@ const WaitlistForm = ({ isOpen, onClose }: WaitlistFormProps) => {
     setIsSubmitting(true);
 
     try {
-      // Submit directly to Supabase
-      const { data, error } = await supabase
-        .from('waitlist')
-        .insert([{
+      // Submit to API route
+      const response = await fetch('/api/waitlist', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
           full_name: formData.full_name.trim(),
           email: formData.email.toLowerCase().trim(),
           role: formData.role.trim(),
           years_experience: formData.years_experience.trim(),
           monthly_listings: formData.monthly_listings.trim(),
-        }])
-        .select()
-        .single();
+        }),
+      });
 
-      if (error) {
-        console.error('Supabase insert error:', error);
-        throw new Error('Failed to join waitlist. Please try again.');
+      const result = await response.json();
+
+      if (!response.ok || !result.success) {
+        throw new Error(result.error || 'Failed to join waitlist. Please try again.');
       }
 
-      console.log('Database insert successful:', data.id);
+      console.log('Waitlist submission successful:', result.data);
       setIsSuccess(true);
       toast({
         title: "You're on the list!",

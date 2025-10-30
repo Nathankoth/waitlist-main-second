@@ -40,7 +40,7 @@ export default async function handler(req, res) {
     const { full_name, email, role, years_experience, monthly_listings } = req.body;
 
     if (!full_name || !email || !role || !years_experience || !monthly_listings) {
-      return res.status(400).json({ message: 'All fields are required.' });
+      return res.status(400).json({ error: 'All fields are required.' });
     }
 
     console.log('Attempting to insert:', { full_name, email, role, years_experience, monthly_listings });
@@ -51,19 +51,16 @@ export default async function handler(req, res) {
 
     if (error) {
       console.error('Supabase insert error:', error);
-      return res.status(500).json({ 
-        message: 'Failed to join waitlist. Please try again.',
-        error: error.message 
-      });
+      return res.status(400).json({ error: error.message });
     }
 
     console.log('Successfully inserted:', data);
-    return res.status(200).json({ message: 'Successfully joined waitlist!', data });
+    return res.status(200).json({ success: true, data });
   } catch (err) {
     console.error('Server error:', err);
     return res.status(500).json({ 
-      message: 'A server error occurred. Please try again.',
-      error: err.message 
+      error: 'Unexpected server error', 
+      details: err.message 
     });
   }
 }
