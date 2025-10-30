@@ -43,9 +43,9 @@ const Header = () => {
   };
 
   const navigationLinks = [
-    { label: "Features", link: "/#features" },
-    { label: "Pricing", link: "/#pricing" },
-    { label: "FAQ", link: "/faq" }
+    { label: "Features", link: "#features" },
+    { label: "Pricing", link: "#pricing" },
+    { label: "FAQ", link: "#faq" }
   ];
 
   return (
